@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pet Care Tips — Furever Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/styles.css"/>
+  <link rel="stylesheet" href="../css/tips.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top fh-navbar">
+  <div class="container-xxl px-4">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+      <div class="brand-icon"><i class="bi bi-heart-fill"></i></div>
+      <span class="brand-text">Furever<span class="brand-accent">Home</span></span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <i class="bi bi-list text-white fs-4"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="pets.html">Find a Pet</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link active" href="tips.html">Care Tips</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+        <a href="login.html" class="btn btn-nav-outline px-3">Log In</a>
+        <a href="register.html" class="btn btn-gold btn-sm px-3">Sign Up <i class="bi bi-arrow-right ms-1"></i></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="tips-hero">
+  <div class="container-xxl px-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4" style="--bs-breadcrumb-divider-color:rgba(255,255,255,0.3)">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="../index.html" style="color:rgba(255,255,255,0.6);text-decoration:none">Home</a></li>
+        <li class="breadcrumb-item active" style="color:var(--gold);font-weight:600">Pet Care Tips</li>
+      </ol>
+    </nav>
+
+    <!-- ═══ FEATURED BANNER ═══ -->
+    <div class="featured-banner">
+      <div class="featured-banner-bg"></div>
+      <div class="featured-banner-overlay"></div>
+      <div class="featured-banner-content">
+        <div class="featured-left"></div>
+        <div class="featured-right">
+          <div class="featured-eyebrow">
+            <i class="bi bi-star-fill"></i> Featured Guide
+          </div>
+          <h2 class="featured-title">
+            The First Week With Your New Pet: A Complete Guide
+          </h2>
+          <p class="featured-desc">
+            Bringing a new dog or cat home is exciting — but those first 7 days are critical. Learn how to set up a safe space, establish routines, introduce family members, and help your pet adjust to their forever home with confidence and calm.
+          </p>
+          <div class="featured-tags">
+            <span class="featured-tag">🐕 Dogs</span>
+            <span class="featured-tag">🐈 Cats</span>
+            <span class="featured-tag">🏠 New Owners</span>
+          </div>
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="#" class="featured-cta" data-bs-toggle="modal" data-bs-target="#fullGuideModal">
+              Read Full Guide <i class="bi bi-arrow-right"></i>
+            </a>
+            <a href="#tipsGrid" class="featured-cta-outline">
+              Browse All Tips <i class="bi bi-grid ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ QUICK FACTS STRIP ═══ -->
+    <div class="facts-strip">
+      <div class="fact-pill">
+        <div class="fact-pill-icon"><i class="bi bi-droplet-fill"></i></div>
+        <div><div class="fact-pill-text">Fresh Water Daily</div><div class="fact-pill-sub">Refill every morning</div></div>
+      </div>
+      <div class="fact-pill">
+        <div class="fact-pill-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+        <div><div class="fact-pill-text">Vet Visit Yearly</div><div class="fact-pill-sub">Catch issues early</div></div>
+      </div>
+      <div class="fact-pill">
+        <div class="fact-pill-icon"><i class="bi bi-activity"></i></div>
+        <div><div class="fact-pill-text">30 Min Exercise</div><div class="fact-pill-sub">For dogs, daily</div></div>
+      </div>
+      <div class="fact-pill">
+        <div class="fact-pill-icon"><i class="bi bi-scissors"></i></div>
+        <div><div class="fact-pill-text">Groom Monthly</div><div class="fact-pill-sub">Prevents infections</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ STICKY FILTER TAB BAR ═══ -->
+<div class="filter-section">
+  <div class="container-xxl px-4">
+    <div class="filter-inner" id="filterBar">
+      <button class="filter-tab active" onclick="filterTips('all', this)">
+        <span class="tab-icon">🐾</span> All Topics <span class="tab-count" id="cnt-all">12</span>
+      </button>
+      <button class="filter-tab" onclick="filterTips('nutrition', this)">
+        <span class="tab-icon">🥩</span> Nutrition <span class="tab-count" id="cnt-nutrition">2</span>
+      </button>
+      <button class="filter-tab" onclick="filterTips('health', this)">
+        <span class="tab-icon">💊</span> Health <span class="tab-count" id="cnt-health">2</span>
+      </button>
+      <button class="filter-tab" onclick="filterTips('grooming', this)">
+        <span class="tab-icon">✂️</span> Grooming <span class="tab-count" id="cnt-grooming">2</span>
+      </button>
+      <button class="filter-tab" onclick="filterTips('exercise', this)">
+        <span class="tab-icon">🏃</span> Exercise <span class="tab-count" id="cnt-exercise">2</span>
+      </button>
+      <button class="filter-tab" onclick="filterTips('behavior', this)">
+        <span class="tab-icon">🧠</span> Behavior <span class="tab-count" id="cnt-behavior">2</span>
+      </button>
+      <button class="filter-tab" onclick="filterTips('safety', this)">
+        <span class="tab-icon">🛡️</span> Safety <span class="tab-count" id="cnt-safety">2</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN TIPS CONTENT -->
+<section class="tips-grid-section">
+  <div class="container-xxl px-4">
+    <div class="row g-4" id="tipsGrid">
+
+      <!-- TIP 1 -->
+      <div class="col-sm-6 col-lg-4 tip-item" data-cat="nutrition">
+        <div class="tc">
+          <div class="tc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1589924691995-400dc9eee119?w=600&q=80" alt="Dog food" class="tc-img"/>
+            <div class="tc-img-overlay"></div>
+            <span class="tc-badge cat-nutrition"><i class="bi bi-egg-fried me-1"></i>Nutrition</span>
+            <span class="tc-pet">🐕 Dogs</span>
+          </div>
+          <div class="tc-body">
+            <h5 class="tc-title">What to Feed Your Dog Daily</h5>
+            <p class="tc-desc">A balanced diet is the foundation of a healthy dog. Learn about portion sizes, the best commercial kibble options available locally, and which human foods are safe or dangerous for your dog.</p>
+            <div class="tc-footer">
+              <span class="tc-read-time"><i class="bi bi-clock"></i> 4 min read</span>
+              <a href="#tipModal" class="tc-btn" onclick="openTip('Dog Nutrition')">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIP 2 -->
+      <div class="col-sm-6 col-lg-4 tip-item" data-cat="nutrition">
+        <div class="tc">
+          <div class="tc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=600&q=80" alt="Cat eating" class="tc-img"/>
+            <div class="tc-img-overlay"></div>
+            <span class="tc-badge cat-nutrition"><i class="bi bi-cup-hot-fill me-1"></i>Nutrition</span>
+            <span class="tc-pet">🐈 Cats</span>
+          </div>
+          <div class="tc-body">
+            <h5 class="tc-title">Feeding Your Cat Right</h5>
+            <p class="tc-desc">Cats are obligate carnivores with unique dietary needs. Discover the difference between wet and dry food, how much to feed based on age and weight, and why hydration is especially critical for indoor cats.</p>
+            <div class="tc-footer">
+              <span class="tc-read-time"><i class="bi bi-clock"></i> 5 min read</span>
+              <a href="#" class="tc-btn" onclick="openTip('Cat Nutrition')">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIP 3 -->
+      <div class="col-sm-6 col-lg-4 tip-item" data-cat="health">
+        <div class="tc">
+          <div class="tc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=600&q=80" alt="Vet checkup" class="tc-img"/>
+            <div class="tc-img-overlay"></div>
+            <span class="tc-badge cat-health"><i class="bi bi-heart-pulse-fill me-1"></i>Health</span>
+            <span class="tc-pet">🐕🐈 Both</span>
+          </div>
+          <div class="tc-body">
+            <h5 class="tc-title">Vaccination Schedule for Pets</h5>
+            <p class="tc-desc">Vaccines protect your pet from deadly diseases like rabies, distemper, and parvo. Learn the recommended vaccination schedule for puppies and kittens, and where to get affordable vet services in Marinduque.</p>
+            <div class="tc-footer">
+              <span class="tc-read-time"><i class="bi bi-clock"></i> 6 min read</span>
+              <a href="#" class="tc-btn" onclick="openTip('Vaccination')">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIP 4 -->
+      <div class="col-sm-6 col-lg-4 tip-item" data-cat="grooming">
+        <div class="tc">
+          <div class="tc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600&q=80" alt="Dog bath" class="tc-img"/>
+            <div class="tc-img-overlay"></div>
+            <span class="tc-badge cat-grooming"><i class="bi bi-droplet-fill me-1"></i>Grooming</span>
+            <span class="tc-pet">🐕 Dogs</span>
+          </div>
+          <div class="tc-body">
+            <h5 class="tc-title">Bathing & Coat Care for Dogs</h5>
+            <p class="tc-desc">How often should you bathe your dog? Depends on breed, coat type, and lifestyle. Learn proper bathing technique, best shampoos for local breeds, nail trimming, ear cleaning, and preventing skin infections common in tropical climates.</p>
+            <div class="tc-footer">
+              <span class="tc-read-time"><i class="bi bi-clock"></i> 5 min read</span>
+              <a href="#" class="tc-btn" onclick="openTip('Dog Grooming')">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIP 5 -->
+      <div class="col-sm-6 col-lg-4 tip-item" data-cat="grooming">
+        <div class="tc">
+          <div class="tc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=600&q=80" alt="Cat grooming" class="tc-img"/>
+            <div class="tc-img-overlay"></div>
+            <span class="tc-badge cat-grooming"><i class="bi bi-scissors me-1"></i>Grooming</span>
+            <span class="tc-pet">🐈 Cats</span>
+          </div>
+          <div class="tc-body">
+            <h5 class="tc-title">Grooming Your Cat at Home</h5>
+            <p class="tc-desc">Cats are self-groomers but still need your help. Learn how to brush different coat types, safely trim claws, clean ears, and check for fleas and ticks. Regular sessions strengthen the bond between you and your cat.</p>
+            <div class="tc-footer">
+              <span class="tc-read-time"><i class="bi bi-clock"></i> 4 min read</span>
+              <a href="#" class="tc-btn" onclick="openTip('Cat Grooming')">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIP 6 -->
+      <div class="col-sm-6 col-lg-4 tip-item" data-cat="exercise">
+        <div class="tc">
+          <div class="tc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80" alt="Dog walk" class="tc-img"/>
+            <div class="tc-img-overlay"></div>
+            <span class="tc-badge cat-exercise"><i class="bi bi-person-walking me-1"></i>Exercise</span>
+            <span class="tc-pet">🐕 Dogs</span>
+          </div>
+          <div class="tc-body">
+            <h5 class="tc-title">Daily Exercise Guide for Dogs</h5>
+            <p class="tc-desc">Exercise is essential for physical and mental health. Different breeds need different amounts — a Shih Tzu far less than a Labrador. Get breed-specific recommendations, tips for hot Marinduque weather, and fun indoor activity ideas.</p>
+            <div class="tc-footer">
+              <span class="tc-read-time"><i class="bi bi-clock"></i> 5 min read</span>
+              <a href="#" class="tc-btn" onclick="openTip('Dog Exercise')">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIP 7 -->
+      <div class="col-sm-6 col-lg-4 tip-item" data-cat="exercise">
+        <div class="tc">
+          <div class="tc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&q=80" alt="Cat play" class="tc-img"/>
+            <div class="tc-img-overlay"></div>
+            <span class="tc-badge cat-exercise"><i class="bi bi-stars me-1"></i>Exercise</span>
+            <span class="tc-pet">🐈 Cats</span>
+          </div>
+          <div class="tc-body">
+            <h5 class="tc-title">Keeping Indoor Cats Active</h5>
+            <p class="tc-desc">Indoor cats can become bored and sedentary without stimulation. Discover affordable DIY toys, interactive playtime techniques, cat trees, window perches, and puzzle feeders that keep your cat mentally sharp and physically fit.</p>
+            <div class="tc-footer">
+              <span class="tc-read-time"><i class="bi bi-clock"></i> 4 min read</span>
+              <a href="#" class="tc-btn" onclick="openTip('Cat Exercise')">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIP 8 -->
+      <div class="col-sm-6 col-lg-4 tip-item" data-cat="behavior">
+        <div class="tc">
+          <div class="tc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80" alt="Dog training" class="tc-img"/>
+            <div class="tc-img-overlay"></div>
+            <span class="tc-badge cat-behavior"><i class="bi bi-trophy-fill me-1"></i>Behavior</span>
+            <span class="tc-pet">🐕 Dogs</span>
+          </div>
+          <div class="tc-body">
+            <h5 class="tc-title">Basic Dog Training at Home</h5>
+            <p class="tc-desc">Teaching sit, stay, come, and leave it doesn't require a professional trainer. Learn positive reinforcement techniques, how to handle jumping, barking, and chewing — methods that work especially well for Aspin and local breeds.</p>
+            <div class="tc-footer">
+              <span class="tc-read-time"><i class="bi bi-clock"></i> 7 min read</span>
+              <a href="#" class="tc-btn" onclick="openTip('Dog Training')">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIP 9 -->
+      <div class="col-sm-6 col-lg-4 tip-item" data-cat="behavior">
+        <div class="tc">
+          <div class="tc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=600&q=80" alt="Cat behavior" class="tc-img"/>
+            <div class="tc-img-overlay"></div>
+            <span class="tc-badge cat-behavior"><i class="bi bi-chat-heart-fill me-1"></i>Behavior</span>
+            <span class="tc-pet">🐈 Cats</span>
+          </div>
+          <div class="tc-body">
+            <h5 class="tc-title">Understanding Cat Body Language</h5>
+            <p class="tc-desc">Cats communicate constantly but many owners miss the signals. Learn what a slow blink, tail position, ear angle, and chirping mean. Understanding feline communication builds trust and helps you spot problems early.</p>
+            <div class="tc-footer">
+              <span class="tc-read-time"><i class="bi bi-clock"></i> 5 min read</span>
+              <a href="#" class="tc-btn" onclick="openTip('Cat Behavior')">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIP 10 -->
+      <div class="col-sm-6 col-lg-4 tip-item" data-cat="safety">
+        <div class="tc">
+          <div class="tc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&q=80" alt="Pet safety" class="tc-img"/>
+            <div class="tc-img-overlay"></div>
+            <span class="tc-badge cat-safety"><i class="bi bi-shield-check-fill me-1"></i>Safety</span>
+            <span class="tc-pet">🐕🐈 Both</span>
+          </div>
+          <div class="tc-body">
+            <h5 class="tc-title">Pet-Proofing Your Home</h5>
+            <p class="tc-desc">Before your new pet arrives, inspect your home for hazards — toxic houseplants, loose electrical cords, cleaning chemicals, small swallowable objects, and unsecured trash bins. This checklist helps you create a safe environment from Day 1.</p>
+            <div class="tc-footer">
+              <span class="tc-read-time"><i class="bi bi-clock"></i> 6 min read</span>
+              <a href="#" class="tc-btn" onclick="openTip('Pet Safety')">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIP 11 -->
+      <div class="col-sm-6 col-lg-4 tip-item" data-cat="health">
+        <div class="tc">
+          <div class="tc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=600&q=80" alt="Flea prevention" class="tc-img"/>
+            <div class="tc-img-overlay"></div>
+            <span class="tc-badge cat-health"><i class="bi bi-bug-fill me-1"></i>Health</span>
+            <span class="tc-pet">🐕🐈 Both</span>
+          </div>
+          <div class="tc-body">
+            <h5 class="tc-title">Flea, Tick & Parasite Prevention</h5>
+            <p class="tc-desc">Fleas and ticks are especially common in tropical Marinduque. Learn to identify infestations early, the safest topical and oral treatments available locally, and natural prevention methods safe for pets and children.</p>
+            <div class="tc-footer">
+              <span class="tc-read-time"><i class="bi bi-clock"></i> 6 min read</span>
+              <a href="#" class="tc-btn" onclick="openTip('Parasite Prevention')">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIP 12 -->
+      <div class="col-sm-6 col-lg-4 tip-item" data-cat="safety">
+        <div class="tc">
+          <div class="tc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&q=80" alt="Microchip pet" class="tc-img"/>
+            <div class="tc-img-overlay"></div>
+            <span class="tc-badge cat-safety"><i class="bi bi-geo-alt-fill me-1"></i>Safety</span>
+            <span class="tc-pet">🐕🐈 Both</span>
+          </div>
+          <div class="tc-body">
+            <h5 class="tc-title">ID Tags, Microchips & Lost Pet Plans</h5>
+            <p class="tc-desc">Every pet should have proper identification. Learn the difference between collar ID tags and microchips, how microchipping works, where to get it done in Marinduque, and what steps to take immediately if your pet goes missing.</p>
+            <div class="tc-footer">
+              <span class="tc-read-time"><i class="bi bi-clock"></i> 5 min read</span>
+              <a href="#" class="tc-btn" onclick="openTip('ID & Safety')">Read More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- End tips grid -->
+  </div>
+</section>
+
+<!-- FAQ ACCORDION -->
+<section class="section-pad bg-cream">
+  <div class="container-xxl px-4">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-4">
+        <div class="section-tag">Got Questions?</div>
+        <h2 class="section-title">Frequently Asked Pet Care Questions</h2>
+        <p style="font-size:14px;color:var(--text-mid);line-height:1.7">Quick answers to the most common questions from new pet owners in Marinduque.</p>
+        <a href="contact.html" class="btn btn-gold mt-3 px-4">Ask Our Team <i class="bi bi-chat-dots ms-1"></i></a>
+      </div>
+      <div class="col-lg-8">
+        <div class="accordion fh-accordion" id="faqAccordion">
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                🐕 How often should I bathe my dog?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Most dogs need a bath every <strong>4–6 weeks</strong>. Short-haired Aspins can go up to 8 weeks, while long-haired breeds or very active dogs may need one every 2–3 weeks. Avoid bathing too frequently as it can strip natural oils from the skin and cause dryness. Always use a pet-safe shampoo — never human shampoo.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                🐈 Do indoor cats need vaccines?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                <strong>Yes, absolutely.</strong> Even indoor cats need core vaccines including rabies, feline panleukopenia (FPV), feline herpesvirus, and calicivirus. Indoor cats can still be exposed to diseases through open windows, insects, or if they accidentally escape. Consult your vet for a schedule based on your cat's age and health.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                🥩 Can I feed my pet leftover rice and fish?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Plain cooked rice and boneless fish are generally safe in <strong>small amounts</strong> as occasional treats. However, they should not replace a complete and balanced diet. Fish bones are dangerous — always remove them fully. Avoid salty, seasoned, or oily table scraps. For long-term health, quality commercial pet food formulated for their life stage is still best.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                🌡️ How do I know if my pet is sick?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Watch for these warning signs: <strong>loss of appetite, lethargy, vomiting, diarrhea, coughing, sneezing, discharge from eyes or nose, weight loss, difficulty breathing, or changes in behavior.</strong> Any of these lasting more than 24 hours warrants a vet visit. Early detection is key — don't wait until symptoms become severe.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                🏠 How long does it take a new pet to adjust?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                The <strong>"3-3-3 Rule"</strong> is a helpful guide: most pets take <em>3 days</em> to decompress, <em>3 weeks</em> to learn the household routine, and <em>3 months</em> to feel truly at home. Be patient, consistent, and gentle during this period. Avoid overwhelming your new pet with too many people or changes in the first week.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                💊 When should I deworm my pet?
+              </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Puppies and kittens should be dewormed starting at <strong>2–3 weeks of age</strong>, then every 2 weeks until 8 weeks old, then monthly until 6 months. Adult pets should be dewormed <strong>every 3–6 months</strong> depending on lifestyle and exposure. Pets that go outdoors or eat raw food may need more frequent treatment. Ask your vet for the right product.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="section-pad">
+  <div class="container-xxl px-4">
+    <div class="newsletter-card">
+      <div class="section-tag" style="background:var(--gold);color:var(--dark-green)">Stay Updated</div>
+      <h2 class="section-title mt-2 mb-2">Get Pet Care Tips in Your Inbox</h2>
+      <p style="font-size:15px;color:var(--text-mid);margin-bottom:24px">New care guides every week — free for all Marinduque pet owners.</p>
+      <div class="newsletter-input-wrap">
+        <input type="email" class="newsletter-input" placeholder="your@email.com"/>
+        <button class="btn btn-gold px-4 fw-700" onclick="subscribeNewsletter()">Subscribe <i class="bi bi-send ms-1"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="fh-footer">
+  <div class="container-xxl px-4">
+    <div class="row g-4 mb-4">
+      <div class="col-lg-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <div class="brand-icon sm"><i class="bi bi-heart-fill"></i></div>
+          <span class="brand-text">Furever<span class="brand-accent">Home</span></span>
+        </div>
+        <p class="footer-desc">Connecting loving dogs and cats with caring families across Marinduque Province, Philippines.</p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#" class="social-btn"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-envelope-fill"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6 class="footer-heading">Platform</h6>
+        <ul class="footer-links">
+          <li><a href="pets.html">Find a Pet</a></li>
+          <li><a href="register.html">Post a Pet</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="tips.html">Care Tips</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6 class="footer-heading">Support</h6>
+        <ul class="footer-links">
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6 class="footer-heading">Contact Info</h6>
+        <ul class="footer-contact">
+          <li><i class="bi bi-geo-alt-fill"></i> Marinduque Province, Philippines</li>
+          <li><i class="bi bi-telephone-fill"></i> +63 912 345 6789</li>
+          <li><i class="bi bi-envelope-fill"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fc9499909093bc9a898e998a998e94939199d28c94">[email&#160;protected]</a></li>
+          <li><i class="bi bi-clock-fill"></i> Mon–Sat, 8:00 AM – 6:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Furever Home — Marinduque Province. All rights reserved. Made with <i class="bi bi-heart-fill text-danger"></i> for Marinduque's animals.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Full Guide Modal -->
+<div class="modal fade" id="fullGuideModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+    <div class="modal-content" style="border-radius:var(--radius-lg);border:none;overflow:hidden;max-height:90vh">
+
+      <!-- Header with hero image -->
+      <div class="guide-modal-hero" style="position:relative;height:220px;overflow:hidden;flex-shrink:0">
+        <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=1200&q=80"
+             style="width:100%;height:100%;object-fit:cover;object-position:center 40%" alt="Pets"/>
+        <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(26,60,52,0.3),rgba(26,60,52,0.85))"></div>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:28px 36px">
+          <div style="display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:var(--dark-green);font-size:11px;font-weight:800;padding:4px 14px;border-radius:100px;text-transform:uppercase;letter-spacing:1px;width:fit-content;margin-bottom:10px">
+            <i class="bi bi-star-fill"></i> Featured Guide
+          </div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:700;color:#fff;margin:0;line-height:1.3">
+            The First Week With Your New Pet: A Complete Guide
+          </h4>
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+          style="position:absolute;top:16px;right:20px;opacity:0.8"></button>
+      </div>
+
+      <!-- Scrollable body -->
+      <div class="modal-body p-0" style="overflow-y:auto">
+
+        <!-- Intro + tags -->
+        <div style="padding:28px 36px 20px;border-bottom:1px solid var(--border);background:var(--cream)">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px">
+            <span style="background:var(--light-green);color:var(--mid-green);font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px">🐕 Dogs</span>
+            <span style="background:var(--light-green);color:var(--mid-green);font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px">🐈 Cats</span>
+            <span style="background:var(--gold-light);color:var(--gold-dark);font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px">🏠 New Owners</span>
+            <span style="background:#e0f2fe;color:#0369a1;font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px">📖 7-Day Guide</span>
+          </div>
+          <p style="font-size:15px;color:var(--text-mid);line-height:1.8;margin:0">
+            Bringing a new dog or cat home is one of the most exciting moments — but those first 7 days set the tone for your entire relationship. This guide walks you through everything you need to know, day by day.
+          </p>
+        </div>
+
+        <!-- Guide content -->
+        <div style="padding:28px 36px">
+          <div class="guide-steps">
+
+            <!-- Day 1 -->
+            <div class="guide-day">
+              <div class="guide-day-badge">Day 1</div>
+              <div class="guide-day-content">
+                <h5 class="guide-day-title"><i class="bi bi-house-heart-fill"></i> Arriving Home — The First Hours</h5>
+                <p>When you first bring your pet home, <strong>resist the urge to overwhelm them with attention</strong>. Let them explore at their own pace. Set up a quiet, dedicated space — a crate, corner, or room — with their bed, water bowl, and a piece of your worn clothing so they can get used to your scent.</p>
+                <ul>
+                  <li>Keep the house calm — limit visitors on Day 1</li>
+                  <li>Show them where their food, water, and bathroom area are</li>
+                  <li>Let them approach you — don't force interaction</li>
+                  <li>Speak in calm, soft tones to build trust immediately</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Day 2-3 -->
+            <div class="guide-day">
+              <div class="guide-day-badge">Days 2–3</div>
+              <div class="guide-day-content">
+                <h5 class="guide-day-title"><i class="bi bi-people-fill"></i> Introducing the Family</h5>
+                <p>Gradually introduce family members one at a time. Children should be taught to approach slowly and quietly. If you have other pets, introduce them <strong>through a closed door first</strong> so they can smell each other before meeting face to face.</p>
+                <ul>
+                  <li>Let the new pet eat and rest without disturbance</li>
+                  <li>Supervised, brief meetings with other pets — never forced</li>
+                  <li>Establish a consistent feeding schedule (same time each day)</li>
+                  <li>Begin learning your pet's personality and stress signals</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Day 4-5 -->
+            <div class="guide-day">
+              <div class="guide-day-badge">Days 4–5</div>
+              <div class="guide-day-content">
+                <h5 class="guide-day-title"><i class="bi bi-clock-fill"></i> Building a Routine</h5>
+                <p>Pets thrive on predictability. By days 4–5, start <strong>locking in a daily routine</strong> for feeding, walks or play sessions, and rest time. Consistency reduces anxiety and helps your pet understand what to expect from their new life.</p>
+                <ul>
+                  <li>Feed at the same times morning and evening</li>
+                  <li>Walk dogs at consistent times — morning, after meals, evening</li>
+                  <li>Create a quiet "wind-down" time before bed</li>
+                  <li>Start basic commands: sit, come, stay — with treats and praise</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Day 6 -->
+            <div class="guide-day">
+              <div class="guide-day-badge">Day 6</div>
+              <div class="guide-day-content">
+                <h5 class="guide-day-title"><i class="bi bi-heart-pulse-fill"></i> First Vet Visit</h5>
+                <p>Schedule a vet appointment within the first week even if your pet seems healthy. A baseline health check establishes records, updates vaccinations, and lets your vet catch any issues early — especially important for rescue animals.</p>
+                <ul>
+                  <li>Bring any vaccination records from the shelter or previous owner</li>
+                  <li>Ask about deworming, flea prevention, and microchipping</li>
+                  <li>Discuss diet and portion sizes appropriate for their age and breed</li>
+                  <li>Ask the vet what signs of illness to watch for in the first month</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Day 7 -->
+            <div class="guide-day">
+              <div class="guide-day-badge">Day 7</div>
+              <div class="guide-day-content">
+                <h5 class="guide-day-title"><i class="bi bi-emoji-smile-fill"></i> Reflect & Adjust</h5>
+                <p>By the end of the first week, take stock of how things are going. Some pets settle in quickly; others need more time. <strong>The 3-3-3 Rule</strong> is a helpful reminder: 3 days to decompress, 3 weeks to learn your routine, 3 months to feel truly at home.</p>
+                <ul>
+                  <li>Note what's working — and what needs adjusting</li>
+                  <li>Be patient if your pet is still nervous or hiding</li>
+                  <li>Celebrate small wins — trusting you, eating well, playing</li>
+                  <li>Remember: every pet adjusts at their own pace. Love and consistency are the keys</li>
+                </ul>
+              </div>
+            </div>
+
+          </div><!-- end guide-steps -->
+
+          <!-- Pro Tips box -->
+          <div style="background:var(--gold-light);border:2px solid var(--gold);border-radius:var(--radius-md);padding:24px;margin-top:28px">
+            <h6 style="font-weight:800;color:var(--dark-green);margin-bottom:14px;font-size:15px">
+              <i class="bi bi-lightbulb-fill me-2" style="color:var(--gold)"></i>Pro Tips for Marinduque Pet Owners
+            </h6>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <div style="display:flex;gap:10px;align-items:flex-start">
+                  <i class="bi bi-thermometer-sun" style="color:var(--gold-dark);font-size:18px;flex-shrink:0;margin-top:2px"></i>
+                  <div><div style="font-weight:700;font-size:13px;color:var(--dark-green)">Tropical Heat</div><div style="font-size:13px;color:var(--text-mid)">Walk dogs early morning or after 5 PM to avoid heatstroke on hot Marinduque days.</div></div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div style="display:flex;gap:10px;align-items:flex-start">
+                  <i class="bi bi-bug-fill" style="color:var(--gold-dark);font-size:18px;flex-shrink:0;margin-top:2px"></i>
+                  <div><div style="font-weight:700;font-size:13px;color:var(--dark-green)">Flea & Tick Season</div><div style="font-size:13px;color:var(--text-mid)">Parasites are year-round here. Start prevention treatment from Day 1.</div></div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div style="display:flex;gap:10px;align-items:flex-start">
+                  <i class="bi bi-droplet-fill" style="color:var(--gold-dark);font-size:18px;flex-shrink:0;margin-top:2px"></i>
+                  <div><div style="font-weight:700;font-size:13px;color:var(--dark-green)">Hydration</div><div style="font-size:13px;color:var(--text-mid)">In our warm climate, always have fresh cool water available — check it twice a day.</div></div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div style="display:flex;gap:10px;align-items:flex-start">
+                  <i class="bi bi-building-fill-heart" style="color:var(--gold-dark);font-size:18px;flex-shrink:0;margin-top:2px"></i>
+                  <div><div style="font-weight:700;font-size:13px;color:var(--dark-green)">Local Vets</div><div style="font-size:13px;color:var(--text-mid)">Contact the Boac Animal Shelter or Gasan PAWS Center for affordable vet referrals.</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end padding div -->
+      </div><!-- end modal-body -->
+
+      <!-- Footer -->
+      <div class="modal-footer" style="background:var(--cream);border-top:1px solid var(--border);padding:16px 28px;gap:10px">
+        <a href="pets.html" class="btn btn-gold px-4">Browse Adoptable Pets <i class="bi bi-arrow-right ms-1"></i></a>
+        <a href="contact.html" class="btn btn-outline-dark px-4">Contact a Shelter</a>
+        <button type="button" class="btn btn-light px-3 ms-auto" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Tip Detail Modal -->
+<div class="modal fade" id="tipModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content" style="border-radius:var(--radius-lg);border:none;overflow:hidden">
+      <div class="modal-header" style="background:var(--dark-green);border:none;padding:20px 28px">
+        <h5 class="modal-title text-white" id="tipModalTitle" style="font-family:'Playfair Display',serif">Tip Details</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-4" id="tipModalBody" style="font-size:15px;color:var(--text-mid);line-height:1.8">
+        Loading...
+      </div>
+      <div class="modal-footer border-0 px-4 pb-4">
+        <a href="pets.html" class="btn btn-gold px-4">Browse Adoptable Pets <i class="bi bi-arrow-right ms-1"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="fh-toast" id="toast"><i class="bi bi-check-circle-fill"></i> <span id="toastMsg"></span></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/tips.js"></script>
+</body>
+</html>

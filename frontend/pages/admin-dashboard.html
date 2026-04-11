@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard — Furever Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/styles.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="dashboard-layout">
+
+  <!-- Admin Sidebar -->
+  <aside class="fh-sidebar" id="adminSidebar">
+    <div class="sidebar-logo">
+      <div class="brand-icon"><i class="bi bi-heart-fill"></i></div>
+      <div>
+        <span class="brand-text">Furever<span class="brand-accent">Home</span></span>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-top:1px">ADMIN PANEL</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active" onclick="adminPanel('dashboard',this)"><i class="bi bi-grid-fill"></i> Dashboard</a>
+      <div class="sidebar-nav-label">Management</div>
+      <a href="#" class="sidebar-link" onclick="adminPanel('pets',this)"><i class="bi bi-paw-fill"></i> Pet Listings <span class="ms-auto" style="font-size:11px;background:rgba(255,255,255,0.1);padding:2px 7px;border-radius:100px;color:rgba(255,255,255,0.6)">1,240</span></a>
+      <a href="#" class="sidebar-link" onclick="adminPanel('requests',this)"><i class="bi bi-file-earmark-check"></i> Adoption Requests <span class="ms-auto badge" style="background:#e53e3e;color:white;font-size:10px" id="reqBadge">12</span></a>
+      <a href="#" class="sidebar-link" onclick="adminPanel('users',this)"><i class="bi bi-people-fill"></i> Users</a>
+      <a href="#" class="sidebar-link" onclick="adminPanel('shelters',this)"><i class="bi bi-building-fill-heart"></i> Shelters</a>
+      <div class="sidebar-nav-label">Reports</div>
+      <a href="#" class="sidebar-link" onclick="adminPanel('analytics',this)"><i class="bi bi-bar-chart-fill"></i> Analytics</a>
+      <a href="#" class="sidebar-link" onclick="adminPanel('donations',this)"><i class="bi bi-gift-fill"></i> Donations</a>
+      <div class="sidebar-nav-label">System</div>
+      <a href="#" class="sidebar-link" onclick="adminPanel('settings',this)"><i class="bi bi-gear-fill"></i> Settings</a>
+      <a href="../index.html" class="sidebar-link"><i class="bi bi-box-arrow-left"></i> View Site</a>
+    </nav>
+    <div class="sidebar-user">
+      <div class="sidebar-avatar" style="background:#e53e3e">AD</div>
+      <div>
+        <div class="sidebar-user-name">Admin User</div>
+        <div class="sidebar-user-role">Super Administrator</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="dashboard-main">
+    <div class="dashboard-topbar">
+      <div>
+        <div class="topbar-title" id="adminTitle">Admin Dashboard</div>
+        <div class="topbar-breadcrumb" id="adminBreadcrumb">Dashboard > Overview · Today, March 29, 2026</div>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <div class="topbar-search"><i class="bi bi-search"></i><input type="text" placeholder="Search..."/></div>
+        <button class="btn btn-sm position-relative" style="background:var(--cream);border:1.5px solid var(--border);border-radius:10px;padding:8px 12px" onclick="adminPanel('requests',null)">
+          <i class="bi bi-bell"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" style="background:#e53e3e;font-size:9px" id="adminNotifBadge">12</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="dashboard-content">
+
+      <!-- ══ PANEL: DASHBOARD ══ -->
+      <div id="adm-dashboard">
+        <div class="row g-3 mb-4">
+          <div class="col-6 col-xl-3"><div class="stat-box" style="cursor:pointer" onclick="adminPanel('pets',null)"><div class="stat-box-icon green"><i class="bi bi-paw-fill"></i></div><div><div class="stat-box-num">1,240</div><div class="stat-box-label">Total Pets</div><div class="stat-box-change up">↑ 14 this week</div></div></div></div>
+          <div class="col-6 col-xl-3"><div class="stat-box"><div class="stat-box-icon gold"><i class="bi bi-check2-circle"></i></div><div><div class="stat-box-num">890</div><div class="stat-box-label">Adopted</div><div class="stat-box-change up">↑ 23.65%</div></div></div></div>
+          <div class="col-6 col-xl-3"><div class="stat-box" style="cursor:pointer" onclick="adminPanel('users',null)"><div class="stat-box-icon blue"><i class="bi bi-people-fill"></i></div><div><div class="stat-box-num">3,482</div><div class="stat-box-label">Registered Users</div><div class="stat-box-change up">↑ 58 new</div></div></div></div>
+          <div class="col-6 col-xl-3"><div class="stat-box" style="cursor:pointer" onclick="adminPanel('requests',null)"><div class="stat-box-icon red"><i class="bi bi-clock-history"></i></div><div><div class="stat-box-num">278</div><div class="stat-box-label">Pending Requests</div><div class="stat-box-change down">↓ 2.34%</div></div></div></div>
+        </div>
+        <div class="row g-4 mb-4">
+          <div class="col-lg-8">
+            <div class="fh-table-card p-4">
+              <div class="fh-table-header px-0 pt-0 mb-4">
+                <div><div class="fh-table-title">Adoption Trends</div><div style="font-size:12px;color:var(--text-light)">Monthly adoption statistics</div></div>
+                <div class="d-flex gap-1">
+                  <button class="btn btn-sm btn-gold px-3" id="btnMonth" onclick="setChart('month')">Month</button>
+                  <button class="btn btn-sm btn-outline-dark px-3" id="btnWeek" onclick="setChart('week')">Week</button>
+                </div>
+              </div>
+              <canvas id="adoptionChart" height="100"></canvas>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="fh-table-card p-4 h-100">
+              <div class="fh-table-title mb-4">Pet Status Overview</div>
+              <canvas id="statusChart" height="200"></canvas>
+              <div class="mt-3">
+                <div class="d-flex justify-content-between mb-2"><span style="font-size:13px"><span style="color:#38a169">●</span> Available</span><strong>712</strong></div>
+                <div class="d-flex justify-content-between mb-2"><span style="font-size:13px"><span style="color:#d69e2e">●</span> Pending</span><strong>278</strong></div>
+                <div class="d-flex justify-content-between"><span style="font-size:13px"><span style="color:#3182ce">●</span> Adopted</span><strong>890</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="fh-table-card">
+              <div class="fh-table-header"><div class="fh-table-title">Pending Adoption Requests</div><button class="btn btn-sm btn-outline-dark" onclick="adminPanel('requests',null)">View All</button></div>
+              <div class="table-responsive">
+                <table class="fh-table">
+                  <thead><tr><th>Applicant</th><th>Pet</th><th>Date</th><th>Action</th></tr></thead>
+                  <tbody id="pendingRequestsBody">
+                    <tr id="req-row-1"><td><div class="fw-600" style="font-size:13px">Maria Reyes</div><div style="font-size:11px;color:var(--text-light)">Boac</div></td><td><span class="badge-status badge-available" style="font-size:11px">Luna · Cat</span></td><td style="font-size:12px;color:var(--text-light)">Mar 14</td><td><button class="btn btn-sm btn-success me-1" style="font-size:11px;padding:4px 10px" onclick="handleRequest('req-row-1','approve','Luna')">✓</button><button class="btn btn-sm btn-outline-danger" style="font-size:11px;padding:4px 10px" onclick="handleRequest('req-row-1','reject','Luna')">✗</button></td></tr>
+                    <tr id="req-row-2"><td><div class="fw-600" style="font-size:13px">Juan dela Cruz</div><div style="font-size:11px;color:var(--text-light)">Gasan</div></td><td><span class="badge-status badge-available" style="font-size:11px">Rocky · Dog</span></td><td style="font-size:12px;color:var(--text-light)">Mar 13</td><td><button class="btn btn-sm btn-success me-1" style="font-size:11px;padding:4px 10px" onclick="handleRequest('req-row-2','approve','Rocky')">✓</button><button class="btn btn-sm btn-outline-danger" style="font-size:11px;padding:4px 10px" onclick="handleRequest('req-row-2','reject','Rocky')">✗</button></td></tr>
+                    <tr id="req-row-3"><td><div class="fw-600" style="font-size:13px">Ana Santos</div><div style="font-size:11px;color:var(--text-light)">Mogpog</div></td><td><span class="badge-status badge-available" style="font-size:11px">Mochi · Cat</span></td><td style="font-size:12px;color:var(--text-light)">Mar 12</td><td><button class="btn btn-sm btn-success me-1" style="font-size:11px;padding:4px 10px" onclick="handleRequest('req-row-3','approve','Mochi')">✓</button><button class="btn btn-sm btn-outline-danger" style="font-size:11px;padding:4px 10px" onclick="handleRequest('req-row-3','reject','Mochi')">✗</button></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="fh-table-card">
+              <div class="fh-table-header"><div class="fh-table-title">Recent Pet Listings</div><button class="btn btn-sm btn-gold px-3" data-bs-toggle="modal" data-bs-target="#addPetModal"><i class="bi bi-plus me-1"></i>Add Pet</button></div>
+              <div class="table-responsive">
+                <table class="fh-table">
+                  <thead><tr><th>Pet</th><th>Type</th><th>Status</th><th></th></tr></thead>
+                  <tbody>
+                    <tr><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=60&q=80" style="width:36px;height:36px;border-radius:8px;object-fit:cover" alt=""/><div class="fw-600" style="font-size:13px">Max</div></div></td><td style="font-size:12px">🐕 Dog</td><td><span class="badge-status badge-available" style="font-size:10px">Available</span></td><td><button class="btn btn-sm btn-outline-dark" style="font-size:11px;padding:3px 8px" onclick="openEditPet('Max')" title="Edit"><i class="bi bi-pencil"></i></button></td></tr>
+                    <tr><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=60&q=80" style="width:36px;height:36px;border-radius:8px;object-fit:cover" alt=""/><div class="fw-600" style="font-size:13px">Luna</div></div></td><td style="font-size:12px">🐈 Cat</td><td><span class="badge-status badge-pending" style="font-size:10px">Pending</span></td><td><button class="btn btn-sm btn-outline-dark" style="font-size:11px;padding:3px 8px" onclick="openEditPet('Luna')" title="Edit"><i class="bi bi-pencil"></i></button></td></tr>
+                    <tr><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=60&q=80" style="width:36px;height:36px;border-radius:8px;object-fit:cover" alt=""/><div class="fw-600" style="font-size:13px">Mochi</div></div></td><td style="font-size:12px">🐈 Cat</td><td><span class="badge-status badge-available" style="font-size:10px">Available</span></td><td><button class="btn btn-sm btn-outline-dark" style="font-size:11px;padding:3px 8px" onclick="openEditPet('Mochi')" title="Edit"><i class="bi bi-pencil"></i></button></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PANEL: PET LISTINGS ══ -->
+      <div id="adm-pets" style="display:none">
+        <div class="fh-table-card">
+          <div class="fh-table-header">
+            <div class="fh-table-title">All Pet Listings <span style="font-size:13px;font-weight:400;color:var(--text-light)">(1,240 total)</span></div>
+            <div class="d-flex gap-2">
+              <select class="fh-select" style="width:auto;padding:8px 12px;font-size:13px" id="filterType" onchange="filterPetsList(this.value, document.getElementById('filterStatus').value)">
+                <option value="">All Types</option><option value="dog">Dogs</option><option value="cat">Cats</option>
+              </select>
+              <select class="fh-select" style="width:auto;padding:8px 12px;font-size:13px" id="filterStatus" onchange="filterPetsList(document.getElementById('filterType').value, this.value)">
+                <option value="">All Status</option><option value="available">Available</option><option value="pending">Pending</option><option value="adopted">Adopted</option>
+              </select>
+              <button class="btn btn-gold px-3" data-bs-toggle="modal" data-bs-target="#addPetModal"><i class="bi bi-plus me-1"></i>Add Pet</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="fh-table">
+              <thead><tr><th>Pet</th><th>Type</th><th>Breed</th><th>Location</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="petListBody">
+                <tr><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=60&q=80" style="width:40px;height:40px;border-radius:10px;object-fit:cover" alt=""/><div><div class="fw-600">Max</div><div style="font-size:11px;color:var(--text-light)">ID: #001</div></div></div></td><td>🐕 Dog</td><td style="font-size:13px">Golden Retriever</td><td style="font-size:13px">Boac</td><td><span class="badge-status badge-available">Available</span></td><td><button class="btn btn-sm btn-outline-dark me-1" onclick="openEditPet('Max')"><i class="bi bi-pencil"></i></button><button class="btn btn-sm btn-outline-danger" onclick="deletePet('Max')"><i class="bi bi-trash"></i></button></td></tr>
+                <tr><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=60&q=80" style="width:40px;height:40px;border-radius:10px;object-fit:cover" alt=""/><div><div class="fw-600">Buddy</div><div style="font-size:11px;color:var(--text-light)">ID: #002</div></div></div></td><td>🐕 Dog</td><td style="font-size:13px">Labrador Mix</td><td style="font-size:13px">Gasan</td><td><span class="badge-status badge-available">Available</span></td><td><button class="btn btn-sm btn-outline-dark me-1" onclick="openEditPet('Buddy')"><i class="bi bi-pencil"></i></button><button class="btn btn-sm btn-outline-danger" onclick="deletePet('Buddy')"><i class="bi bi-trash"></i></button></td></tr>
+                <tr><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=60&q=80" style="width:40px;height:40px;border-radius:10px;object-fit:cover" alt=""/><div><div class="fw-600">Bruno</div><div style="font-size:11px;color:var(--text-light)">ID: #006</div></div></div></td><td>🐕 Dog</td><td style="font-size:13px">Labrador Retriever</td><td style="font-size:13px">Mogpog</td><td><span class="badge-status badge-pending">Pending</span></td><td><button class="btn btn-sm btn-outline-dark me-1" onclick="openEditPet('Bruno')"><i class="bi bi-pencil"></i></button><button class="btn btn-sm btn-outline-danger" onclick="deletePet('Bruno')"><i class="bi bi-trash"></i></button></td></tr>
+                <tr><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=60&q=80" style="width:40px;height:40px;border-radius:10px;object-fit:cover" alt=""/><div><div class="fw-600">Luna</div><div style="font-size:11px;color:var(--text-light)">ID: #007</div></div></div></td><td>🐈 Cat</td><td style="font-size:13px">Domestic Shorthair</td><td style="font-size:13px">Gasan</td><td><span class="badge-status badge-available">Available</span></td><td><button class="btn btn-sm btn-outline-dark me-1" onclick="openEditPet('Luna')"><i class="bi bi-pencil"></i></button><button class="btn btn-sm btn-outline-danger" onclick="deletePet('Luna')"><i class="bi bi-trash"></i></button></td></tr>
+                <tr><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1518791841217-8f162f1912da?w=60&q=80" style="width:40px;height:40px;border-radius:10px;object-fit:cover" alt=""/><div><div class="fw-600">Bella</div><div style="font-size:11px;color:var(--text-light)">ID: #012</div></div></div></td><td>🐈 Cat</td><td style="font-size:13px">Calico</td><td style="font-size:13px">Torrijos</td><td><span class="badge-status badge-pending">Pending</span></td><td><button class="btn btn-sm btn-outline-dark me-1" onclick="openEditPet('Bella')"><i class="bi bi-pencil"></i></button><button class="btn btn-sm btn-outline-danger" onclick="deletePet('Bella')"><i class="bi bi-trash"></i></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PANEL: ADOPTION REQUESTS ══ -->
+      <div id="adm-requests" style="display:none">
+        <div class="fh-table-card">
+          <div class="fh-table-header">
+            <div class="fh-table-title">Adoption Requests <span style="font-size:13px;font-weight:400;color:var(--text-light)">(278 pending)</span></div>
+            <select class="fh-select" style="width:auto;padding:8px 12px;font-size:13px">
+              <option>All Status</option><option>Pending</option><option>Approved</option><option>Rejected</option>
+            </select>
+          </div>
+          <div class="table-responsive">
+            <table class="fh-table">
+              <thead><tr><th>Applicant</th><th>Pet</th><th>Shelter</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr id="full-req-1"><td><div class="fw-600">Maria Reyes</div><div style="font-size:11px;color:var(--text-light)">Boac · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4c212d3e252d0c29212d2520622f2321">[email&#160;protected]</a></div></td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=60&q=80" style="width:32px;height:32px;border-radius:8px;object-fit:cover" alt=""/><div>Luna <div style="font-size:11px;color:var(--text-light)">Cat</div></div></div></td><td style="font-size:13px">Gasan PAWS</td><td style="font-size:13px">Mar 14, 2026</td><td><span class="badge-status badge-pending">Pending</span></td><td><button class="btn btn-sm btn-success me-1" onclick="handleRequest('full-req-1','approve','Luna')">✓ Approve</button><button class="btn btn-sm btn-outline-danger" onclick="handleRequest('full-req-1','reject','Luna')">✗ Reject</button></td></tr>
+                <tr id="full-req-2"><td><div class="fw-600">Juan dela Cruz</div><div style="font-size:11px;color:var(--text-light)">Gasan · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="224857434c62474f434b4e0c414d4f">[email&#160;protected]</a></div></td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=60&q=80" style="width:32px;height:32px;border-radius:8px;object-fit:cover" alt=""/><div>Rocky <div style="font-size:11px;color:var(--text-light)">Dog</div></div></div></td><td style="font-size:13px">Buenavista Shelter</td><td style="font-size:13px">Mar 13, 2026</td><td><span class="badge-status badge-pending">Pending</span></td><td><button class="btn btn-sm btn-success me-1" onclick="handleRequest('full-req-2','approve','Rocky')">✓ Approve</button><button class="btn btn-sm btn-outline-danger" onclick="handleRequest('full-req-2','reject','Rocky')">✗ Reject</button></td></tr>
+                <tr id="full-req-3"><td><div class="fw-600">Ana Santos</div><div style="font-size:11px;color:var(--text-light)">Mogpog · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5f3e313e1f3a323e3633713c3032">[email&#160;protected]</a></div></td><td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=60&q=80" style="width:32px;height:32px;border-radius:8px;object-fit:cover" alt=""/><div>Mochi <div style="font-size:11px;color:var(--text-light)">Cat</div></div></div></td><td style="font-size:13px">Gasan PAWS</td><td style="font-size:13px">Mar 12, 2026</td><td><span class="badge-status badge-pending">Pending</span></td><td><button class="btn btn-sm btn-success me-1" onclick="handleRequest('full-req-3','approve','Mochi')">✓ Approve</button><button class="btn btn-sm btn-outline-danger" onclick="handleRequest('full-req-3','reject','Mochi')">✗ Reject</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PANEL: USERS ══ -->
+      <div id="adm-users" style="display:none">
+        <div class="fh-table-card">
+          <div class="fh-table-header">
+            <div class="fh-table-title">Registered Users <span style="font-size:13px;font-weight:400;color:var(--text-light)">(3,482 total)</span></div>
+            <input class="fh-input" style="width:220px;padding:8px 14px" placeholder="Search users..."/>
+          </div>
+          <div class="table-responsive">
+            <table class="fh-table">
+              <thead><tr><th>User</th><th>Email</th><th>Municipality</th><th>Joined</th><th>Applications</th><th>Status</th><th></th></tr></thead>
+              <tbody>
+                <tr><td><div class="d-flex align-items-center gap-2"><div style="width:34px;height:34px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--dark-green);flex-shrink:0">MR</div><div class="fw-600" style="font-size:13px">Maria Reyes</div></div></td><td style="font-size:13px"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d1bcb0a3b8b091b4bcb0b8bdffb2bebc">[email&#160;protected]</a></td><td style="font-size:13px">Boac</td><td style="font-size:13px">Mar 1, 2026</td><td style="font-size:13px;text-align:center">3</td><td><span class="badge-status badge-available" style="font-size:10px">Active</span></td><td><button class="btn btn-sm btn-outline-dark" onclick="showToast('View user: Maria Reyes')"><i class="bi bi-eye"></i></button></td></tr>
+                <tr><td><div class="d-flex align-items-center gap-2"><div style="width:34px;height:34px;background:#d6ecf5;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#1d5f7a;flex-shrink:0">JD</div><div class="fw-600" style="font-size:13px">Juan dela Cruz</div></div></td><td style="font-size:13px"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f9938c9897b99c94989095d79a9694">[email&#160;protected]</a></td><td style="font-size:13px">Gasan</td><td style="font-size:13px">Feb 20, 2026</td><td style="font-size:13px;text-align:center">1</td><td><span class="badge-status badge-available" style="font-size:10px">Active</span></td><td><button class="btn btn-sm btn-outline-dark" onclick="showToast('View user: Juan dela Cruz')"><i class="bi bi-eye"></i></button></td></tr>
+                <tr><td><div class="d-flex align-items-center gap-2"><div style="width:34px;height:34px;background:#f5e0e8;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#8a3d52;flex-shrink:0">AS</div><div class="fw-600" style="font-size:13px">Ana Santos</div></div></td><td style="font-size:13px"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1b7a757a5b7e767a727735787476">[email&#160;protected]</a></td><td style="font-size:13px">Mogpog</td><td style="font-size:13px">Mar 5, 2026</td><td style="font-size:13px;text-align:center">2</td><td><span class="badge-status badge-available" style="font-size:10px">Active</span></td><td><button class="btn btn-sm btn-outline-dark" onclick="showToast('View user: Ana Santos')"><i class="bi bi-eye"></i></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PANEL: SHELTERS ══ -->
+      <div id="adm-shelters" style="display:none">
+        <div class="fh-table-card">
+          <div class="fh-table-header">
+            <div class="fh-table-title">Shelter Partners</div>
+            <button class="btn btn-gold px-3" onclick="showToast('Add Shelter — coming soon!')"><i class="bi bi-plus me-1"></i>Add Shelter</button>
+          </div>
+          <div class="table-responsive">
+            <table class="fh-table">
+              <thead><tr><th>Shelter</th><th>Municipality</th><th>Contact</th><th>Active Pets</th><th>Adoptions</th><th></th></tr></thead>
+              <tbody>
+                <tr><td><div class="fw-600">Boac Animal Shelter</div><div style="font-size:11px;color:var(--text-light)">Est. 2018</div></td><td style="font-size:13px">Boac</td><td style="font-size:13px">+63 912 111 0001</td><td style="font-size:13px;text-align:center">42</td><td style="font-size:13px;text-align:center">180</td><td><button class="btn btn-sm btn-outline-dark" onclick="showToast('Viewing Boac Shelter')"><i class="bi bi-eye"></i></button></td></tr>
+                <tr><td><div class="fw-600">Gasan PAWS Center</div><div style="font-size:11px;color:var(--text-light)">Est. 2020</div></td><td style="font-size:13px">Gasan</td><td style="font-size:13px">+63 912 222 0002</td><td style="font-size:13px;text-align:center">28</td><td style="font-size:13px;text-align:center">95</td><td><button class="btn btn-sm btn-outline-dark" onclick="showToast('Viewing Gasan PAWS')"><i class="bi bi-eye"></i></button></td></tr>
+                <tr><td><div class="fw-600">Santa Cruz Rescue Hub</div><div style="font-size:11px;color:var(--text-light)">Est. 2021</div></td><td style="font-size:13px">Santa Cruz</td><td style="font-size:13px">+63 912 333 0003</td><td style="font-size:13px;text-align:center">35</td><td style="font-size:13px;text-align:center">112</td><td><button class="btn btn-sm btn-outline-dark" onclick="showToast('Viewing Santa Cruz Rescue')"><i class="bi bi-eye"></i></button></td></tr>
+                <tr><td><div class="fw-600">Mogpog Animal Care</div><div style="font-size:11px;color:var(--text-light)">Est. 2022</div></td><td style="font-size:13px">Mogpog</td><td style="font-size:13px">+63 912 444 0004</td><td style="font-size:13px;text-align:center">19</td><td style="font-size:13px;text-align:center">58</td><td><button class="btn btn-sm btn-outline-dark" onclick="showToast('Viewing Mogpog Care')"><i class="bi bi-eye"></i></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PANEL: ANALYTICS ══ -->
+      <div id="adm-analytics" style="display:none">
+        <div class="row g-4 mb-4">
+          <div class="col-6 col-lg-3"><div class="stat-box"><div class="stat-box-icon green"><i class="bi bi-graph-up-arrow"></i></div><div><div class="stat-box-num">68%</div><div class="stat-box-label">Adoption Rate</div><div class="stat-box-change up">↑ 5% vs last month</div></div></div></div>
+          <div class="col-6 col-lg-3"><div class="stat-box"><div class="stat-box-icon gold"><i class="bi bi-clock"></i></div><div><div class="stat-box-num">4.2 days</div><div class="stat-box-label">Avg. Time to Adopt</div><div class="stat-box-change up">↓ faster</div></div></div></div>
+          <div class="col-6 col-lg-3"><div class="stat-box"><div class="stat-box-icon blue"><i class="bi bi-eye"></i></div><div><div class="stat-box-num">12,540</div><div class="stat-box-label">Page Views</div><div class="stat-box-change up">↑ 18%</div></div></div></div>
+          <div class="col-6 col-lg-3"><div class="stat-box"><div class="stat-box-icon red"><i class="bi bi-person-plus"></i></div><div><div class="stat-box-num">58</div><div class="stat-box-label">New Users (Week)</div><div class="stat-box-change up">↑ 12</div></div></div></div>
+        </div>
+        <div class="fh-table-card p-4">
+          <div class="fh-table-title mb-4">Adoption Trends (Full Year)</div>
+          <canvas id="analyticsChart" height="80"></canvas>
+        </div>
+      </div>
+
+      <!-- ══ PANEL: DONATIONS ══ -->
+      <div id="adm-donations" style="display:none">
+        <div class="row g-3 mb-4">
+          <div class="col-6 col-lg-3"><div class="stat-box"><div class="stat-box-icon gold"><i class="bi bi-cash-stack"></i></div><div><div class="stat-box-num">₱48,200</div><div class="stat-box-label">Total Collected</div><div class="stat-box-change up">↑ ₱3,200 this month</div></div></div></div>
+          <div class="col-6 col-lg-3"><div class="stat-box"><div class="stat-box-icon green"><i class="bi bi-people"></i></div><div><div class="stat-box-num">284</div><div class="stat-box-label">Total Donors</div></div></div></div>
+          <div class="col-6 col-lg-3"><div class="stat-box"><div class="stat-box-icon blue"><i class="bi bi-calculator"></i></div><div><div class="stat-box-num">₱170</div><div class="stat-box-label">Avg. Donation</div></div></div></div>
+          <div class="col-6 col-lg-3"><div class="stat-box"><div class="stat-box-icon red"><i class="bi bi-calendar3"></i></div><div><div class="stat-box-num">₱6,400</div><div class="stat-box-label">This Month</div></div></div></div>
+        </div>
+        <div class="fh-table-card">
+          <div class="fh-table-header"><div class="fh-table-title">Recent Donations</div><button class="btn btn-sm btn-outline-dark" onclick="showToast('Exporting donations...')"><i class="bi bi-download me-1"></i>Export CSV</button></div>
+          <div class="table-responsive">
+            <table class="fh-table">
+              <thead><tr><th>Donor</th><th>Amount</th><th>Date</th><th>Receipt</th></tr></thead>
+              <tbody>
+                <tr><td style="font-size:13px">Maria Reyes</td><td style="font-size:13px;font-weight:700;color:var(--gold-dark)">₱500</td><td style="font-size:13px">Mar 1, 2026</td><td><button class="btn btn-sm btn-outline-dark" onclick="showToast('Receipt sent!')"><i class="bi bi-envelope"></i></button></td></tr>
+                <tr><td style="font-size:13px">Anonymous</td><td style="font-size:13px;font-weight:700;color:var(--gold-dark)">₱1,000</td><td style="font-size:13px">Feb 28, 2026</td><td><button class="btn btn-sm btn-outline-dark" onclick="showToast('Receipt sent!')"><i class="bi bi-envelope"></i></button></td></tr>
+                <tr><td style="font-size:13px">Juan dela Cruz</td><td style="font-size:13px;font-weight:700;color:var(--gold-dark)">₱300</td><td style="font-size:13px">Feb 20, 2026</td><td><button class="btn btn-sm btn-outline-dark" onclick="showToast('Receipt sent!')"><i class="bi bi-envelope"></i></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PANEL: SETTINGS ══ -->
+      <div id="adm-settings" style="display:none">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="fh-table-card p-4">
+              <div class="fh-table-title mb-4">Site Settings</div>
+              <div class="row g-3">
+                <div class="col-12"><label class="fh-label">Site Name</label><input class="fh-input" value="Furever Home"/></div>
+                <div class="col-12"><label class="fh-label">Contact Email</label><input class="fh-input" value="hello@fureverhome.ph"/></div>
+                <div class="col-12"><label class="fh-label">Contact Phone</label><input class="fh-input" value="+63 912 345 6789"/></div>
+                <div class="col-12"><label class="fh-label">Default Municipality</label><select class="fh-select w-100"><option>Boac</option><option>Gasan</option><option>Mogpog</option><option>Santa Cruz</option><option>Buenavista</option><option>Torrijos</option></select></div>
+                <div class="col-12"><button class="btn btn-gold px-4" onclick="showToast('✅ Settings saved!')"><i class="bi bi-check-circle me-1"></i>Save Settings</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="fh-table-card p-4">
+              <div class="fh-table-title mb-4">Admin Account</div>
+              <div class="row g-3">
+                <div class="col-12"><label class="fh-label">Admin Name</label><input class="fh-input" value="Admin User"/></div>
+                <div class="col-12"><label class="fh-label">Admin Email</label><input class="fh-input" value="admin@fureverhome.ph"/></div>
+                <div class="col-12"><label class="fh-label">New Password</label><input type="password" class="fh-input" placeholder="Leave blank to keep current"/></div>
+                <div class="col-12"><button class="btn btn-gold px-4" onclick="showToast('✅ Admin account updated!')">Update Account</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end dashboard-content -->
+  </main>
+</div>
+
+<!-- Add / Edit Pet Modal -->
+<div class="modal fade" id="addPetModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content" style="border-radius:var(--radius-lg);border:none">
+      <div class="modal-header" style="background:var(--dark-green);border-radius:var(--radius-lg) var(--radius-lg) 0 0;padding:20px 28px">
+        <h5 class="modal-title text-white" style="font-family:'Playfair Display',serif" id="petModalTitle">Add New Pet Listing</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="row g-3">
+          <div class="col-md-6"><label class="fh-label">Pet Name *</label><input class="fh-input" id="petName" placeholder="e.g. Max"/></div>
+          <div class="col-md-6"><label class="fh-label">Type *</label><select class="fh-select w-100" id="petType"><option value="">Select type...</option><option>Dog</option><option>Cat</option></select></div>
+          <div class="col-md-6"><label class="fh-label">Breed *</label><input class="fh-input" id="petBreed" placeholder="e.g. Golden Retriever"/></div>
+          <div class="col-md-3"><label class="fh-label">Age</label><input class="fh-input" id="petAge" placeholder="e.g. 2 yrs"/></div>
+          <div class="col-md-3"><label class="fh-label">Gender</label><select class="fh-select w-100" id="petGender"><option>Male</option><option>Female</option></select></div>
+          <div class="col-md-6"><label class="fh-label">Location *</label><select class="fh-select w-100" id="petLocation"><option value="">Select municipality...</option><option>Boac</option><option>Gasan</option><option>Mogpog</option><option>Santa Cruz</option><option>Buenavista</option><option>Torrijos</option></select></div>
+          <div class="col-md-3"><label class="fh-label">Weight</label><input class="fh-input" id="petWeight" placeholder="e.g. 5 kg"/></div>
+          <div class="col-md-3"><label class="fh-label">Status</label><select class="fh-select w-100" id="petStatus"><option>Available</option><option>Pending</option><option>Adopted</option></select></div>
+          <div class="col-12"><label class="fh-label">Description</label><textarea class="fh-input" id="petDesc" rows="3" placeholder="Tell us about this pet..."></textarea></div>
+          <div class="col-12"><label class="fh-label">Upload Photo</label><input type="file" class="fh-input" accept="image/*"/></div>
+          <div class="col-12">
+            <label class="fh-label">Health Details</label>
+            <div class="d-flex gap-3 flex-wrap">
+              <label class="filter-check" style="font-size:13px"><input type="checkbox" style="accent-color:var(--gold)"/> Vaccinated</label>
+              <label class="filter-check" style="font-size:13px"><input type="checkbox" style="accent-color:var(--gold)"/> Neutered/Spayed</label>
+              <label class="filter-check" style="font-size:13px"><input type="checkbox" style="accent-color:var(--gold)"/> House-trained</label>
+              <label class="filter-check" style="font-size:13px"><input type="checkbox" style="accent-color:var(--gold)"/> Kid-friendly</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="padding:16px 28px;border-top:1px solid var(--border)">
+        <button type="button" class="btn btn-outline-dark px-4" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-gold px-4" onclick="savePet()"><i class="bi bi-check-circle me-1"></i>Save Pet</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="fhToast" style="position:fixed;bottom:28px;right:28px;background:var(--dark-green);color:white;padding:13px 22px;border-radius:12px;font-size:14px;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,0.18);z-index:9999;display:none;align-items:center;gap:10px;max-width:340px">
+  <i class="bi bi-check-circle-fill" style="color:var(--gold);font-size:16px"></i>
+  <span id="fhToastMsg">Done!</span>
+</div>
+
+<!-- Bootstrap JS (required for modals, dropdowns) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- showToast helper (must be defined before admin-dashboard.js runs) -->
+<script>
+function showToast(msg) {
+  var toast = document.getElementById('fhToast');
+  var toastMsg = document.getElementById('fhToastMsg');
+  if (!toast || !toastMsg) return;
+  toastMsg.textContent = msg;
+  toast.style.display = 'flex';
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(function() { toast.style.display = 'none'; }, 3000);
+}
+</script>
+
+<!-- Admin Dashboard JS -->
+<script src="../js/admin-dashboard.js"></script>
+</body>
+</html>

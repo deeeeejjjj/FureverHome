@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Furever Home — Pet Adoption Platform | Marinduque</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/index.css"/>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg sticky-top fh-navbar">
+  <div class="container-xxl px-4">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <div class="brand-icon"><i class="bi bi-heart-fill"></i></div>
+      <span class="brand-text">Furever<span class="brand-accent">Home</span></span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <i class="bi bi-list text-white fs-4"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/pets.html">Find a Pet</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/tips.html">Care Tips</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/rescuers.html">Rescuers</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+        <a href="pages/login.html" class="btn btn-nav-outline px-3">Log In</a>
+        <a href="pages/register.html" class="btn btn-gold btn-sm px-3">Sign Up <i class="bi bi-arrow-right ms-1"></i></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero-section hero-v3">
+  <!-- Paw print pattern overlay -->
+  <div class="hero-paw-bg"></div>
+
+  <div class="container-xxl px-4 h-100">
+    <div class="hero-v3-inner">
+
+      <!-- LEFT TEXT COLUMN -->
+      <div class="hv3-left">
+        <div class="hero-badge"><i class="bi bi-geo-alt-fill"></i> Serving Marinduque Province</div>
+
+        <h1 class="hero-title" style="font-size:clamp(40px,5.5vw,70px);line-height:1.08;margin-top:16px">
+          Give a Pet Their<br/><span class="highlight">Furever</span> Home
+        </h1>
+
+        <p class="hero-subtitle" style="max-width:440px;margin-top:16px;font-size:16px">
+          Connect with loving dogs and cats in Marinduque. Every animal deserves warmth, care, and a family to call their own.
+        </p>
+
+        <!-- Inline search bar -->
+        <div class="hero-search-bar mt-4" style="max-width:440px">
+          <div class="hsb-input-wrap">
+            <i class="bi bi-search hsb-icon"></i>
+            <input type="text" class="hsb-input" placeholder="Search by breed, name..."/>
+          </div>
+          <a href="pages/pets.html" class="hsb-btn">Search</a>
+        </div>
+
+        <!-- Quick pills -->
+        <div class="hero-quick-filters mt-3">
+          <span class="hqf-label">Quick:</span>
+          <a href="pages/pets.html?type=dog" class="hqf-pill">🐕 Dogs</a>
+          <a href="pages/pets.html?type=cat" class="hqf-pill">🐈 Cats</a>
+          <a href="pages/pets.html" class="hqf-pill">✨ Available Now</a>
+        </div>
+
+        <!-- CTAs -->
+        <div class="d-flex gap-3 flex-wrap mt-4">
+          <a href="pages/pets.html" class="btn btn-gold btn-lg px-5">Browse Pets <i class="bi bi-arrow-right ms-1"></i></a>
+          <a href="pages/register.html" class="btn btn-hero-outline btn-lg px-4">Post a Pet</a>
+        </div>
+
+        <!-- Stats — vertical -->
+        <div class="hero-stats-v2 mt-5">
+          <div class="hsv-item">
+            <span class="hsv-num">542+</span>
+            <span class="hsv-label">Pets Listed</span>
+          </div>
+          <div class="hsv-divider"></div>
+          <div class="hsv-item">
+            <span class="hsv-num">390+</span>
+            <span class="hsv-label">Adopted</span>
+          </div>
+          <div class="hsv-divider"></div>
+          <div class="hsv-item">
+            <span class="hsv-num">12+</span>
+            <span class="hsv-label">Shelters</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Pets peeking up from bottom (inspo style) -->
+      <div class="hv3-right">
+
+        <!-- Pet image — large group rising from bottom -->
+        <div class="hv3-pet-stage">
+          <!-- Glow blob behind pets -->
+          <div class="hv3-glow"></div>
+
+          <!-- Large dog — back layer -->
+          <img
+            src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=700&q=80"
+            alt="Dog" class="hv3-pet hv3-dog"
+          />
+          <!-- Cat in front -->
+          <img
+            src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=500&q=80"
+            alt="Cat" class="hv3-pet hv3-cat"
+          />
+
+          <!-- Shadow/ground effect -->
+          <div class="hv3-ground-shadow"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CATEGORIES ===== -->
+<section class="section-pad categ-section">
+  <div class="container-xxl px-4">
+    <div class="text-center mb-5">
+      <div class="section-tag">Browse by Type</div>
+      <h2 class="section-title">What Are You Looking For?</h2>
+    </div>
+    <div class="row g-5 justify-content-center">
+
+      <!-- ══ DOGS CARD ══ -->
+      <div class="col-10 col-sm-5 col-lg-3">
+        <a href="pages/pets.html?type=dog" class="cat3d-card dog-card" id="catDog" onclick="activateCat(event,'catDog')">
+          <div class="cat3d-scene">
+
+            <!-- 3D floating photo stack — dogs only -->
+            <div class="cat3d-stack">
+              <div class="cat3d-img img-back">
+                <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=400&q=80" alt="Dog 3"/>
+              </div>
+              <div class="cat3d-img img-mid">
+                <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&q=80" alt="Dog 2"/>
+              </div>
+              <div class="cat3d-img img-front">
+                <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&q=80" alt="Dog 1"/>
+              </div>
+            </div>
+
+            <!-- Glow -->
+            <div class="cat3d-glow dog-glow"></div>
+          </div>
+
+          <div class="cat3d-body">
+            <div class="cat3d-icon">🐕</div>
+            <div class="cat3d-name">Dogs</div>
+            <div class="cat3d-count">324 available</div>
+            <div class="cat3d-btn">Browse Dogs <i class="bi bi-arrow-right"></i></div>
+          </div>
+        </a>
+      </div>
+
+      <!-- ══ CATS CARD ══ -->
+      <div class="col-10 col-sm-5 col-lg-3">
+        <a href="pages/pets.html?type=cat" class="cat3d-card cat-card" id="catCat" onclick="activateCat(event,'catCat')">
+          <div class="cat3d-scene">
+
+            <!-- 3D floating photo stack — cats only (all verified cats) -->
+            <div class="cat3d-stack">
+              <div class="cat3d-img img-back">
+                <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=400&q=80" alt="Siamese Cat"/>
+              </div>
+              <div class="cat3d-img img-mid">
+                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400&q=80" alt="Persian Cat"/>
+              </div>
+              <div class="cat3d-img img-front">
+                <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400&q=80" alt="Shorthair Cat"/>
+              </div>
+            </div>
+
+            <!-- Glow -->
+            <div class="cat3d-glow cat-glow"></div>
+          </div>
+
+          <div class="cat3d-body">
+            <div class="cat3d-icon">🐈</div>
+            <div class="cat3d-name">Cats</div>
+            <div class="cat3d-count">218 available</div>
+            <div class="cat3d-btn">Browse Cats <i class="bi bi-arrow-right"></i></div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURED DOGS ===== -->
+<section class="section-pad bg-cream">
+  <div class="container-xxl px-4">
+    <div class="d-flex justify-content-between align-items-end mb-5 flex-wrap gap-3">
+      <div><div class="section-tag">Dogs</div><h2 class="section-title mb-0">🐕 Featured Dogs</h2></div>
+      <a href="pages/pets.html?type=dog" class="btn btn-outline-dark btn-sm px-4">All Dogs <i class="bi bi-arrow-right ms-1"></i></a>
+    </div>
+    <div class="row g-4">
+
+      <!-- Max — purple -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="pcard" style="background:#e8e0f5">
+          <div class="pcard-top">
+            <div class="pcard-circle" style="background:#c8b8e8">
+              <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=300&q=80" alt="Max" class="pcard-img"/>
+            </div>
+            <div class="pcard-info">
+              <div class="pcard-type" style="color:#5b3d8a">🐕 Dog</div>
+              <h5 class="pcard-name" style="color:#5b3d8a">Max</h5>
+              <div class="pcard-gender-age">Male · 2 yrs</div>
+              <div class="pcard-location"><i class="bi bi-geo-alt-fill"></i> Boac, Marinduque</div>
+              <div class="pcard-status-row">
+                <span class="pcard-status pcs-available">Available</span>
+                <span class="pcard-weight"><i class="bi bi-speedometer2"></i> 28 kg</span>
+              </div>
+            </div>
+            <button class="pcard-heart" onclick="toggleFav(this)"><i class="bi bi-heart"></i></button>
+          </div>
+          <div class="pcard-stats" style="background:rgba(255,255,255,0.45)">
+            <div class="pcard-stat"><span class="pcs-label">Breed</span><span class="pcs-val">Golden Retriever</span></div>
+            <div class="pcard-stat-div"></div>
+            <div class="pcard-stat"><span class="pcs-label">Size</span><span class="pcs-val">Large</span></div>
+            <div class="pcard-stat-div"></div>
+            <div class="pcard-stat"><span class="pcs-label">Weight</span><span class="pcs-val">28 kg</span></div>
+          </div>
+          <div class="pcard-tags">
+            <span class="pcard-tag" style="background:rgba(255,255,255,0.6);color:#5b3d8a">Vaccinated</span>
+            <span class="pcard-tag" style="background:rgba(255,255,255,0.6);color:#5b3d8a">Friendly</span>
+            <span class="pcard-tag" style="background:rgba(255,255,255,0.6);color:#5b3d8a">Trained</span>
+          </div>
+          <a href="pages/pet-detail.html?id=1" class="pcard-btn pcard-btn-main" style="background:#5b3d8a;color:#fff">Adopt Max <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+      </div>
+
+      <!-- Buddy — blue -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="pcard" style="background:#d6ecf5">
+          <div class="pcard-top">
+            <div class="pcard-circle" style="background:#b0d4e8">
+              <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=300&q=80" alt="Buddy" class="pcard-img"/>
+            </div>
+            <div class="pcard-info">
+              <div class="pcard-type" style="color:#1d5f7a">🐕 Dog</div>
+              <h5 class="pcard-name" style="color:#1d5f7a">Buddy</h5>
+              <div class="pcard-gender-age">Male · 3 yrs</div>
+              <div class="pcard-location"><i class="bi bi-geo-alt-fill"></i> Gasan, Marinduque</div>
+              <div class="pcard-status-row">
+                <span class="pcard-status pcs-available">Available</span>
+                <span class="pcard-weight"><i class="bi bi-speedometer2"></i> 22 kg</span>
+              </div>
+            </div>
+            <button class="pcard-heart" onclick="toggleFav(this)"><i class="bi bi-heart"></i></button>
+          </div>
+          <div class="pcard-stats" style="background:rgba(255,255,255,0.45)">
+            <div class="pcard-stat"><span class="pcs-label">Breed</span><span class="pcs-val">Labrador Mix</span></div>
+            <div class="pcard-stat-div"></div>
+            <div class="pcard-stat"><span class="pcs-label">Size</span><span class="pcs-val">Medium</span></div>
+            <div class="pcard-stat-div"></div>
+            <div class="pcard-stat"><span class="pcs-label">Weight</span><span class="pcs-val">22 kg</span></div>
+          </div>
+          <div class="pcard-tags">
+            <span class="pcard-tag" style="background:rgba(255,255,255,0.6);color:#1d5f7a">Vaccinated</span>
+            <span class="pcard-tag" style="background:rgba(255,255,255,0.6);color:#1d5f7a">Playful</span>
+          </div>
+          <a href="pages/pet-detail.html?id=2" class="pcard-btn pcard-btn-main" style="background:#1d5f7a;color:#fff">Adopt Buddy <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+      </div>
+
+      <!-- Rocky — rose -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="pcard" style="background:#f5e0e8">
+          <div class="pcard-top">
+            <div class="pcard-circle" style="background:#e8b8c8">
+              <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=300&q=80" alt="Rocky" class="pcard-img"/>
+            </div>
+            <div class="pcard-info">
+              <div class="pcard-type" style="color:#8a3d52">🐕 Dog</div>
+              <h5 class="pcard-name" style="color:#8a3d52">Rocky</h5>
+              <div class="pcard-gender-age">Male · 5 yrs</div>
+              <div class="pcard-location"><i class="bi bi-geo-alt-fill"></i> Buenavista, Marinduque</div>
+              <div class="pcard-status-row">
+                <span class="pcard-status pcs-available">Available</span>
+                <span class="pcard-weight"><i class="bi bi-speedometer2"></i> 18 kg</span>
+              </div>
+            </div>
+            <button class="pcard-heart" onclick="toggleFav(this)"><i class="bi bi-heart"></i></button>
+          </div>
+          <div class="pcard-stats" style="background:rgba(255,255,255,0.45)">
+            <div class="pcard-stat"><span class="pcs-label">Breed</span><span class="pcs-val">Aspin Mix</span></div>
+            <div class="pcard-stat-div"></div>
+            <div class="pcard-stat"><span class="pcs-label">Size</span><span class="pcs-val">Medium</span></div>
+            <div class="pcard-stat-div"></div>
+            <div class="pcard-stat"><span class="pcs-label">Weight</span><span class="pcs-val">18 kg</span></div>
+          </div>
+          <div class="pcard-tags">
+            <span class="pcard-tag" style="background:rgba(255,255,255,0.6);color:#8a3d52">House-trained</span>
+            <span class="pcard-tag" style="background:rgba(255,255,255,0.6);color:#8a3d52">Calm</span>
+          </div>
+          <a href="pages/pet-detail.html?id=3" class="pcard-btn pcard-btn-main" style="background:#8a3d52;color:#fff">Adopt Rocky <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURED CATS ===== -->
+<section class="section-pad">
+  <div class="container-xxl px-4">
+    <div class="d-flex justify-content-between align-items-end mb-5 flex-wrap gap-3">
+      <div><div class="section-tag">Cats</div><h2 class="section-title mb-0">🐈 Featured Cats</h2></div>
+      <a href="pages/pets.html?type=cat" class="btn btn-outline-dark btn-sm px-4">All Cats <i class="bi bi-arrow-right ms-1"></i></a>
+    </div>
+    <div class="row g-4">
+
+      <!-- Luna — lavender -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="pcard" style="background:#ede8f5">
+          <div class="pcard-top">
+            <div class="pcard-circle" style="background:#d0c4e8">
+              <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=300&q=80" alt="Luna" class="pcard-img"/>
+            </div>
+            <div class="pcard-info">
+              <div class="pcard-type" style="color:#4d3d8a">🐈 Cat</div>
+              <h5 class="pcard-name" style="color:#4d3d8a">Luna</h5>
+              <div class="pcard-gender-age">Female · 1 yr</div>
+              <div class="pcard-location"><i class="bi bi-geo-alt-fill"></i> Gasan, Marinduque</div>
+              <div class="pcard-status-row">
+                <span class="pcard-status pcs-available">Available</span>
+                <span class="pcard-weight"><i class="bi bi-speedometer2"></i> 3.2 kg</span>
+              </div>
+            </div>
+            <button class="pcard-heart" onclick="toggleFav(this)"><i class="bi bi-heart"></i></button>
+          </div>
+          <div class="pcard-stats" style="background:rgba(255,255,255,0.45)">
+            <div class="pcard-stat"><span class="pcs-label">Breed</span><span class="pcs-val">Shorthair</span></div>
+            <div class="pcard-stat-div"></div>
+            <div class="pcard-stat"><span class="pcs-label">Size</span><span class="pcs-val">Small</span></div>
+            <div class="pcard-stat-div"></div>
+            <div class="pcard-stat"><span class="pcs-label">Weight</span><span class="pcs-val">3.2 kg</span></div>
+          </div>
+          <div class="pcard-tags">
+            <span class="pcard-tag" style="background:rgba(255,255,255,0.6);color:#4d3d8a">Vaccinated</span>
+            <span class="pcard-tag" style="background:rgba(255,255,255,0.6);color:#4d3d8a">Indoor</span>
+            <span class="pcard-tag" style="background:rgba(255,255,255,0.6);color:#4d3d8a">Gentle</span>
+          </div>
+          <a href="pages/pet-detail.html?id=7" class="pcard-btn pcard-btn-main" style="background:#4d3d8a;color:#fff">Adopt Luna <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+      </div>
+
+      <!-- Nala — peach -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="pcard" style="background:#f5ede0">
+          <div class="pcard-top">
+            <div class="pcard-circle" style="background:#e8d0b0">
+              <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300&q=80" alt="Nala" class="pcard-img"/>
+            </div>
+            <div class="pcard-info">
+              <div class="pcard-type" style="color:#7a4f1d">🐈 Cat</div>
+              <h5 class="pcard-name" style="color:#7a4f1d">Nala</h5>
+              <div class="pcard-gender-age">Female · 2 yrs</div>
+              <div class="pcard-location"><i class="bi bi-geo-alt-fill"></i> Boac, Marinduque</div>
+              <div class="pcard-status-row">
+                <span class="pcard-status pcs-available">Available</span>
+                <span class="pcard-weight"><i class="bi bi-speedometer2"></i> 4 kg</span>
+              </div>
+            </div>
+            <button class="pcard-heart" onclick="toggleFav(this)"><i class="bi bi-heart"></i></button>
+          </div>
+          <div class="pcard-stats" style="background:rgba(255,255,255,0.45)">
+            <div class="pcard-stat"><span class="pcs-label">Breed</span><span class="pcs-val">Persian Mix</span></div>
+            <div class="pcard-stat-div"></div>
+            <div class="pcard-stat"><span class="pcs-label">Size</span><span class="pcs-val">Medium</span></div>
+            <div class="pcard-stat-div"></div>
+            <div class="pcard-stat"><span class="pcs-label">Weight</span><span class="pcs-val">4 kg</span></div>
+          </div>
+          <div class="pcard-tags">
+            <span class="pcard-tag" style="background:rgba(255,255,255,0.6);color:#7a4f1d">Vaccinated</span>
+            <span class="pcard-tag" style="background:rgba(255,255,255,0.6);color:#7a4f1d">Calm</span>
+          </div>
+          <a href="pages/pet-detail.html?id=8" class="pcard-btn pcard-btn-main" style="background:#7a4f1d;color:#fff">Adopt Nala <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+      </div>
+
+      <!-- Mochi — mint -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="pcard" style="background:#e0f5ee">
+          <div class="pcard-top">
+            <div class="pcard-circle" style="background:#b0e8d4">
+              <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=300&q=80" alt="Mochi" class="pcard-img"/>
+            </div>
+            <div class="pcard-info">
+              <div class="pcard-type" style="color:#1d7a52">🐈 Cat</div>
+              <h5 class="pcard-name" style="color:#1d7a52">Mochi</h5>
+              <div class="pcard-gender-age">Female · 1 yr</div>
+              <div class="pcard-location"><i class="bi bi-geo-alt-fill"></i> Mogpog, Marinduque</div>
+              <div class="pcard-status-row">
+                <span class="pcard-status pcs-available">Available</span>
+                <span class="pcard-weight"><i class="bi bi-speedometer2"></i> 3 kg</span>
+              </div>
+            </div>
+            <button class="pcard-heart" onclick="toggleFav(this)"><i class="bi bi-heart"></i></button>
+          </div>
+          <div class="pcard-stats" style="background:rgba(255,255,255,0.45)">
+            <div class="pcard-stat"><span class="pcs-label">Breed</span><span class="pcs-val">Siamese Mix</span></div>
+            <div class="pcard-stat-div"></div>
+            <div class="pcard-stat"><span class="pcs-label">Size</span><span class="pcs-val">Small</span></div>
+            <div class="pcard-stat-div"></div>
+            <div class="pcard-stat"><span class="pcs-label">Weight</span><span class="pcs-val">3 kg</span></div>
+          </div>
+          <div class="pcard-tags">
+            <span class="pcard-tag" style="background:rgba(255,255,255,0.6);color:#1d7a52">Playful</span>
+            <span class="pcard-tag" style="background:rgba(255,255,255,0.6);color:#1d7a52">Kid-friendly</span>
+          </div>
+          <a href="pages/pet-detail.html?id=9" class="pcard-btn pcard-btn-main" style="background:#1d7a52;color:#fff">Adopt Mochi <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESCUERS ===== -->
+<section class="section-pad rescuers-section">
+  <div class="container-xxl px-4">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-end mb-5 flex-wrap gap-3">
+      <div>
+        <div class="section-tag">Community Heroes</div>
+        <h2 class="section-title mb-1">Meet Our Rescuers</h2>
+        <p style="font-size:15px;color:var(--text-mid);margin:0">The dedicated people saving lives across Marinduque, one paw at a time.</p>
+      </div>
+      <a href="pages/rescuers.html" class="btn btn-outline-dark btn-sm px-4">All Rescuers <i class="bi bi-arrow-right ms-1"></i></a>
+    </div>
+
+    <!-- Impact strip -->
+    <div class="rescuer-impact-strip mb-5">
+      <div class="ris-item">
+        <i class="bi bi-people-fill ris-icon"></i>
+        <div><span class="ris-num">48</span><span class="ris-label">Active Rescuers</span></div>
+      </div>
+      <div class="ris-div"></div>
+      <div class="ris-item">
+        <i class="bi bi-house-heart-fill ris-icon"></i>
+        <div><span class="ris-num">390+</span><span class="ris-label">Pets Rehomed</span></div>
+      </div>
+      <div class="ris-div"></div>
+      <div class="ris-item">
+        <i class="bi bi-geo-alt-fill ris-icon"></i>
+        <div><span class="ris-num">6</span><span class="ris-label">Municipalities Covered</span></div>
+      </div>
+      <div class="ris-div"></div>
+      <div class="ris-item">
+        <i class="bi bi-heart-fill ris-icon"></i>
+        <div><span class="ris-num">100%</span><span class="ris-label">Volunteer-Driven</span></div>
+      </div>
+    </div>
+
+    <!-- Rescuer Cards -->
+    <div class="row g-4">
+
+      <!-- Card 1 -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="rescuer-card">
+          <div class="rc-photo-wrap">
+            <div class="rc-avatar" style="background:linear-gradient(135deg,#e8e0f5,#c8b8e8)">
+              <span style="font-size:36px;font-family:'Playfair Display',serif;font-weight:700;color:#5b3d8a">MR</span>
+            </div>
+            <div class="rc-badge"><i class="bi bi-patch-check-fill"></i> Verified</div>
+          </div>
+          <div class="rc-body">
+            <h5 class="rc-name">Maria Reyes</h5>
+            <p class="rc-location"><i class="bi bi-geo-alt-fill"></i> Boac, Marinduque</p>
+            <div class="rc-stats">
+              <div class="rc-stat"><span class="rcs-num">24</span><span class="rcs-label">Rescued</span></div>
+              <div class="rc-stat-div"></div>
+              <div class="rc-stat"><span class="rcs-num">18</span><span class="rcs-label">Adopted</span></div>
+              <div class="rc-stat-div"></div>
+              <div class="rc-stat"><span class="rcs-num">3 yrs</span><span class="rcs-label">Active</span></div>
+            </div>
+            <div class="rc-specialty">
+              <span class="rc-tag">🐕 Dogs</span>
+              <span class="rc-tag">🐈 Cats</span>
+            </div>
+            <a href="pages/rescuers.html" class="rc-btn">View Profile</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="rescuer-card">
+          <div class="rc-photo-wrap">
+            <div class="rc-avatar" style="background:linear-gradient(135deg,#d6ecf5,#b0d4e8)">
+              <span style="font-size:36px;font-family:'Playfair Display',serif;font-weight:700;color:#1d5f7a">JD</span>
+            </div>
+            <div class="rc-badge"><i class="bi bi-patch-check-fill"></i> Verified</div>
+          </div>
+          <div class="rc-body">
+            <h5 class="rc-name">Juan dela Cruz</h5>
+            <p class="rc-location"><i class="bi bi-geo-alt-fill"></i> Gasan, Marinduque</p>
+            <div class="rc-stats">
+              <div class="rc-stat"><span class="rcs-num">31</span><span class="rcs-label">Rescued</span></div>
+              <div class="rc-stat-div"></div>
+              <div class="rc-stat"><span class="rcs-num">25</span><span class="rcs-label">Adopted</span></div>
+              <div class="rc-stat-div"></div>
+              <div class="rc-stat"><span class="rcs-num">5 yrs</span><span class="rcs-label">Active</span></div>
+            </div>
+            <div class="rc-specialty">
+              <span class="rc-tag">🐕 Dogs</span>
+            </div>
+            <a href="pages/rescuers.html" class="rc-btn">View Profile</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="rescuer-card">
+          <div class="rc-photo-wrap">
+            <div class="rc-avatar" style="background:linear-gradient(135deg,#f5e0e8,#e8b8c8)">
+              <span style="font-size:36px;font-family:'Playfair Display',serif;font-weight:700;color:#8a3d52">AS</span>
+            </div>
+            <div class="rc-badge"><i class="bi bi-patch-check-fill"></i> Verified</div>
+          </div>
+          <div class="rc-body">
+            <h5 class="rc-name">Ana Santos</h5>
+            <p class="rc-location"><i class="bi bi-geo-alt-fill"></i> Santa Cruz, Marinduque</p>
+            <div class="rc-stats">
+              <div class="rc-stat"><span class="rcs-num">19</span><span class="rcs-label">Rescued</span></div>
+              <div class="rc-stat-div"></div>
+              <div class="rc-stat"><span class="rcs-num">15</span><span class="rcs-label">Adopted</span></div>
+              <div class="rc-stat-div"></div>
+              <div class="rc-stat"><span class="rcs-num">2 yrs</span><span class="rcs-label">Active</span></div>
+            </div>
+            <div class="rc-specialty">
+              <span class="rc-tag">🐈 Cats</span>
+            </div>
+            <a href="pages/rescuers.html" class="rc-btn">View Profile</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Card -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="rescuer-card rescuer-cta-card">
+          <div class="rcc-inner">
+            <div style="font-size:48px;margin-bottom:16px">🐾</div>
+            <h5 class="rcc-title">Become a Rescuer</h5>
+            <p class="rcc-desc">Are you passionate about animal welfare in Marinduque? Join our rescuer network and help save lives.</p>
+            <div class="rcc-perks">
+              <div class="rcc-perk"><i class="bi bi-check-circle-fill"></i> Free listing for rescued pets</div>
+              <div class="rcc-perk"><i class="bi bi-check-circle-fill"></i> Verified rescuer badge</div>
+              <div class="rcc-perk"><i class="bi bi-check-circle-fill"></i> Community support network</div>
+              <div class="rcc-perk"><i class="bi bi-check-circle-fill"></i> Donation fund access</div>
+            </div>
+            <a href="pages/rescuers.html#join" class="rcc-btn">Join as Rescuer <i class="bi bi-arrow-right ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="section-pad bg-cream">
+  <div class="container-xxl px-4">
+    <div class="text-center mb-5">
+      <div class="section-tag">Simple Process</div>
+      <h2 class="section-title">How Adoption Works</h2>
+    </div>
+    <!-- Step cards with connectors -->
+    <div class="steps-row" id="stepsRow">
+
+      <!-- Step 1 -->
+      <div class="step-v2">
+        <div class="step-v2-card" onmouseenter="highlightStep(this)" onmouseleave="resetStep()">
+          <div class="sv2-num">01</div>
+          <div class="sv2-icon-wrap">
+            <i class="bi bi-search-heart sv2-icon"></i>
+          </div>
+          <h5 class="sv2-title">Browse Pets</h5>
+          <p class="sv2-desc">Search our listings of loving dogs and cats awaiting their forever home in Marinduque.</p>
+          <a href="pages/pets.html" class="sv2-cta">Find a Pet <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+        <div class="sv2-connector"><i class="bi bi-arrow-right sv2-arrow"></i></div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-v2">
+        <div class="step-v2-card" onmouseenter="highlightStep(this)" onmouseleave="resetStep()">
+          <div class="sv2-num">02</div>
+          <div class="sv2-icon-wrap sv2-icon-gold">
+            <i class="bi bi-file-earmark-text sv2-icon"></i>
+          </div>
+          <h5 class="sv2-title">Submit Request</h5>
+          <p class="sv2-desc">Fill out our simple adoption form and tell us about yourself and your home environment.</p>
+          <a href="pages/adopt-form.html" class="sv2-cta">Apply Now <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+        <div class="sv2-connector"><i class="bi bi-arrow-right sv2-arrow"></i></div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-v2">
+        <div class="step-v2-card" onmouseenter="highlightStep(this)" onmouseleave="resetStep()">
+          <div class="sv2-num">03</div>
+          <div class="sv2-icon-wrap">
+            <i class="bi bi-person-check sv2-icon"></i>
+          </div>
+          <h5 class="sv2-title">Get Approved</h5>
+          <p class="sv2-desc">Our team reviews your application and matches you with your perfect companion.</p>
+          <a href="pages/contact.html" class="sv2-cta">Learn More <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+        <div class="sv2-connector"><i class="bi bi-arrow-right sv2-arrow"></i></div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-v2">
+        <div class="step-v2-card" onmouseenter="highlightStep(this)" onmouseleave="resetStep()">
+          <div class="sv2-num">04</div>
+          <div class="sv2-icon-wrap">
+            <i class="bi bi-house-heart sv2-icon"></i>
+          </div>
+          <h5 class="sv2-title">Welcome Home!</h5>
+          <p class="sv2-desc">Pick up your new family member and begin your furever journey together.</p>
+          <a href="pages/pets.html" class="sv2-cta">Start Now <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+        <!-- no connector after last -->
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== DONATION ===== -->
+<section class="section-pad">
+  <div class="container-xxl px-4">
+
+    <!-- Section header — matches other sections -->
+    <div class="text-center mb-5">
+      <div class="section-tag">Support the Cause</div>
+      <h2 class="section-title">Help Animals Find Their Home</h2>
+      <p class="section-subtitle">Every peso goes directly toward feeding, vaccinating, and sheltering animals across Marinduque Province.</p>
+    </div>
+
+    <div class="donation-card">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-2 text-center">
+          <img src="https://images.unsplash.com/photo-1601979031925-424e53b6caaa?w=200&q=80" alt="Pet" class="donation-pet-img"/>
+        </div>
+        <!-- ★ DONATION TEXT + PRESET AMOUNTS (col expands slightly) -->
+        <div class="col-lg-6">
+          <h3 class="donation-title">Help Us Save More Lives in Marinduque</h3>
+          <p class="donation-desc">Your donation helps us feed, vaccinate, and shelter animals across all six municipalities while we find them their forever homes.</p>
+
+          <!-- ★ PRESET AMOUNT BUTTONS -->
+          <div class="donation-amounts d-flex gap-2 flex-wrap mt-3">
+            <button class="btn btn-amount" onclick="selectAmount(this,100)">₱100</button>
+            <button class="btn btn-amount active-amt" onclick="selectAmount(this,300)">₱300</button>
+            <button class="btn btn-amount" onclick="selectAmount(this,500)">₱500</button>
+            <button class="btn btn-amount" onclick="selectAmount(this,1000)">₱1,000</button>
+          </div>
+
+          <!-- ★★ CUSTOM AMOUNT INPUT — NEW: type any amount you want ★★ -->
+          <div class="donation-custom-wrap mt-2">
+            <span class="donation-custom-prefix">₱</span>
+            <input
+              type="number"
+              class="donation-custom-input"
+              id="customAmt"
+              placeholder="Enter custom amount..."
+              min="1"
+              oninput="applyCustomAmount(this.value)"
+            />
+            <button class="donation-custom-btn" onclick="confirmCustomAmount()">
+              Set Amount
+            </button>
+          </div>
+          <!-- ★★ END CUSTOM AMOUNT INPUT ★★ -->
+        </div>
+
+        <!-- ★ DONATION TOTAL + CTA -->
+        <div class="col-lg-4 text-center">
+          <div class="donation-total mb-1">
+            <span class="donation-currency">₱</span><span class="donation-value" id="donationAmt">300</span>
+          </div>
+          <p style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:12px">Selected amount</p>
+          <a href="pages/donate.html" class="btn btn-gold w-100 py-2 fw-700">
+            Donate Now <i class="bi bi-heart-fill ms-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAP ===== -->
+<section class="section-pad bg-cream">
+  <div class="container-xxl px-4">
+    <div class="text-center mb-5">
+      <div class="section-tag">Near You</div>
+      <h2 class="section-title">Adoption Centers in Marinduque</h2>
+      <p class="section-subtitle">Find your nearest shelter or rescue center across the island.</p>
+    </div>
+    <div class="map-placeholder">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d123780.0!2d121.9673!3d13.4111!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd00d9a5de3a89%3A0x9f4b8c3e5a3e2a3e!2sMarinduque%2C%20Philippines!5e0!3m2!1sen!2sph!4v1700000000000" class="map-iframe" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="row g-3 mt-4">
+      <div class="col-md-4"><div class="shelter-card"><div class="shelter-icon"><i class="bi bi-building-fill-heart"></i></div><div><h6 class="shelter-name">Boac Animal Shelter</h6><p class="shelter-addr"><i class="bi bi-geo-alt"></i> Boac, Marinduque · <span class="text-success fw-600">Open</span></p></div><a href="pages/contact.html" class="btn btn-sm btn-outline-dark ms-auto">Visit</a></div></div>
+      <div class="col-md-4"><div class="shelter-card"><div class="shelter-icon"><i class="bi bi-building-fill-heart"></i></div><div><h6 class="shelter-name">Gasan PAWS Center</h6><p class="shelter-addr"><i class="bi bi-geo-alt"></i> Gasan, Marinduque · <span class="text-success fw-600">Open</span></p></div><a href="pages/contact.html" class="btn btn-sm btn-outline-dark ms-auto">Visit</a></div></div>
+      <div class="col-md-4"><div class="shelter-card"><div class="shelter-icon"><i class="bi bi-building-fill-heart"></i></div><div><h6 class="shelter-name">Santa Cruz Rescue Hub</h6><p class="shelter-addr"><i class="bi bi-geo-alt"></i> Santa Cruz, Marinduque · <span class="text-warning fw-600">Weekends</span></p></div><a href="pages/contact.html" class="btn btn-sm btn-outline-dark ms-auto">Visit</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section-pad bg-dark-green">
+  <div class="container-xxl px-4">
+    <div class="text-center mb-5">
+      <div class="section-tag light-tag">Happy Families</div>
+      <h2 class="section-title text-white">Stories of Love</h2>
+    </div>
+    <div class="row g-4" id="testiRow">
+      <div class="col-md-4">
+        <div class="testi-card" onmouseenter="highlightTesti(this)" onmouseleave="resetTesti()">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"We found our beloved Coco through Furever Home. The process was so easy and the team was incredibly supportive."</p>
+          <div class="testi-author"><div class="testi-avatar">MR</div><div><div class="testi-name">Maria Reyes</div><div class="testi-loc">Boac, Marinduque</div></div></div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testi-card featured-testi" onmouseenter="highlightTesti(this)" onmouseleave="resetTesti()">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Adopted Max 6 months ago and life has never been better. The adoption process was transparent and the staff truly cared."</p>
+          <div class="testi-author"><div class="testi-avatar">JD</div><div><div class="testi-name">Juan dela Cruz</div><div class="testi-loc">Gasan, Marinduque</div></div></div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testi-card" onmouseenter="highlightTesti(this)" onmouseleave="resetTesti()">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"As a shelter partner, working with Furever Home doubled our adoption rate. Amazing platform for our province!"</p>
+          <div class="testi-author"><div class="testi-avatar">AS</div><div><div class="testi-name">Ana Santos</div><div class="testi-loc">Santa Cruz Rescue Hub</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="fh-footer">
+  <div class="container-xxl px-4">
+    <div class="row g-4 mb-4">
+      <div class="col-lg-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <div class="brand-icon sm"><i class="bi bi-heart-fill"></i></div>
+          <span class="brand-text">Furever<span class="brand-accent">Home</span></span>
+        </div>
+        <p class="footer-desc">Connecting loving dogs and cats with caring families across Marinduque Province, Philippines.</p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#" class="social-btn"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-envelope-fill"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6 class="footer-heading">Platform</h6>
+        <ul class="footer-links">
+          <li><a href="pages/pets.html">Find a Pet</a></li>
+          <li><a href="pages/register.html">Post a Pet</a></li>
+          <li><a href="pages/about.html">About Us</a></li>
+          <li><a href="pages/tips.html">Care Tips</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6 class="footer-heading">Support</h6>
+        <ul class="footer-links">
+          <li><a href="pages/contact.html">Contact Us</a></li>
+          <li><a href="pages/donate.html">Donate</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6 class="footer-heading">Contact Info</h6>
+        <ul class="footer-contact">
+          <li><i class="bi bi-geo-alt-fill"></i> Marinduque Province, Philippines</li>
+          <li><i class="bi bi-telephone-fill"></i> +63 912 345 6789</li>
+          <li><i class="bi bi-envelope-fill"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="234b464f4f4c63455651465546514b4c4e460d534b">[email&#160;protected]</a></li>
+          <li><i class="bi bi-clock-fill"></i> Mon–Sat, 8:00 AM – 6:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Furever Home — Marinduque Province. All rights reserved. Made with <i class="bi bi-heart-fill text-danger"></i> for Marinduque's animals.</p>
+    </div>
+  </div>
+</footer>
+<div class="fh-toast" id="toast"><i class="bi bi-heart-fill"></i> <span id="toastMsg">Added to favorites!</span></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

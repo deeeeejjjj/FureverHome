@@ -1,0 +1,451 @@
+/* ════════════════════════════════
+   HERO V3 — Peeking Pets Layout
+   ════════════════════════════════ */
+.hero-v3 {
+  background: linear-gradient(135deg, var(--dark-green) 0%, var(--mid-green) 55%, #3a7060 100%);
+  position: relative; overflow: hidden;
+  min-height: 100vh;
+  display: flex; align-items: center;
+}
+
+/* Paw pattern */
+.hero-paw-bg {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ctext x='10' y='50' font-size='36' fill='white'%3E🐾%3C/text%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+/* Inner layout */
+.hero-v3-inner {
+  display: flex; align-items: flex-end;
+  gap: 0; width: 100%;
+  min-height: 92vh;
+  padding: 80px 0 0;
+}
+
+/* Left column */
+.hv3-left {
+  flex: 1; min-width: 0;
+  padding-bottom: 60px;
+  position: relative; z-index: 2;
+}
+
+/* Right column */
+.hv3-right {
+  width: 52%; flex-shrink: 0;
+  position: relative;
+  align-self: flex-end;
+  min-height: 580px;
+}
+
+/* Pet stage — pets rise from bottom edge */
+.hv3-pet-stage {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 620px;
+  display: flex; align-items: flex-end; justify-content: center;
+}
+
+/* Glow blob */
+.hv3-glow {
+  position: absolute;
+  width: 380px; height: 380px;
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(201,168,76,0.18), rgba(56,120,100,0.25), transparent 70%);
+  border-radius: 50%; filter: blur(40px); z-index: 0;
+}
+
+/* Base pet style */
+.hv3-pet {
+  position: absolute;
+  object-fit: cover;
+  object-position: center top;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.45));
+  animation: petRise 6s ease-in-out infinite;
+}
+
+/* DOG — large, center-right, back layer */
+.hv3-dog {
+  width: 420px;
+  bottom: -10px;
+  right: 20px;
+  z-index: 2;
+  border-radius: 24px 24px 0 0;
+  animation-delay: 0s;
+}
+
+/* CAT — smaller, front-left, overlaps dog */
+.hv3-cat {
+  width: 240px;
+  bottom: -10px;
+  left: 30px;
+  z-index: 3;
+  border-radius: 20px 20px 0 0;
+  animation-delay: 1.5s;
+}
+
+@keyframes petRise {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+
+/* Ground shadow line */
+.hv3-ground-shadow {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 40px;
+  background: linear-gradient(to top, rgba(0,0,0,0.25), transparent);
+  z-index: 4; pointer-events: none;
+}
+
+/* Floating cards */
+.hv3-float {
+  position: absolute;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  min-width: 160px; z-index: 10;
+}
+.hv3-float-top {
+  top: 60px; right: 20px;
+  animation: floatBob 4s ease-in-out infinite;
+}
+.hv3-float-bot {
+  bottom: 200px; left: 0;
+  animation: floatBob 4s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+@keyframes floatBob {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.fcv-icon {
+  width: 36px; height: 36px; border-radius: 8px; background: #d4edda;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.fcv-title { font-size: 13px; font-weight: 700; color: var(--text-dark); }
+.fcv-sub   { font-size: 11px; color: var(--text-light); }
+
+/* Search + stats (reuse from v2) */
+.hero-search-bar {
+  display: flex; align-items: center; gap: 0;
+  background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 100px; overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+.hsb-input-wrap { flex:1; display:flex; align-items:center; gap:10px; padding: 0 18px; }
+.hsb-icon { color: rgba(255,255,255,0.5); font-size: 15px; }
+.hsb-input { flex:1; background:transparent; border:none; outline:none; color:var(--white); font-size:14px; font-weight:500; padding:13px 0; }
+.hsb-input::placeholder { color: rgba(255,255,255,0.45); }
+.hsb-btn { background:var(--gold); color:var(--dark-green); font-weight:800; font-size:13px; padding:13px 22px; text-decoration:none; transition:background 0.2s; white-space:nowrap; border-radius:0 100px 100px 0; }
+.hsb-btn:hover { background:var(--gold-dark); color:var(--white); }
+.hero-quick-filters { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.hqf-label { font-size:12px; color:rgba(255,255,255,0.5); font-weight:600; }
+.hqf-pill { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.85); font-size:12px; font-weight:600; padding:5px 14px; border-radius:100px; text-decoration:none; transition:all 0.2s; }
+.hqf-pill:hover { background:rgba(255,255,255,0.2); color:var(--white); }
+.hero-stats-v2 { display:flex; align-items:center; border-top:1px solid rgba(255,255,255,0.15); padding-top:20px; }
+.hsv-item { display:flex; flex-direction:column; gap:3px; padding-right:24px; }
+.hsv-num { font-family:'Playfair Display',serif; font-size:30px; font-weight:700; color:var(--gold); line-height:1; }
+.hsv-label { font-size:11px; color:rgba(255,255,255,0.55); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
+.hsv-divider { width:1px; height:40px; background:rgba(255,255,255,0.2); margin-right:24px; }
+
+/* Responsive */
+@media (max-width: 991px) {
+  .hero-v3-inner { flex-direction: column; align-items: center; padding: 60px 0 0; }
+  .hv3-left { padding-bottom: 24px; text-align: center; }
+  .hv3-left .hero-quick-filters, .hv3-left .hero-stats-v2 { justify-content: center; }
+  .hv3-left .d-flex { justify-content: center; }
+  .hv3-right { width: 100%; min-height: 320px; }
+  .hv3-pet-stage { height: 340px; }
+  .hv3-dog { width: 260px; }
+  .hv3-cat { width: 150px; }
+  .hv3-float { display: none; }
+}
+@media (max-width: 575px) {
+  .hv3-dog { width: 200px; right: 10px; }
+  .hv3-cat { width: 120px; left: 10px; }
+}
+
+
+
+/* ═══════════════════════════════════════
+   3D CATEGORY CARDS
+   ═══════════════════════════════════════ */
+.categ-section { background: var(--white); }
+
+.cat3d-card {
+  display: flex; flex-direction: column;
+  border-radius: 28px; overflow: hidden;
+  text-decoration: none; color: inherit;
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+.cat3d-card:hover {
+  transform: translateY(-10px) rotateX(2deg);
+  box-shadow: 0 32px 64px rgba(0,0,0,0.18), 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Dog card — pastel blue (like the app concept) */
+.dog-card { background: #d6ecf5; border: 2px solid #b8d8ec; }
+.dog-card .cat3d-name  { color: #1d5f7a; }
+.dog-card .cat3d-count { color: #4a8fa8; }
+.dog-card .cat3d-btn   { background: #1d5f7a; color: #fff; }
+.dog-card .cat3d-btn:hover { background: #164a5e; }
+.dog-card .dog-glow    { background: radial-gradient(circle, #7ac5e0, transparent); }
+
+/* Cat card — pastel lavender (like the app concept) */
+.cat-card { background: #ede8f5; border: 2px solid #d0c4e8; }
+.cat-card .cat3d-name  { color: #4d3d8a; }
+.cat-card .cat3d-count { color: #7a6aaa; }
+.cat-card .cat3d-btn   { background: #4d3d8a; color: #fff; }
+.cat-card .cat3d-btn:hover { background: #3a2d6e; }
+.cat-card .cat-glow    { background: radial-gradient(circle, #c4b4e8, transparent); }
+
+/* Scene container */
+.cat3d-scene {
+  position: relative;
+  height: 200px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  perspective: 800px;
+}
+
+/* 3D stack of photos */
+.cat3d-stack {
+  position: relative;
+  width: 160px; height: 160px;
+  transform-style: preserve-3d;
+}
+
+/* Each photo layer */
+.cat3d-img {
+  position: absolute;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  transition: transform 0.4s ease;
+}
+.cat3d-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  display: block;
+}
+
+/* Back layer — visible behind, slightly left */
+.img-back {
+  width: 100px; height: 100px;
+  top: 10px; left: -15px;
+  transform: rotate(-12deg) translate(-10px, 5px);
+  opacity: 1;
+  z-index: 1;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+/* Middle layer */
+.img-mid {
+  width: 110px; height: 110px;
+  top: 18px; right: -14px;
+  transform: rotate(10deg) translate(12px, -6px);
+  opacity: 1;
+  z-index: 2;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+/* Front layer — largest, center */
+.img-front {
+  width: 125px; height: 125px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) rotate(-2deg) translateZ(0px);
+  z-index: 3;
+}
+
+/* On hover — fan out the stack */
+.cat3d-card:hover .img-back  { transform: rotate(-16deg) translate(-44px, 12px); opacity: 1; }
+.cat3d-card:hover .img-mid   { transform: rotate(14deg) translate(44px, -10px); opacity: 1; }
+.cat3d-card:hover .img-front { transform: translate(-50%,-52%) rotate(-2deg) scale(1.08); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+
+/* Glow blob */
+.cat3d-glow {
+  position: absolute; width: 200px; height: 200px;
+  border-radius: 50%; filter: blur(50px);
+  opacity: 0.3; pointer-events: none; z-index: 0;
+}
+.dog-glow { background: radial-gradient(circle, var(--gold), transparent); }
+.cat-glow { background: radial-gradient(circle, #d4b896, transparent); }
+
+/* Body below image */
+.cat3d-body {
+  padding: 14px 20px 20px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.cat3d-icon  { font-size: 26px; margin-bottom: 2px; }
+.cat3d-name  { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; }
+.cat3d-count { font-size: 14px; font-weight: 600; }
+.cat3d-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 8px; padding: 8px 18px;
+  border-radius: 100px; font-size: 13px; font-weight: 700;
+  transition: all 0.2s;
+}
+
+/* Active state (clicked) */
+.cat3d-card.active-cat { transform: translateY(-6px); }
+
+@media (max-width: 575px) {
+  .cat3d-scene { height: 200px; }
+  .cat3d-stack { width: 160px; height: 160px; }
+  .img-front { width: 130px; height: 130px; }
+  .img-mid   { width: 115px; height: 115px; }
+  .img-back  { width: 105px; height: 105px; }
+  .cat3d-name { font-size: 22px; }
+}
+
+
+
+/* ═══════════════════════════
+   RESCUERS SECTION
+   ═══════════════════════════ */
+.rescuers-section { background: var(--white); }
+
+/* Impact strip */
+.rescuer-impact-strip {
+  display: flex; align-items: center; flex-wrap: wrap;
+  background: var(--dark-green);
+  border-radius: var(--radius-lg); padding: 24px 32px; gap: 0;
+}
+.ris-item {
+  flex: 1; display: flex; align-items: center; gap: 14px;
+  padding: 8px 20px; min-width: 140px;
+}
+.ris-icon { font-size: 24px; color: var(--gold); flex-shrink: 0; }
+.ris-num  { display:block; font-family:'Playfair Display',serif; font-size:26px; font-weight:700; color:var(--white); line-height:1; }
+.ris-label{ display:block; font-size:11px; color:rgba(255,255,255,0.55); text-transform:uppercase; letter-spacing:0.5px; margin-top:2px; }
+.ris-div  { width:1px; height:40px; background:rgba(255,255,255,0.15); margin:0; }
+
+/* Rescuer Card */
+.rescuer-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.3s;
+  height: 100%;
+  display: flex; flex-direction: column;
+}
+.rescuer-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gold);
+}
+
+/* Photo area */
+.rc-photo-wrap {
+  height: 140px; position: relative;
+  background: var(--cream);
+  display: flex; align-items: center; justify-content: center;
+}
+.rc-avatar {
+  width: 88px; height: 88px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 3px solid var(--white);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.rc-badge {
+  position: absolute; top: 10px; right: 12px;
+  background: var(--dark-green); color: var(--gold);
+  font-size: 10px; font-weight: 700;
+  padding: 4px 10px; border-radius: 100px;
+  display: flex; align-items: center; gap: 4px;
+}
+
+/* Card body */
+.rc-body { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.rc-name { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; margin:0; color:var(--text-dark); }
+.rc-location { font-size:12px; color:var(--text-light); display:flex; align-items:center; gap:4px; margin:0; }
+.rc-location i { color:var(--gold); font-size:11px; }
+
+/* Stats row */
+.rc-stats {
+  display: flex; align-items: center;
+  background: var(--cream); border-radius: 10px; padding: 10px 12px;
+}
+.rc-stat { flex:1; text-align:center; }
+.rcs-num   { display:block; font-size:15px; font-weight:800; color:var(--dark-green); }
+.rcs-label { display:block; font-size:10px; color:var(--text-light); font-weight:600; text-transform:uppercase; margin-top:1px; }
+.rc-stat-div { width:1px; height:28px; background:var(--border); }
+
+/* Tags */
+.rc-specialty { display:flex; flex-wrap:wrap; gap:6px; }
+.rc-tag { font-size:11px; font-weight:700; background:var(--light-green); color:var(--mid-green); padding:3px 10px; border-radius:100px; }
+
+/* View profile btn */
+.rc-btn {
+  display:block; text-align:center; padding:10px;
+  background:var(--dark-green); color:var(--white);
+  border-radius:10px; font-weight:700; font-size:13px;
+  text-decoration:none; transition:all 0.2s; margin-top:auto;
+}
+.rc-btn:hover { background:var(--mid-green); color:var(--white); transform:translateY(-1px); }
+
+/* CTA card */
+.rescuer-cta-card {
+  background: linear-gradient(145deg, var(--dark-green), var(--mid-green));
+  border-color: transparent;
+}
+.rescuer-cta-card:hover { border-color: var(--gold); }
+.rcc-inner { padding: 28px 20px; display:flex; flex-direction:column; align-items:center; text-align:center; height:100%; }
+.rcc-title { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--white); margin-bottom:10px; }
+.rcc-desc  { font-size:13px; color:rgba(255,255,255,0.7); line-height:1.7; margin-bottom:16px; }
+.rcc-perks { text-align:left; width:100%; display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
+.rcc-perk  { display:flex; align-items:center; gap:8px; font-size:12px; color:rgba(255,255,255,0.8); font-weight:500; }
+.rcc-perk i { color:var(--gold); font-size:13px; flex-shrink:0; }
+.rcc-btn {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--gold); color:var(--dark-green);
+  font-weight:800; font-size:13px;
+  padding:12px 24px; border-radius:100px;
+  text-decoration:none; transition:all 0.2s; margin-top:auto;
+}
+.rcc-btn:hover { background:var(--gold-dark); color:var(--white); transform:translateY(-2px); }
+
+@media (max-width:767px) {
+  .rescuer-impact-strip { gap:12px; }
+  .ris-item { flex: 0 0 45%; }
+  .ris-div  { display:none; }
+}
+
+
+
+/* ══ App-concept Pet Cards (index.html) ══ */
+.pcard { border-radius:20px; padding:20px; transition:all 0.3s; height:100%; display:flex; flex-direction:column; gap:14px; }
+.pcard:hover { transform:translateY(-5px); box-shadow:0 16px 40px rgba(0,0,0,0.12); }
+.pcard-top { display:flex; align-items:flex-start; gap:14px; position:relative; }
+.pcard-circle { width:90px; height:90px; border-radius:50%; flex-shrink:0; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.pcard-img { width:100%; height:100%; object-fit:cover; object-position:top; border-radius:50%; }
+.pcard-info { flex:1; min-width:0; }
+.pcard-type { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:3px; }
+.pcard-name { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; margin-bottom:4px; line-height:1.2; }
+.pcard-gender-age { font-size:13px; color:#555; margin-bottom:4px; font-weight:500; }
+.pcard-location { font-size:12px; color:#777; margin-bottom:6px; display:flex; align-items:center; gap:4px; }
+.pcard-location i { font-size:11px; }
+.pcard-status-row { display:flex; align-items:center; gap:8px; }
+.pcard-status { font-size:10px; font-weight:800; padding:3px 10px; border-radius:100px; text-transform:uppercase; letter-spacing:0.3px; }
+.pcs-available { background:rgba(255,255,255,0.7); color:#1a7a3c; }
+.pcs-pending   { background:rgba(255,255,255,0.7); color:#92400e; }
+.pcard-weight  { font-size:11px; color:#777; font-weight:600; }
+.pcard-heart { position:absolute; top:0; right:0; width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,0.7); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; color:#999; transition:all 0.2s; }
+.pcard-heart:hover, .pcard-heart.active { color:#e53e3e; background:#fff; transform:scale(1.1); }
+.pcard-stats { display:flex; align-items:center; border-radius:12px; padding:10px 14px; }
+.pcard-stat { flex:1; text-align:center; }
+.pcs-label { display:block; font-size:10px; color:#888; font-weight:600; text-transform:uppercase; letter-spacing:0.3px; margin-bottom:2px; }
+.pcs-val   { display:block; font-size:13px; font-weight:700; color:#333; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.pcard-stat-div { width:1px; background:rgba(0,0,0,0.1); align-self:stretch; margin:0 4px; }
+.pcard-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.pcard-tag { font-size:11px; font-weight:700; padding:4px 10px; border-radius:100px; }
+.pcard-btn { display:block; text-align:center; padding:12px; border-radius:12px; font-weight:800; font-size:14px; text-decoration:none; transition:all 0.2s; margin-top:auto; }
+.pcard-btn-main:hover { opacity:0.85; transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,0.18); }
+.pcard-btn-out { background:rgba(255,255,255,0.6); color:#555; border:1.5px solid rgba(0,0,0,0.12); }
+.pcard-btn-out:hover { background:rgba(255,255,255,0.9); color:#333; }

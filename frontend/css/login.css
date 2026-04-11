@@ -1,0 +1,369 @@
+/* ═══════════════════════════════════════════════════════════
+  AUTH SHARED STYLES  —  login.html + register.html
+  Furever Home · Marinduque Pet Adoption Platform
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Page shell ─────────────────────────────────────────── */
+.auth-body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f7f4 0%, #f9f6f0 50%, #eef5f2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+  padding: 80px 16px 40px;
+}
+
+/* Paw-print watermark */
+.auth-bg-pattern {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ctext x='14' y='62' font-size='40' fill='%231a3c34' opacity='0.035'%3E🐾%3C/text%3E%3C/svg%3E");
+  background-size: 100px 100px;
+}
+
+/* ── Back link ──────────────────────────────────────────── */
+.auth-back-link {
+  position: fixed; top: 22px; left: 28px; z-index: 200;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700; color: var(--dark-green);
+  text-decoration: none; background: var(--white);
+  padding: 10px 20px; border-radius: 100px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  transition: all 0.22s;
+}
+.auth-back-link:hover {
+  background: var(--dark-green); color: var(--white);
+  transform: translateX(-3px);
+  box-shadow: 0 4px 20px rgba(26,60,52,0.22);
+}
+
+/* ── Center wrapper ─────────────────────────────────────── */
+.auth-center-wrap {
+  position: relative; z-index: 1;
+  width: 100%; max-width: 520px;
+  margin: 0 auto;
+}
+.auth-center-wide { max-width: 620px; }
+
+/* ── Card ───────────────────────────────────────────────── */
+.auth-card {
+  background: var(--white);
+  border-radius: 28px;
+  padding: 52px 52px 44px;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.04),
+    0 8px 24px rgba(26,60,52,0.09),
+    0 32px 64px rgba(26,60,52,0.10);
+  border: 1px solid rgba(226,236,232,0.8);
+}
+
+/* ── Logo row ───────────────────────────────────────────── */
+.auth-logo {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-bottom: 28px;
+}
+
+/* ── Pet avatar row (login only) ────────────────────────── */
+.auth-pet-row {
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 28px;
+}
+.auth-pet-av {
+  width: 60px; height: 60px; border-radius: 50%;
+  object-fit: cover; object-position: top;
+  border: 3px solid var(--white);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  margin-left: -10px;
+  transition: transform 0.22s;
+}
+.auth-pet-av:first-child { margin-left: 0; }
+.auth-pet-av.main {
+  width: 76px; height: 76px;
+  z-index: 2; border-color: var(--gold);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.35);
+}
+.auth-pet-av:hover { transform: translateY(-5px) scale(1.08); z-index: 3; }
+
+/* ── Headings ───────────────────────────────────────────── */
+.auth-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px; font-weight: 700;
+  color: var(--text-dark);
+  text-align: center; margin-bottom: 8px;
+  line-height: 1.2;
+}
+.auth-subtitle {
+  font-size: 15px; color: var(--text-mid);
+  text-align: center; margin-bottom: 32px;
+}
+
+/* ── Alert box ──────────────────────────────────────────── */
+.auth-alert {
+  border-radius: 12px; padding: 14px 18px;
+  font-size: 14px; font-weight: 600;
+  margin-bottom: 20px;
+  border: 1.5px solid transparent; line-height: 1.5;
+}
+.auth-alert.error   { background: #fde8e8; color: #b91c1c; border-color: #fca5a5; }
+.auth-alert.success { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+
+/* ── Social buttons ─────────────────────────────────────── */
+.social-auth-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-bottom: 24px;
+}
+.social-btn-item {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: 14px; padding: 13px 18px;
+  font-size: 14px; font-weight: 600; color: var(--text-dark);
+  cursor: pointer; transition: all 0.2s;
+}
+.social-btn-item:hover {
+  background: #f8faf9; border-color: var(--dark-green);
+  box-shadow: 0 2px 10px rgba(26,60,52,0.10);
+  transform: translateY(-1px);
+}
+
+/* ── OR divider ─────────────────────────────────────────── */
+.auth-or {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 24px;
+}
+.auth-or::before, .auth-or::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.auth-or span {
+  font-size: 11px; color: var(--text-light);
+  font-weight: 800; white-space: nowrap;
+  text-transform: uppercase; letter-spacing: 0.7px;
+}
+
+/* ── Form field ─────────────────────────────────────────── */
+.fauth-field { margin-bottom: 20px; }
+
+.fauth-label {
+  display: block;
+  font-size: 11.5px; font-weight: 800;
+  color: var(--text-mid);
+  margin-bottom: 8px;
+  text-transform: uppercase; letter-spacing: 0.7px;
+}
+
+.fauth-input-wrap {
+  position: relative; display: flex; align-items: center;
+}
+
+.fauth-icon {
+  position: absolute; left: 16px; font-size: 16px;
+  color: #9ab8b0; pointer-events: none; z-index: 1;
+}
+
+.fauth-input {
+  width: 100%;
+  padding: 15px 16px 15px 48px;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  font-size: 15px; font-family: 'DM Sans', sans-serif;
+  background: #f8fbf9; color: var(--text-dark);
+  outline: none; transition: all 0.22s;
+  appearance: none; -webkit-appearance: none;
+  line-height: 1.4;
+}
+.fauth-input::placeholder { color: #b8cfc9; }
+.fauth-input:focus {
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(201,168,76,0.13);
+}
+.fauth-input:hover:not(:focus) { border-color: #b4d0c6; }
+.fauth-input.fauth-select { padding-right: 40px; cursor: pointer; }
+
+.fauth-eye {
+  position: absolute; right: 14px;
+  background: none; border: none; cursor: pointer;
+  color: var(--text-light); font-size: 16px; padding: 6px;
+  transition: color 0.2s; line-height: 1;
+}
+.fauth-eye:hover { color: var(--dark-green); }
+
+.fauth-error {
+  display: block; font-size: 12px; color: #dc2626;
+  font-weight: 600; margin-top: 5px; min-height: 18px;
+}
+
+/* ── Remember / Forgot row ──────────────────────────────── */
+.fauth-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 24px;
+}
+.fauth-remember {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; color: var(--text-mid); cursor: pointer;
+  user-select: none;
+}
+.fauth-remember input { accent-color: var(--gold); width: 17px; height: 17px; cursor: pointer; }
+.fauth-forgot {
+  font-size: 13px; color: var(--gold-dark);
+  font-weight: 700; text-decoration: none; transition: color 0.2s;
+}
+.fauth-forgot:hover { color: var(--dark-green); text-decoration: underline; }
+
+/* ── Submit button ──────────────────────────────────────── */
+.fauth-submit {
+  width: 100%; padding: 17px 24px;
+  background: var(--gold); color: var(--dark-green);
+  border: 2px solid var(--gold); border-radius: 14px;
+  font-size: 16px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.25s; letter-spacing: 0.2px;
+  box-shadow: 0 4px 18px rgba(201,168,76,0.30);
+}
+.fauth-submit:hover {
+  background: var(--dark-green); border-color: var(--dark-green); color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(26,60,52,0.25);
+}
+.fauth-submit:active { transform: translateY(0); box-shadow: none; }
+.fauth-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* ── Loading spinner ────────────────────────────────────── */
+.fauth-spinner {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2.5px solid rgba(255,255,255,0.35);
+  border-top-color: var(--dark-green);
+  display: inline-block;
+  animation: fauth-spin 0.7s linear infinite;
+}
+@keyframes fauth-spin { to { transform: rotate(360deg); } }
+
+/* ── Back button (register) ─────────────────────────────── */
+.fauth-back {
+  padding: 17px 22px; border-radius: 14px;
+  border: 1.5px solid var(--border); background: #f8fbf9;
+  font-size: 14px; font-weight: 700; color: var(--text-mid);
+  cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+.fauth-back:hover {
+  border-color: var(--dark-green); color: var(--dark-green);
+  background: var(--white); box-shadow: 0 2px 10px rgba(26,60,52,0.08);
+}
+
+/* ── Link styles ────────────────────────────────────────── */
+.fauth-link { color: var(--gold-dark); font-weight: 700; text-decoration: none; }
+.fauth-link:hover { text-decoration: underline; color: var(--dark-green); }
+
+.fauth-switch {
+  text-align: center; font-size: 14px; color: var(--text-mid); margin-top: 16px;
+}
+.fauth-switch a { color: var(--gold-dark); font-weight: 700; text-decoration: none; }
+.fauth-switch a:hover { text-decoration: underline; }
+
+.fauth-admin-link {
+  text-align: center; font-size: 13px; color: var(--text-light); margin-top: 14px;
+}
+.fauth-admin-link a { color: var(--dark-green); font-weight: 700; text-decoration: none; }
+.fauth-admin-link a:hover { text-decoration: underline; }
+
+/* ── Terms checkbox ─────────────────────────────────────── */
+.fauth-terms {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--text-mid); cursor: pointer;
+  margin-top: 12px; line-height: 1.55; user-select: none;
+}
+.fauth-terms input {
+  accent-color: var(--gold); width: 17px; height: 17px;
+  flex-shrink: 0; margin-top: 2px; cursor: pointer;
+}
+
+/* ── Password strength ──────────────────────────────────── */
+.pw-strength { display: flex; align-items: center; gap: 12px; margin-top: 6px; }
+.pw-bar {
+  flex: 1; height: 6px;
+  background: var(--border); border-radius: 100px; overflow: hidden;
+}
+.pw-fill { height: 100%; border-radius: 100px; width: 0; transition: all 0.4s ease; }
+.pw-label { font-size: 12px; font-weight: 700; white-space: nowrap; color: var(--text-light); }
+
+/* ── Register step indicators ───────────────────────────── */
+.reg-steps {
+  display: flex; align-items: center;
+  margin-bottom: 36px; padding: 0 4px;
+}
+.reg-step-item {
+  display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+}
+.rs-circle {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: #eaf1ee; color: var(--text-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 800;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+.rs-label {
+  font-size: 13px; font-weight: 700; color: var(--text-light);
+  transition: color 0.3s; white-space: nowrap;
+}
+.reg-step-item.active .rs-circle {
+  background: var(--gold); color: var(--dark-green);
+  border-color: var(--gold);
+  box-shadow: 0 3px 14px rgba(201,168,76,0.38);
+}
+.reg-step-item.active .rs-label { color: var(--dark-green); }
+.reg-step-item.done   .rs-circle {
+  background: var(--dark-green); color: var(--white);
+  border-color: var(--dark-green);
+}
+.reg-step-item.done   .rs-label { color: var(--dark-green); }
+
+.rs-line {
+  flex: 1; height: 2px; background: #ddeae5;
+  margin: 0 10px; border-radius: 2px;
+  transition: background 0.4s ease;
+}
+.rs-line.done { background: var(--dark-green); }
+
+/* ── Register section headings ──────────────────────────── */
+.reg-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--text-dark); margin-bottom: 6px;
+}
+.reg-section-sub {
+  font-size: 14px; color: var(--text-light);
+  margin-bottom: 24px; line-height: 1.5;
+}
+
+/* ── Success screen ─────────────────────────────────────── */
+.reg-success { text-align: center; padding: 32px 8px; }
+.reg-success-icon  { font-size: 72px; margin-bottom: 18px; }
+.reg-success-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700;
+  margin-bottom: 10px; color: var(--text-dark);
+}
+.reg-success-sub {
+  font-size: 15px; color: var(--text-mid);
+  margin-bottom: 28px; line-height: 1.7;
+  max-width: 360px; margin-inline: auto;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .auth-body { padding: 68px 12px 32px; }
+  .auth-card { padding: 36px 24px 32px; border-radius: 20px; }
+  .auth-title { font-size: 26px; }
+  .auth-center-wide { max-width: 100%; }
+  .social-auth-row { grid-template-columns: 1fr; gap: 10px; }
+  .fauth-input { font-size: 15px; }
+}
+
+@media (max-width: 400px) {
+  .auth-card { padding: 28px 16px 24px; }
+  .fauth-submit { font-size: 15px; padding: 15px; }
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adoption Form — Furever Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/styles.css"/>
+  <link rel="stylesheet" href="../css/adopt-form.css"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg sticky-top fh-navbar">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+      <div class="brand-icon"><i class="bi bi-heart-fill"></i></div>
+      <span class="brand-text">Furever<span class="brand-accent">Home</span></span>
+    </a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="pets.html">Find a Pet</a></li>
+      </ul>
+      <div class="d-flex gap-2"><a href="login.html" class="btn btn-outline-primary btn-sm px-3">Log In</a></div>
+    </div>
+  </div>
+</nav>
+
+<section class="page-header" style="background:var(--cream);padding:48px 0 32px;border-bottom:1px solid var(--border)">
+  <div class="container">
+    <nav aria-label="breadcrumb" class="mb-2">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html" class="text-muted">Home</a></li>
+        <li class="breadcrumb-item"><a href="pets.html" class="text-muted">Pets</a></li>
+        <li class="breadcrumb-item active" id="breadcrumbPet">Adopt</li>
+      </ol>
+    </nav>
+    <div class="section-tag">Step 1 of 2</div>
+    <h1 class="section-title">Adoption Application</h1>
+    <p class="text-muted" id="headerSubtitle">Fill in your details to apply for adopting a pet.</p>
+  </div>
+</section>
+
+<section class="section-pad" style="padding-top:40px">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Progress steps -->
+        <div class="adopt-steps mb-5">
+          <div class="adopt-step active"><div class="as-num">1</div><div class="as-label">Your Info</div></div>
+          <div class="adopt-step-line"></div>
+          <div class="adopt-step"><div class="as-num">2</div><div class="as-label">Home Info</div></div>
+          <div class="adopt-step-line"></div>
+          <div class="adopt-step"><div class="as-num">3</div><div class="as-label">Review</div></div>
+        </div>
+
+        <!-- Hidden pet id carried through submit -->
+        <input type="hidden" id="hiddenPetId" value=""/>
+
+        <form id="adoptForm" onsubmit="submitAdoption(event)">
+          <!-- Pet Summary (populated by JS) -->
+          <div class="pet-adopt-summary mb-4">
+            <img id="summaryImg" src="" alt="" class="pet-adopt-img"/>
+            <div>
+              <div style="font-size:12px;color:var(--text-light);font-weight:600">ADOPTING</div>
+              <div id="summaryName" style="font-size:22px;font-weight:700;font-family:'Playfair Display',serif"></div>
+              <div id="summaryMeta" style="font-size:14px;color:var(--text-mid)"></div>
+            </div>
+            <span id="summaryBadge" class="badge-status badge-available ms-auto" style="align-self:flex-start"></span>
+          </div>
+
+          <!-- Personal Information -->
+          <div class="fh-form-card mb-4">
+            <h5 class="fw-700 mb-4" style="font-family:'Playfair Display',serif;border-bottom:1px solid var(--border);padding-bottom:16px">Personal Information</h5>
+            <div class="row g-3">
+              <div class="col-md-6"><label class="fh-label">First Name *</label><input class="fh-input" required placeholder="Enter first name"/></div>
+              <div class="col-md-6"><label class="fh-label">Last Name *</label><input class="fh-input" required placeholder="Enter last name"/></div>
+              <div class="col-md-6"><label class="fh-label">Email Address *</label><input class="fh-input" type="email" required placeholder="you@example.com"/></div>
+              <div class="col-md-6"><label class="fh-label">Phone Number *</label><input class="fh-input" placeholder="+63 9XX XXX XXXX" required/></div>
+              <div class="col-md-4"><label class="fh-label">Age *</label><input class="fh-input" type="number" min="18" max="80" required placeholder="e.g. 28"/></div>
+              <div class="col-md-4"><label class="fh-label">Civil Status</label><select class="fh-select w-100"><option>Single</option><option>Married</option><option>Widowed</option></select></div>
+              <div class="col-md-4"><label class="fh-label">Occupation</label><input class="fh-input" placeholder="e.g. Teacher"/></div>
+              <div class="col-12"><label class="fh-label">Complete Address *</label><input class="fh-input" required placeholder="House No., Street, Barangay, City, Province"/></div>
+            </div>
+          </div>
+
+          <!-- Home Information -->
+          <div class="fh-form-card mb-4">
+            <h5 class="fw-700 mb-4" style="font-family:'Playfair Display',serif;border-bottom:1px solid var(--border);padding-bottom:16px">Home & Lifestyle</h5>
+            <div class="row g-3">
+              <div class="col-md-6"><label class="fh-label">Type of Residence *</label><select class="fh-select w-100" required><option value="">Select...</option><option>House with yard</option><option>House without yard</option><option>Apartment/Condo</option><option>Rented room</option></select></div>
+              <div class="col-md-6"><label class="fh-label">Do you own or rent?</label><select class="fh-select w-100"><option>Own</option><option>Rent</option></select></div>
+              <div class="col-md-6"><label class="fh-label">Household members</label><input class="fh-input" type="number" min="1" placeholder="Number of people at home"/></div>
+              <div class="col-md-6"><label class="fh-label">Children at home?</label><select class="fh-select w-100"><option>No children</option><option>Yes, under 5</option><option>Yes, 5–12 yrs</option><option>Yes, teens</option></select></div>
+              <div class="col-12"><label class="fh-label">Do you have other pets?</label>
+                <div class="d-flex gap-3 flex-wrap">
+                  <label class="filter-check"><input type="radio" name="hasPets" value="no"/> <span style="font-size:14px">No, first pet</span></label>
+                  <label class="filter-check"><input type="radio" name="hasPets" value="yes"/> <span style="font-size:14px">Yes, I have other pets</span></label>
+                </div>
+              </div>
+              <div class="col-12">
+                <label class="fh-label">Why do you want to adopt this pet? *</label>
+                <textarea id="whyAdopt" class="fh-input" rows="4" required placeholder="Tell us why you'd be a great fit..."></textarea>
+              </div>
+              <div class="col-12">
+                <label class="fh-label">How will you ensure their safety and well-being?</label>
+                <textarea id="safetyPlan" class="fh-input" rows="3" placeholder="e.g. secure yard, regular vet visits, daily exercise..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Valid ID Upload -->
+          <div class="fh-form-card mb-4">
+            <h5 class="fw-700 mb-4" style="font-family:'Playfair Display',serif;border-bottom:1px solid var(--border);padding-bottom:16px">Supporting Documents</h5>
+            <div class="row g-3">
+              <div class="col-md-6"><label class="fh-label">Valid Government ID *</label><input type="file" class="fh-input" accept="image/*,.pdf" required/></div>
+              <div class="col-md-6"><label class="fh-label">Proof of Residence (optional)</label><input type="file" class="fh-input" accept="image/*,.pdf"/></div>
+            </div>
+          </div>
+
+          <!-- Agreement -->
+          <div class="fh-form-card mb-4">
+            <label class="filter-check" style="align-items:flex-start;gap:12px">
+              <input type="checkbox" required style="accent-color:var(--gold);margin-top:2px;flex-shrink:0"/>
+              <span style="font-size:14px;color:var(--text-mid);line-height:1.7">I certify that all information provided is true and accurate. I understand that submitting this application does not guarantee adoption approval. I agree to the <a href="#" style="color:var(--gold-dark)">Terms of Adoption</a> and <a href="#" style="color:var(--gold-dark)">Privacy Policy</a>.</span>
+            </label>
+          </div>
+
+          <div class="d-flex gap-3 justify-content-end">
+            <a id="backBtn" href="pets.html" class="btn btn-outline-dark btn-lg px-4">← Go Back</a>
+            <button type="submit" class="btn btn-gold btn-lg px-5">Submit Application <i class="bi bi-send ms-1"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="fh-toast" id="toast"><i class="bi bi-check-circle-fill"></i> <span id="toastMsg">Application submitted!</span></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/adopt-form.js"></script>
+</body>
+</html>

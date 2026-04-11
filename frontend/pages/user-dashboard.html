@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Dashboard — Furever Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/styles.css"/>
+  <link rel="stylesheet" href="../css/user-dashboard.css"/>
+</head>
+<body>
+<div class="dashboard-layout">
+
+  <!-- Sidebar -->
+  <aside class="fh-sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="brand-icon"><i class="bi bi-heart-fill"></i></div>
+      <span class="brand-text">Furever<span class="brand-accent">Home</span></span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active" onclick="showPanel('dashboard',this)"><i class="bi bi-grid-fill"></i> Dashboard</a>
+      <a href="pets.html" class="sidebar-link"><i class="bi bi-search-heart"></i> Find a Pet</a>
+      <a href="#" class="sidebar-link" onclick="showPanel('saved',this)"><i class="bi bi-heart-fill"></i> Saved Pets <span class="ms-auto badge" style="background:var(--gold);color:var(--dark-green);font-size:10px">4</span></a>
+      <a href="#" class="sidebar-link" onclick="showPanel('applications',this)"><i class="bi bi-file-earmark-text"></i> My Applications</a>
+      <div class="sidebar-nav-label">Account</div>
+      <a href="#" class="sidebar-link" onclick="showPanel('profile',this)"><i class="bi bi-person-circle"></i> My Profile</a>
+      <a href="#" class="sidebar-link" onclick="showPanel('notifications',this)"><i class="bi bi-bell"></i> Notifications <span class="ms-auto badge" style="background:#e53e3e;color:white;font-size:10px">2</span></a>
+      <a href="#" class="sidebar-link" onclick="showPanel('settings',this)"><i class="bi bi-gear"></i> Settings</a>
+      <div class="sidebar-nav-label">More</div>
+      <a href="tips.html" class="sidebar-link"><i class="bi bi-heart-pulse"></i> Pet Care Tips</a>
+      <a href="#" class="sidebar-link" onclick="showPanel('donate',this)"><i class="bi bi-gift-fill"></i> Donate</a>
+      <a href="contact.html" class="sidebar-link"><i class="bi bi-chat-dots"></i> Contact Support</a>
+    </nav>
+    <div class="sidebar-user">
+      <div class="sidebar-avatar">MR</div>
+      <div>
+        <div class="sidebar-user-name">Maria Reyes</div>
+        <div class="sidebar-user-role">Pet Adopter · Boac</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="dashboard-main">
+    <!-- Topbar -->
+    <div class="dashboard-topbar">
+      <div>
+        <div class="topbar-title" id="pageTitle">My Dashboard</div>
+        <div class="topbar-breadcrumb" id="pageBreadcrumb">Dashboard > Overview</div>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <div class="topbar-search">
+          <i class="bi bi-search"></i>
+          <input type="text" id="globalSearch" placeholder="Search pets..." oninput="handleSearch(this.value)"/>
+        </div>
+        <button class="btn btn-sm position-relative" style="background:var(--cream);border:1.5px solid var(--border);border-radius:10px;padding:8px 12px" onclick="showPanel('notifications',null)">
+          <i class="bi bi-bell"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" style="background:#e53e3e;font-size:9px" id="notifBadge">2</span>
+        </button>
+        <a href="../index.html" class="btn btn-sm btn-outline-dark px-3">← Back to Site</a>
+      </div>
+    </div>
+
+    <div class="dashboard-content" id="dashboardContent">
+
+      <!-- ══ PANEL: DASHBOARD (default) ══ -->
+      <div id="panel-dashboard">
+        <div class="welcome-banner mb-4">
+          <div>
+            <h4 class="mb-1" style="font-family:'Playfair Display',serif">Good morning, Maria! 👋</h4>
+            <p class="mb-0 text-muted" style="font-size:14px">Here's what's happening with your pet adoption journey.</p>
+          </div>
+          <a href="pets.html" class="btn btn-gold px-4"><i class="bi bi-search-heart me-2"></i>Find a Pet</a>
+        </div>
+        <div class="row g-3 mb-4">
+          <div class="col-6 col-xl-3">
+            <div class="stat-box" style="cursor:pointer" onclick="showPanel('applications',null)">
+              <div class="stat-box-icon green"><i class="bi bi-file-earmark-text"></i></div>
+              <div><div class="stat-box-num">3</div><div class="stat-box-label">Applications</div><div class="stat-box-change up">↑ 1 this week</div></div>
+            </div>
+          </div>
+          <div class="col-6 col-xl-3">
+            <div class="stat-box" style="cursor:pointer" onclick="showPanel('saved',null)">
+              <div class="stat-box-icon gold"><i class="bi bi-heart-fill"></i></div>
+              <div><div class="stat-box-num">4</div><div class="stat-box-label">Saved Pets</div></div>
+            </div>
+          </div>
+          <div class="col-6 col-xl-3">
+            <div class="stat-box">
+              <div class="stat-box-icon blue"><i class="bi bi-check-circle-fill"></i></div>
+              <div><div class="stat-box-num">1</div><div class="stat-box-label">Adopted</div><div class="stat-box-change up">Approved!</div></div>
+            </div>
+          </div>
+          <div class="col-6 col-xl-3">
+            <div class="stat-box" style="cursor:pointer" onclick="showPanel('donate',null)">
+              <div class="stat-box-icon red"><i class="bi bi-gift-fill"></i></div>
+              <div><div class="stat-box-num">₱500</div><div class="stat-box-label">Donated</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <div class="fh-table-card">
+              <div class="fh-table-header">
+                <div class="fh-table-title">Recent Applications</div>
+                <a href="adopt-form.html" class="btn btn-sm btn-gold px-3">New Application</a>
+              </div>
+              <div class="table-responsive">
+                <table class="fh-table">
+                  <thead><tr><th>Pet</th><th>Shelter</th><th>Date</th><th>Status</th><th></th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=60&q=80" class="pet-mini-img" alt=""/><div><div class="fw-600">Max</div><div style="font-size:11px;color:var(--text-light)">Golden Retriever</div></div></div></td>
+                      <td style="font-size:13px">Boac Shelter</td><td style="font-size:13px">Mar 10, 2026</td>
+                      <td><span class="badge-status badge-available">Approved</span></td>
+                      <td><a href="pet-detail.html?id=1" class="btn btn-sm btn-outline-dark">View</a></td>
+                    </tr>
+                    <tr>
+                      <td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=60&q=80" class="pet-mini-img" alt=""/><div><div class="fw-600">Luna</div><div style="font-size:11px;color:var(--text-light)">Domestic Cat</div></div></div></td>
+                      <td style="font-size:13px">Gasan PAWS</td><td style="font-size:13px">Mar 14, 2026</td>
+                      <td><span class="badge-status badge-pending">Pending</span></td>
+                      <td><a href="pet-detail.html?id=7" class="btn btn-sm btn-outline-dark">View</a></td>
+                    </tr>
+                    <tr>
+                      <td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=60&q=80" class="pet-mini-img" alt=""/><div><div class="fw-600">Coco</div><div style="font-size:11px;color:var(--text-light)">Dachshund</div></div></div></td>
+                      <td style="font-size:13px">Santa Cruz Rescue</td><td style="font-size:13px">Mar 1, 2026</td>
+                      <td><span class="badge-status" style="background:#fde8e8;color:#c53030">Rejected</span></td>
+                      <td><a href="pet-detail.html?id=4" class="btn btn-sm btn-outline-dark">View</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="notif-card mb-3">
+              <div class="notif-header"><i class="bi bi-bell-fill text-gold"></i> Notifications</div>
+              <div class="notif-item unread"><div class="notif-dot"></div><div><div class="notif-text">Your application for <strong>Max</strong> has been <strong class="text-success">approved!</strong></div><div class="notif-time">2 hours ago</div></div></div>
+              <div class="notif-item unread"><div class="notif-dot"></div><div><div class="notif-text">New pets matching your preferences added in Boac!</div><div class="notif-time">1 day ago</div></div></div>
+              <div class="notif-item"><div><div class="notif-text">Welcome to Furever Home, Maria! 🐾</div><div class="notif-time">Mar 1, 2026</div></div></div>
+            </div>
+            <div class="fh-table-card">
+              <div class="fh-table-header"><div class="fh-table-title">Saved Pets</div><a href="pets.html" class="btn btn-link btn-sm text-muted p-0" style="font-size:12px">Browse more</a></div>
+              <div class="saved-list">
+                <div class="saved-pet-card" style="background:#f5ede0;cursor:pointer" onclick="location.href='pet-detail.html?id=8'"><div class="spc-circle" style="background:#e8d0b0"><img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=120&q=80" alt="Nala"/></div><div class="spc-info"><div class="spc-name" style="color:#7a4f1d">Nala</div><div class="spc-sub">Persian Cat · Boac</div></div><span class="pcard-status pcs-available">Available</span></div>
+                <div class="saved-pet-card" style="background:#f5e0e8;cursor:pointer" onclick="location.href='pet-detail.html?id=3'"><div class="spc-circle" style="background:#e8b8c8"><img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=120&q=80" alt="Rocky"/></div><div class="spc-info"><div class="spc-name" style="color:#8a3d52">Rocky</div><div class="spc-sub">Aspin Mix · Buenavista</div></div><span class="pcard-status pcs-available">Available</span></div>
+                <div class="saved-pet-card" style="background:#e0f5ee;cursor:pointer" onclick="location.href='pet-detail.html?id=9'"><div class="spc-circle" style="background:#b0e8d4"><img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=120&q=80" alt="Mochi"/></div><div class="spc-info"><div class="spc-name" style="color:#1d7a52">Mochi</div><div class="spc-sub">Siamese Cat · Gasan</div></div><span class="pcard-status pcs-pending">Pending</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PANEL: APPLICATIONS ══ -->
+      <div id="panel-applications" style="display:none">
+        <div class="fh-table-card">
+          <div class="fh-table-header">
+            <div class="fh-table-title">My Adoption Applications</div>
+            <a href="adopt-form.html" class="btn btn-gold px-4"><i class="bi bi-plus me-1"></i>New Application</a>
+          </div>
+          <div class="table-responsive">
+            <table class="fh-table">
+              <thead><tr><th>Pet</th><th>Breed</th><th>Shelter</th><th>Date</th><th>Status</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=60&q=80" class="pet-mini-img" alt=""/><div class="fw-600">Max</div></div></td>
+                  <td style="font-size:13px;color:var(--text-light)">Golden Retriever</td>
+                  <td style="font-size:13px">Boac Shelter</td><td style="font-size:13px">Mar 10, 2026</td>
+                  <td><span class="badge-status badge-available">Approved</span></td>
+                  <td><a href="pet-detail.html?id=1" class="btn btn-sm btn-gold">View Pet</a></td>
+                </tr>
+                <tr>
+                  <td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=60&q=80" class="pet-mini-img" alt=""/><div class="fw-600">Luna</div></div></td>
+                  <td style="font-size:13px;color:var(--text-light)">Domestic Cat</td>
+                  <td style="font-size:13px">Gasan PAWS</td><td style="font-size:13px">Mar 14, 2026</td>
+                  <td><span class="badge-status badge-pending">Pending</span></td>
+                  <td><a href="pet-detail.html?id=7" class="btn btn-sm btn-outline-dark">View Pet</a></td>
+                </tr>
+                <tr>
+                  <td><div class="d-flex align-items-center gap-2"><img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=60&q=80" class="pet-mini-img" alt=""/><div class="fw-600">Coco</div></div></td>
+                  <td style="font-size:13px;color:var(--text-light)">Dachshund</td>
+                  <td style="font-size:13px">Santa Cruz Rescue</td><td style="font-size:13px">Mar 1, 2026</td>
+                  <td><span class="badge-status" style="background:#fde8e8;color:#c53030">Rejected</span></td>
+                  <td><a href="adopt-form.html" class="btn btn-sm btn-outline-dark">Re-apply</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PANEL: SAVED PETS ══ -->
+      <div id="panel-saved" style="display:none">
+        <div class="fh-table-header mb-4">
+          <div class="fh-table-title">My Saved Pets</div>
+          <a href="pets.html" class="btn btn-gold px-4"><i class="bi bi-search-heart me-1"></i>Browse More Pets</a>
+        </div>
+        <div class="row g-4">
+          <div class="col-sm-6 col-lg-4">
+            <div class="pcard" style="background:#f5ede0">
+              <div class="pcard-top">
+                <div class="pcard-circle" style="background:#e8d0b0"><img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=200&q=80" class="pcard-img" alt="Nala"/></div>
+                <div class="pcard-info"><div class="pcard-type" style="color:#7a4f1d">🐈 Cat</div><h5 class="pcard-name" style="color:#7a4f1d">Nala</h5><div class="pcard-gender-age">Female · 2 yrs</div><div class="pcard-location"><i class="bi bi-geo-alt-fill"></i> Boac, Marinduque</div><div class="pcard-status-row"><span class="pcard-status pcs-available">Available</span></div></div>
+                <button class="pcard-heart active" onclick="removeSaved(this,'Nala')"><i class="bi bi-heart-fill"></i></button>
+              </div>
+              <div class="pcard-stats" style="background:rgba(255,255,255,0.45)"><div class="pcard-stat"><span class="pcs-label">Breed</span><span class="pcs-val">Persian Mix</span></div><div class="pcard-stat-div"></div><div class="pcard-stat"><span class="pcs-label">Size</span><span class="pcs-val">Medium</span></div><div class="pcard-stat-div"></div><div class="pcard-stat"><span class="pcs-label">Weight</span><span class="pcs-val">4 kg</span></div></div>
+              <a href="pet-detail.html?id=8" class="pcard-btn pcard-btn-main" style="background:#7a4f1d;color:#fff">View Nala <i class="bi bi-arrow-right ms-1"></i></a>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <div class="pcard" style="background:#f5e0e8">
+              <div class="pcard-top">
+                <div class="pcard-circle" style="background:#e8b8c8"><img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=200&q=80" class="pcard-img" alt="Rocky"/></div>
+                <div class="pcard-info"><div class="pcard-type" style="color:#8a3d52">🐕 Dog</div><h5 class="pcard-name" style="color:#8a3d52">Rocky</h5><div class="pcard-gender-age">Male · 5 yrs</div><div class="pcard-location"><i class="bi bi-geo-alt-fill"></i> Buenavista, Marinduque</div><div class="pcard-status-row"><span class="pcard-status pcs-available">Available</span></div></div>
+                <button class="pcard-heart active" onclick="removeSaved(this,'Rocky')"><i class="bi bi-heart-fill"></i></button>
+              </div>
+              <div class="pcard-stats" style="background:rgba(255,255,255,0.45)"><div class="pcard-stat"><span class="pcs-label">Breed</span><span class="pcs-val">Aspin Mix</span></div><div class="pcard-stat-div"></div><div class="pcard-stat"><span class="pcs-label">Size</span><span class="pcs-val">Medium</span></div><div class="pcard-stat-div"></div><div class="pcard-stat"><span class="pcs-label">Weight</span><span class="pcs-val">18 kg</span></div></div>
+              <a href="pet-detail.html?id=3" class="pcard-btn pcard-btn-main" style="background:#8a3d52;color:#fff">View Rocky <i class="bi bi-arrow-right ms-1"></i></a>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4">
+            <div class="pcard" style="background:#e0f5ee">
+              <div class="pcard-top">
+                <div class="pcard-circle" style="background:#b0e8d4"><img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=200&q=80" class="pcard-img" alt="Mochi"/></div>
+                <div class="pcard-info"><div class="pcard-type" style="color:#1d7a52">🐈 Cat</div><h5 class="pcard-name" style="color:#1d7a52">Mochi</h5><div class="pcard-gender-age">Female · 1 yr</div><div class="pcard-location"><i class="bi bi-geo-alt-fill"></i> Gasan, Marinduque</div><div class="pcard-status-row"><span class="pcard-status pcs-pending">Pending</span></div></div>
+                <button class="pcard-heart active" onclick="removeSaved(this,'Mochi')"><i class="bi bi-heart-fill"></i></button>
+              </div>
+              <div class="pcard-stats" style="background:rgba(255,255,255,0.45)"><div class="pcard-stat"><span class="pcs-label">Breed</span><span class="pcs-val">Siamese Mix</span></div><div class="pcard-stat-div"></div><div class="pcard-stat"><span class="pcs-label">Size</span><span class="pcs-val">Small</span></div><div class="pcard-stat-div"></div><div class="pcard-stat"><span class="pcs-label">Weight</span><span class="pcs-val">3 kg</span></div></div>
+              <a href="pet-detail.html?id=9" class="pcard-btn pcard-btn-main" style="background:#1d7a52;color:#fff">View Mochi <i class="bi bi-arrow-right ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PANEL: PROFILE ══ -->
+      <div id="panel-profile" style="display:none">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="fh-table-card text-center p-4">
+              <div style="width:88px;height:88px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;color:var(--dark-green);margin:0 auto 16px;font-family:'Playfair Display',serif">MR</div>
+              <h5 style="font-family:'Playfair Display',serif;font-weight:700">Maria Reyes</h5>
+              <p style="font-size:13px;color:var(--text-light)">Pet Adopter · Boac, Marinduque</p>
+              <div class="d-flex justify-content-center gap-3 mt-3 mb-3">
+                <div class="text-center"><div style="font-size:20px;font-weight:700;color:var(--dark-green)">3</div><div style="font-size:11px;color:var(--text-light)">Applications</div></div>
+                <div class="text-center"><div style="font-size:20px;font-weight:700;color:var(--dark-green)">4</div><div style="font-size:11px;color:var(--text-light)">Saved</div></div>
+                <div class="text-center"><div style="font-size:20px;font-weight:700;color:var(--dark-green)">1</div><div style="font-size:11px;color:var(--text-light)">Adopted</div></div>
+              </div>
+              <button class="btn btn-gold w-100" onclick="showToast('Profile photo upload coming soon!')"><i class="bi bi-camera me-1"></i> Change Photo</button>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="fh-table-card p-4">
+              <div class="fh-table-title mb-4">Personal Information</div>
+              <div class="row g-3">
+                <div class="col-md-6"><label class="fh-label">First Name</label><input class="fh-input" value="Maria"/></div>
+                <div class="col-md-6"><label class="fh-label">Last Name</label><input class="fh-input" value="Reyes"/></div>
+                <div class="col-md-6"><label class="fh-label">Email Address</label><input class="fh-input" value="maria.reyes@email.com"/></div>
+                <div class="col-md-6"><label class="fh-label">Phone Number</label><input class="fh-input" value="+63 912 345 6789"/></div>
+                <div class="col-md-6"><label class="fh-label">Municipality</label><select class="fh-select w-100"><option selected>Boac</option><option>Gasan</option><option>Mogpog</option><option>Santa Cruz</option><option>Buenavista</option><option>Torrijos</option></select></div>
+                <div class="col-md-6"><label class="fh-label">Age</label><input class="fh-input" value="28"/></div>
+                <div class="col-12"><label class="fh-label">About Me</label><textarea class="fh-input" rows="3">I love animals and have been a pet owner for 5 years. Looking to adopt a companion for my dog Max!</textarea></div>
+                <div class="col-12"><button class="btn btn-gold px-5" onclick="showToast('✅ Profile updated successfully!')"><i class="bi bi-check-circle me-1"></i> Save Changes</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PANEL: NOTIFICATIONS ══ -->
+      <div id="panel-notifications" style="display:none">
+        <div class="fh-table-card p-4" style="max-width:680px">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="fh-table-title">Notifications</div>
+            <button class="btn btn-sm btn-outline-dark" onclick="markAllRead()">Mark all as read</button>
+          </div>
+          <div id="notifList">
+            <div class="notif-item unread" id="notif1"><div class="notif-dot"></div><div style="flex:1"><div class="notif-text">Your application for <strong>Max</strong> has been <strong class="text-success">approved!</strong> 🎉</div><div class="notif-time">2 hours ago</div></div><button class="btn btn-sm btn-link text-muted" onclick="dismissNotif('notif1')"><i class="bi bi-x"></i></button></div>
+            <div class="notif-item unread" id="notif2"><div class="notif-dot"></div><div style="flex:1"><div class="notif-text">New pets matching your preferences added in Boac! <a href="pets.html" style="color:var(--gold-dark)">View them</a></div><div class="notif-time">1 day ago</div></div><button class="btn btn-sm btn-link text-muted" onclick="dismissNotif('notif2')"><i class="bi bi-x"></i></button></div>
+            <div class="notif-item" id="notif3"><div style="flex:1"><div class="notif-text">Welcome to Furever Home, Maria! 🐾 Start browsing pets in Marinduque.</div><div class="notif-time">Mar 1, 2026</div></div><button class="btn btn-sm btn-link text-muted" onclick="dismissNotif('notif3')"><i class="bi bi-x"></i></button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PANEL: SETTINGS ══ -->
+      <div id="panel-settings" style="display:none">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="fh-table-card p-4">
+              <div class="fh-table-title mb-4">Change Password</div>
+              <div class="row g-3">
+                <div class="col-12"><label class="fh-label">Current Password</label><input type="password" class="fh-input" placeholder="Enter current password"/></div>
+                <div class="col-12"><label class="fh-label">New Password</label><input type="password" class="fh-input" placeholder="Min. 8 characters"/></div>
+                <div class="col-12"><label class="fh-label">Confirm New Password</label><input type="password" class="fh-input" placeholder="Re-enter new password"/></div>
+                <div class="col-12"><button class="btn btn-gold px-4" onclick="showToast('✅ Password updated!')">Update Password</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="fh-table-card p-4">
+              <div class="fh-table-title mb-4">Notification Preferences</div>
+              <div class="d-flex flex-column gap-3">
+                <label style="display:flex;justify-content:space-between;align-items:center;cursor:pointer"><span style="font-size:14px">Application status updates</span><input type="checkbox" checked style="accent-color:var(--gold);width:18px;height:18px"/></label>
+                <label style="display:flex;justify-content:space-between;align-items:center;cursor:pointer"><span style="font-size:14px">New pets in my area</span><input type="checkbox" checked style="accent-color:var(--gold);width:18px;height:18px"/></label>
+                <label style="display:flex;justify-content:space-between;align-items:center;cursor:pointer"><span style="font-size:14px">Newsletter & care tips</span><input type="checkbox" style="accent-color:var(--gold);width:18px;height:18px"/></label>
+                <label style="display:flex;justify-content:space-between;align-items:center;cursor:pointer"><span style="font-size:14px">Donation receipts</span><input type="checkbox" checked style="accent-color:var(--gold);width:18px;height:18px"/></label>
+              </div>
+              <button class="btn btn-gold px-4 mt-4" onclick="showToast('✅ Preferences saved!')">Save Preferences</button>
+            </div>
+            <div class="fh-table-card p-4 mt-4">
+              <div class="fh-table-title mb-3" style="color:#c53030">Danger Zone</div>
+              <p style="font-size:13px;color:var(--text-mid)">Permanently delete your account and all data.</p>
+              <button class="btn btn-sm btn-outline-danger" onclick="if(confirm('Are you sure? This cannot be undone.')) showToast('Account deletion request submitted.')">Delete Account</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ PANEL: DONATE ══ -->
+      <div id="panel-donate" style="display:none">
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="fh-table-card p-4">
+              <div class="fh-table-title mb-2">Make a Donation</div>
+              <p style="font-size:14px;color:var(--text-mid);margin-bottom:24px">Your donation feeds, vaccinates, and shelters animals across all six municipalities of Marinduque.</p>
+              <div class="donation-amounts d-flex gap-2 flex-wrap mb-3">
+                <button class="btn btn-amount" onclick="selectAmount(this,100)">₱100</button>
+                <button class="btn btn-amount active-amt" onclick="selectAmount(this,300)">₱300</button>
+                <button class="btn btn-amount" onclick="selectAmount(this,500)">₱500</button>
+                <button class="btn btn-amount" onclick="selectAmount(this,1000)">₱1,000</button>
+              </div>
+              <div class="donation-custom-wrap mb-4">
+                <span class="donation-custom-prefix">₱</span>
+                <input type="number" class="donation-custom-input" id="customAmt2" placeholder="Enter custom amount..." min="1" oninput="applyCustomAmount(this.value)"/>
+                <button class="donation-custom-btn" onclick="confirmCustomAmount()">Set Amount</button>
+              </div>
+              <div style="font-size:28px;font-weight:700;font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:4px">₱<span id="donationAmt">300</span></div>
+              <div style="font-size:12px;color:var(--text-light);margin-bottom:20px">Selected amount</div>
+              <button class="btn btn-gold w-100 py-3 fw-700" onclick="showToast('🙏 Thank you for your donation of ₱' + document.getElementById('donationAmt').textContent + '!')"><i class="bi bi-heart-fill me-2"></i>Donate Now</button>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="fh-table-card p-4">
+              <div class="fh-table-title mb-3">Donation History</div>
+              <table class="fh-table">
+                <thead><tr><th>Date</th><th>Amount</th><th>Receipt</th></tr></thead>
+                <tbody>
+                  <tr><td style="font-size:13px">Mar 1, 2026</td><td style="font-size:13px;color:var(--gold-dark);font-weight:700">₱500</td><td><button class="btn btn-sm btn-outline-dark" onclick="showToast('Receipt downloaded!')"><i class="bi bi-download"></i></button></td></tr>
+                  <tr><td style="font-size:13px">Feb 14, 2026</td><td style="font-size:13px;color:var(--gold-dark);font-weight:700">₱200</td><td><button class="btn btn-sm btn-outline-dark" onclick="showToast('Receipt downloaded!')"><i class="bi bi-download"></i></button></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end dashboard-content -->
+  </main>
+</div>
+
+<div class="fh-toast" id="toast"><i class="bi bi-check-circle-fill"></i> <span id="toastMsg"></span></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/user-dashboard.js"></script>
+</body>
+</html>

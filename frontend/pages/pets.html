@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find a Pet — Furever Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/styles.css"/>
+  <link rel="stylesheet" href="../css/pets.css"/>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top fh-navbar">
+  <div class="container-xxl px-4">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+      <div class="brand-icon"><i class="bi bi-heart-fill"></i></div>
+      <span class="brand-text">Furever<span class="brand-accent">Home</span></span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <i class="bi bi-list text-white fs-4"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="pets.html">Find a Pet</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="tips.html">Care Tips</a></li>
+        <li class="nav-item"><a class="nav-link" href="rescuers.html">Rescuers</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+        <a href="login.html" class="btn btn-nav-outline px-3">Log In</a>
+        <a href="register.html" class="btn btn-gold btn-sm px-3">Sign Up <i class="bi bi-arrow-right ms-1"></i></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<section style="background:var(--dark-green);padding:48px 0 32px;border-bottom:1px solid rgba(255,255,255,0.1)">
+  <div class="container-xxl px-4">
+    <div class="row align-items-center">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="mb-2">
+          <ol class="breadcrumb mb-0" style="--bs-breadcrumb-divider:'/'"><li class="breadcrumb-item"><a href="../index.html" style="color:rgba(255,255,255,0.6);text-decoration:none">Home</a></li><li class="breadcrumb-item active" style="color:var(--gold)">Find a Pet</li></ol>
+        </nav>
+        <div class="section-tag" style="background:transparent;color:var(--gold);display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:12px;border:1.5px solid var(--gold)">Dogs & Cats</div>
+        <h1 class="section-title mb-1" style="color:#fff">Find Your Perfect <span style="color:var(--gold)">Pet</span></h1>
+        <p class="mb-0" style="color:rgba(255,255,255,0.7)">Loving animals ready for their forever home across Marinduque Province</p>
+      </div>
+      <div class="col-auto">
+        <a href="post-pet.html" class="btn btn-gold px-4"><i class="bi bi-plus-circle me-2"></i>Post a Pet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tab switcher + filters -->
+<section style="padding:32px 0 0">
+  <div class="container-xxl px-4">
+    <!-- Type tabs -->
+    <div class="pet-type-tabs mb-4">
+      <button class="tab-btn active" onclick="filterPets('all', this)"><i class="bi bi-grid-fill me-1"></i> All Pets <span class="tab-count">12</span></button>
+      <button class="tab-btn" onclick="filterPets('Dog', this)">🐕 Dogs <span class="tab-count">6</span></button>
+      <button class="tab-btn" onclick="filterPets('Cat', this)">🐈 Cats <span class="tab-count">6</span></button>
+    </div>
+
+    <div class="row g-4">
+      <!-- Sidebar -->
+      <div class="col-lg-3">
+        <div class="filter-panel">
+          <div class="filter-header">
+            <h6 class="filter-title"><i class="bi bi-sliders me-2"></i>Filters</h6>
+            <button class="btn btn-link btn-sm text-muted p-0" onclick="clearFilters()">Clear all</button>
+          </div>
+          <div class="filter-group">
+            <label class="fh-label">Age</label>
+            <div class="filter-checks">
+              <label class="filter-check"><input type="checkbox" class="age-filter" value="puppy"/> <span>Puppy/Kitten (0–1yr)</span></label>
+              <label class="filter-check"><input type="checkbox" class="age-filter" value="young"/> <span>Young (1–3yrs)</span></label>
+              <label class="filter-check"><input type="checkbox" class="age-filter" value="adult"/> <span>Adult (3–8yrs)</span></label>
+              <label class="filter-check"><input type="checkbox" class="age-filter" value="senior"/> <span>Senior (8yr+)</span></label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="fh-label">Gender</label>
+            <div class="filter-checks">
+              <label class="filter-check"><input type="checkbox" class="gender-filter" value="Male"/> <span>Male</span></label>
+              <label class="filter-check"><input type="checkbox" class="gender-filter" value="Female"/> <span>Female</span></label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="fh-label">Status</label>
+            <div class="filter-checks">
+              <label class="filter-check"><input type="checkbox" class="status-filter" checked value="available"/> <span>Available</span></label>
+              <label class="filter-check"><input type="checkbox" class="status-filter" value="pending"/> <span>Pending</span></label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="fh-label">Location</label>
+            <select class="fh-select w-100" id="locationFilter">
+              <option value="">All Marinduque</option>
+              <option>Boac</option><option>Gasan</option><option>Mogpog</option>
+              <option>Santa Cruz</option><option>Buenavista</option><option>Torrijos</option>
+            </select>
+          </div>
+          <button class="btn btn-gold w-100 mt-3" onclick="applyFilters()">Apply Filters</button>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div class="col-lg-9">
+        <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+          <p class="text-muted mb-0"><span class="fw-700 text-dark" id="petCount">12</span> pets found</p>
+          <select class="fh-select" style="width:auto" id="sortSelect" onchange="sortPets()">
+            <option value="newest">Newest First</option>
+            <option value="name">Name A–Z</option>
+            <option value="age">Youngest First</option>
+          </select>
+        </div>
+        <div class="row g-4" id="petsGrid"></div>
+        <nav class="mt-5">
+          <ul class="pagination fh-pagination justify-content-center">
+            <li class="page-item disabled"><a class="page-link" href="#">← Prev</a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next →</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="fh-footer mt-5">
+  <div class="container-xxl px-4">
+    <div class="footer-bottom"><p>© 2026 Furever Home — Marinduque Province. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<div class="fh-toast" id="toast"><i class="bi bi-heart-fill"></i> <span id="toastMsg"></span></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
+
+<script src="../js/pets.js"></script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — Furever Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/styles.css"/>
+  <link rel="stylesheet" href="../css/about.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top fh-navbar">
+  <div class="container-xxl px-4">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+      <div class="brand-icon"><i class="bi bi-heart-fill"></i></div>
+      <span class="brand-text">Furever<span class="brand-accent">Home</span></span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <i class="bi bi-list text-white fs-4"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="pets.html">Find a Pet</a></li>
+        <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="tips.html">Care Tips</a></li>
+        <li class="nav-item"><a class="nav-link" href="rescuers.html">Rescuers</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+        <a href="login.html" class="btn btn-nav-outline px-3">Log In</a>
+        <a href="register.html" class="btn btn-gold btn-sm px-3">Sign Up <i class="bi bi-arrow-right ms-1"></i></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="about-hero">
+  <div class="container-xxl px-4">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <nav aria-label="breadcrumb" class="mb-3">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="../index.html" style="color:rgba(255,255,255,0.55)">Home</a></li>
+            <li class="breadcrumb-item active" style="color:var(--gold)">About Us</li>
+          </ol>
+        </nav>
+        <div class="section-tag light-tag mb-3">Our Story</div>
+        <h1 class="hero-title" style="font-size:clamp(36px,4.5vw,58px)">
+          Connecting Hearts,<br/><span class="highlight">One Paw</span> at a Time
+        </h1>
+        <p class="hero-subtitle mt-3" style="max-width:520px">
+          Furever Home is a student-built pet adoption platform dedicated to finding loving families for dogs and cats across all six municipalities of Marinduque Province, Philippines.
+        </p>
+        <div class="d-flex gap-3 flex-wrap mt-4">
+          <a href="pets.html" class="btn btn-gold btn-lg px-4">Browse Pets <i class="bi bi-arrow-right ms-1"></i></a>
+          <a href="#team" class="btn btn-hero-outline btn-lg px-4">Meet the Team</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="row g-3">
+          <div class="col-6">
+            <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius-md);padding:24px;text-align:center">
+              <div style="font-size:38px;font-weight:700;font-family:'Playfair Display',serif;color:var(--gold)">542+</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px">Pets Listed</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius-md);padding:24px;text-align:center">
+              <div style="font-size:38px;font-weight:700;font-family:'Playfair Display',serif;color:var(--gold)">390+</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px">Adopted</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius-md);padding:24px;text-align:center">
+              <div style="font-size:38px;font-weight:700;font-family:'Playfair Display',serif;color:var(--gold)">6</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px">Municipalities</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius-md);padding:24px;text-align:center">
+              <div style="font-size:38px;font-weight:700;font-family:'Playfair Display',serif;color:var(--gold)">4</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px">Developers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MISSION & VISION ═══════════ -->
+<section class="section-pad">
+  <div class="container-xxl px-4">
+    <div class="text-center mb-5">
+      <div class="section-tag">What We Stand For</div>
+      <h2 class="section-title">Our Mission & Vision</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="mv-card">
+          <div class="mv-icon"><i class="bi bi-bullseye"></i></div>
+          <h5 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:10px">Our Mission</h5>
+          <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin:0">To build a simple, accessible, and compassionate digital platform that connects animals in need with loving families across Marinduque Province — one adoption at a time.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mv-card">
+          <div class="mv-icon"><i class="bi bi-eye-fill"></i></div>
+          <h5 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:10px">Our Vision</h5>
+          <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin:0">A Marinduque where every dog and cat has a safe, loving forever home — and where technology bridges the gap between shelters, rescuers, and compassionate adopters.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mv-card">
+          <div class="mv-icon"><i class="bi bi-heart-fill"></i></div>
+          <h5 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:10px">Our Commitment</h5>
+          <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin:0">We are committed to animal welfare, responsible ownership, and community engagement. Every feature we build is designed with the animals — and the people who love them — at the center.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ OUR VALUES ═══════════ -->
+<section class="section-pad bg-cream">
+  <div class="container-xxl px-4">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5">
+        <div class="section-tag">What Drives Us</div>
+        <h2 class="section-title">Our Core Values</h2>
+        <p style="font-size:15px;color:var(--text-mid);line-height:1.8">Everything we do at Furever Home is guided by these principles — from how we designed the platform to how we partner with shelters and treat every adopter.</p>
+        <div class="mt-4">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2025</div>
+              <div class="timeline-title">Project Conceptualized</div>
+              <div class="timeline-desc">Furever Home started as a capstone project idea — addressing the lack of digital adoption platforms in Marinduque.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2025</div>
+              <div class="timeline-title">Development Begins</div>
+              <div class="timeline-desc">Our 4-person team began designing and building the platform using ASP.NET Core, Bootstrap, and MySQL.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2026</div>
+              <div class="timeline-title">Platform Launched</div>
+              <div class="timeline-desc">Furever Home officially launched, partnering with shelters across all 6 municipalities of Marinduque.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="d-flex flex-column gap-3">
+          <div class="value-item">
+            <div class="value-icon"><i class="bi bi-heart-fill"></i></div>
+            <div>
+              <div style="font-weight:700;font-size:15px;margin-bottom:4px">Compassion First</div>
+              <div style="font-size:13px;color:var(--text-mid);line-height:1.6">Every decision we make prioritizes the well-being of the animals and the experience of the adopters. No animal is just a listing.</div>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon"><i class="bi bi-transparency"></i></div>
+            <div>
+              <div style="font-weight:700;font-size:15px;margin-bottom:4px">Transparency</div>
+              <div style="font-size:13px;color:var(--text-mid);line-height:1.6">We show honest pet profiles, clear adoption statuses, and open communication between all parties — no surprises, no hidden processes.</div>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon"><i class="bi bi-people-fill"></i></div>
+            <div>
+              <div style="font-weight:700;font-size:15px;margin-bottom:4px">Community-Centered</div>
+              <div style="font-size:13px;color:var(--text-mid);line-height:1.6">We were built by Marinduque students, for the Marinduque community — local context and local needs shaped everything we built.</div>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon"><i class="bi bi-shield-check-fill"></i></div>
+            <div>
+              <div style="font-weight:700;font-size:15px;margin-bottom:4px">Responsible Adoption</div>
+              <div style="font-size:13px;color:var(--text-mid);line-height:1.6">We screen applicants, provide care resources, and follow up post-adoption to ensure pets go to safe, prepared homes.</div>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon"><i class="bi bi-code-slash"></i></div>
+            <div>
+              <div style="font-weight:700;font-size:15px;margin-bottom:4px">Innovation with Purpose</div>
+              <div style="font-size:13px;color:var(--text-mid);line-height:1.6">We use technology not for its own sake, but to solve real problems — making adoption easier, faster, and more accessible for everyone.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MEET THE TEAM — 4 DEVELOPER CARDS
+     ═══════════════════════════════════════ -->
+<section class="section-pad" id="team">
+  <div class="container-xxl px-4">
+
+    <div class="text-center mb-5">
+      <div class="section-tag">The People Behind It</div>
+      <h2 class="section-title">Meet the Developers</h2>
+      <p class="section-subtitle">Four students. One shared goal — to make a difference for animals in Marinduque through technology.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+      <!-- ════ DEVELOPER 1 — Daniel ════ -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="dev-card">
+          <div class="dev-photo-wrap">
+            <img src="../images/dev1.png" alt="Daniel"/>
+          </div>
+          <div class="dev-divider"></div>
+          <div class="dev-body">
+            <div class="dev-name">Daniel Luto</div>
+            <div class="dev-course">BS Information Technology · 2nd Year</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ DEVELOPER 2 — Keanle ════ -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="dev-card">
+          <div class="dev-photo-wrap">
+            <img src="../images/dev2.png" alt="Keanle"/>
+          </div>
+          <div class="dev-divider"></div>
+          <div class="dev-body">
+            <div class="dev-name">Keanle Federnal</div>
+            <div class="dev-course">BS Information Technology · 2nd Year</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ DEVELOPER 3 — Jessica ════ -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="dev-card">
+          <div class="dev-photo-wrap">
+            <img src="../images/dev3.jpg" alt="Jessica"/>
+          </div>
+          <div class="dev-divider"></div>
+          <div class="dev-body">
+            <div class="dev-name">Jessica Niduaza</div>
+            <div class="dev-course">BS Information Technology · 2nd Year</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ DEVELOPER 4 — Andrea ════ -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="dev-card">
+          <div class="dev-photo-wrap">
+            <img src="../images/dev4.png" alt="Andrea"/>
+          </div>
+          <div class="dev-divider"></div>
+          <div class="dev-body">
+            <div class="dev-name">Andrea Calalang</div>
+            <div class="dev-course">BS Information Technology · 2nd Year</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end row -->
+
+  </div>
+</section>
+
+<!-- ═══════════ CTA ═══════════ -->
+<section class="section-pad bg-dark-green">
+  <div class="container-xxl px-4 text-center">
+    <div class="section-tag light-tag mb-3">Ready to Start?</div>
+    <h2 class="section-title text-white mb-3">Find Your Furever Companion Today</h2>
+    <p style="font-size:16px;color:rgba(255,255,255,0.7);max-width:480px;margin:0 auto 28px">Browse available dogs and cats across all six municipalities of Marinduque and start your adoption journey.</p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+      <a href="pets.html" class="btn btn-gold btn-lg px-5">Browse Pets <i class="bi bi-arrow-right ms-1"></i></a>
+      <a href="contact.html" class="btn btn-hero-outline btn-lg px-5">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="fh-footer">
+  <div class="container-xxl px-4">
+    <div class="row g-4 mb-4">
+      <div class="col-lg-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <div class="brand-icon sm"><i class="bi bi-heart-fill"></i></div>
+          <span class="brand-text">Furever<span class="brand-accent">Home</span></span>
+        </div>
+        <p class="footer-desc">Connecting loving dogs and cats with caring families across Marinduque Province, Philippines.</p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#" class="social-btn"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-envelope-fill"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6 class="footer-heading">Platform</h6>
+        <ul class="footer-links">
+          <li><a href="pets.html">Find a Pet</a></li>
+          <li><a href="register.html">Post a Pet</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="tips.html">Care Tips</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6 class="footer-heading">Support</h6>
+        <ul class="footer-links">
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">Donate</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6 class="footer-heading">Contact Info</h6>
+        <ul class="footer-contact">
+          <li><i class="bi bi-geo-alt-fill"></i> Marinduque Province, Philippines</li>
+          <li><i class="bi bi-telephone-fill"></i> +63 912 345 6789</li>
+          <li><i class="bi bi-envelope-fill"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4a222f2626250a2c3f382f3c2f382225272f643a22">[email&#160;protected]</a></li>
+          <li><i class="bi bi-clock-fill"></i> Mon–Sat, 8:00 AM – 6:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Furever Home — Marinduque Province. All rights reserved. Made with <i class="bi bi-heart-fill text-danger"></i> for Marinduque's animals.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="fh-toast" id="toast"><i class="bi bi-check-circle-fill"></i> <span id="toastMsg"></span></div>
+<script data-cfasync="false" src

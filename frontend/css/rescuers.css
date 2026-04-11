@@ -1,0 +1,70 @@
+/* ── Rescuers Page ── */
+    .rescuer-hero {
+      background: linear-gradient(135deg, var(--dark-green), var(--mid-green));
+      padding: 72px 0 60px; position: relative; overflow: hidden;
+    }
+    .rescuer-hero::before {
+      content: '🐾'; position: absolute; right: 5%; bottom: -20px;
+      font-size: 220px; opacity: 0.05; transform: rotate(15deg); pointer-events: none;
+    }
+
+    /* Rescuer Card */
+    .rescuer-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: all 0.3s; height: 100%; display: flex; flex-direction: column;
+    }
+    .rescuer-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--gold); }
+    .rc-photo-wrap {
+      height: 160px; position: relative; background: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .rc-avatar {
+      width: 100px; height: 100px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 3px solid var(--white); box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .rc-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: var(--dark-green); color: var(--gold);
+      font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 100px;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .rc-body { padding: 18px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .rc-name { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; margin:0; }
+    .rc-location { font-size:12px; color:var(--text-light); display:flex; align-items:center; gap:4px; margin:0; }
+    .rc-location i { color:var(--gold); }
+    .rc-bio { font-size:13px; color:var(--text-mid); line-height:1.7; }
+    .rc-stats { display:flex; align-items:center; background:var(--cream); border-radius:10px; padding:10px 12px; }
+    .rc-stat { flex:1; text-align:center; }
+    .rcs-num   { display:block; font-size:15px; font-weight:800; color:var(--dark-green); }
+    .rcs-label { display:block; font-size:10px; color:var(--text-light); font-weight:600; text-transform:uppercase; margin-top:1px; }
+    .rc-stat-div { width:1px; height:28px; background:var(--border); }
+    .rc-specialty { display:flex; flex-wrap:wrap; gap:6px; }
+    .rc-tag { font-size:11px; font-weight:700; background:var(--light-green); color:var(--mid-green); padding:3px 10px; border-radius:100px; }
+    .rc-btn { display:block; text-align:center; padding:10px; background:var(--dark-green); color:var(--white); border-radius:10px; font-weight:700; font-size:13px; text-decoration:none; transition:all 0.2s; margin-top:auto; }
+    .rc-btn:hover { background:var(--mid-green); color:var(--white); }
+
+    /* Join section */
+    .join-section { background: var(--dark-green); }
+    .join-card {
+      background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-lg); padding: 28px;
+      transition: all 0.3s;
+    }
+    .join-card:hover { background: rgba(255,255,255,0.12); border-color: var(--gold); }
+    .join-card-icon { width:52px; height:52px; background:rgba(201,168,76,0.2); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; font-size:22px; color:var(--gold); margin-bottom:14px; }
+    .join-card-title { font-size:16px; font-weight:700; color:var(--white); margin-bottom:8px; }
+    .join-card-desc { font-size:13px; color:rgba(255,255,255,0.65); line-height:1.7; margin:0; }
+
+    /* Join form */
+    .join-form-card { background:var(--white); border-radius:var(--radius-xl); padding:40px; box-shadow:var(--shadow-lg); }
+    .fh-input { width:100%; border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:11px 14px; font-size:14px; outline:none; background:var(--cream); transition:border-color 0.2s; }
+    .fh-input:focus { border-color:var(--gold); background:var(--white); box-shadow:0 0 0 3px rgba(201,168,76,0.12); }
+    .fh-label { font-size:12px; font-weight:700; color:var(--text-mid); display:block; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.3px; }
+
+    /* Filter tabs */
+    .rescuer-filter { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px; }
+    .rf-btn { background:var(--cream); border:1.5px solid var(--border); border-radius:100px; padding:8px 18px; font-size:13px; font-weight:600; color:var(--text-mid); cursor:pointer; transition:all 0.2s; }
+    .rf-btn:hover { border-color:var(--dark-green); color:var(--dark-green); }
+    .rf-btn.active { background:var(--dark-green); border-color:var(--dark-green); color:var(--white); }

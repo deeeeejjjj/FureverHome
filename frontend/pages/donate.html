@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donate — Furever Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <style>
+/* ═══════════════════════════════════════
+   donate.css — Furever Home Donation Page
+   ═══════════════════════════════════════ */
+
+:root {
+  --dark-green:   #1a3c34;
+  --gold:         #c9a84c;
+  --gold-dark:    #a8893c;
+  --gold-light:   #f5e9c8;
+  --cream:        #f8f5f0;
+  --light-green:  #e8f0ec;
+  --border:       #e2e8e4;
+  --text-dark:    #1a1a1a;
+  --text-light:   #6b7280;
+  --radius-lg:    16px;
+  --radius-md:    10px;
+  --font-serif:   'Playfair Display', serif;
+  --font-sans:    'DM Sans', sans-serif;
+  --shadow-card:  0 4px 24px rgba(0,0,0,0.07);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { font-family: var(--font-sans); background: var(--cream); color: var(--text-dark); }
+
+.fw-700 { font-weight: 700; }
+.text-gold { color: var(--gold-dark) !important; }
+.btn-gold {
+  background: var(--gold);
+  color: var(--dark-green);
+  border: none;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  transition: background .2s, transform .15s;
+}
+.btn-gold:hover { background: var(--gold-dark); color: #fff; transform: translateY(-1px); }
+
+/* ── Hero ── */
+.donate-hero { background: #fff; padding: 48px 0 32px; }
+.section-tag {
+  display: inline-block;
+  background: var(--gold-light);
+  color: var(--gold-dark);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  text-transform: uppercase;
+}
+.donate-hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  color: var(--dark-green);
+  margin-top: 12px;
+}
+.donate-hero-sub {
+  font-size: 16px;
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-top: 8px;
+}
+
+/* ── Donation Section ── */
+.donate-section { padding: 40px 0 60px; }
+
+/* ── Donation Card ── */
+.donation-card {
+  background: var(--dark-green);
+  border-radius: 24px;
+  padding: 36px 32px;
+}
+.donation-pet-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+.donation-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.donation-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* Amount Buttons */
+.btn-amount {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.85);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all .2s;
+}
+.btn-amount:hover { background: rgba(255,255,255,0.2); color: #fff; }
+.btn-amount.active-amt {
+  background: var(--gold);
+  color: var(--dark-green);
+  border-color: var(--gold);
+}
+
+/* Custom Amount */
+.donation-custom-wrap {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.18);
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 380px;
+}
+.donation-custom-prefix {
+  padding: 0 12px;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 15px;
+  background: rgba(255,255,255,0.06);
+  border-right: 1px solid rgba(255,255,255,0.15);
+  line-height: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+.donation-custom-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  padding: 0 14px;
+  height: 44px;
+  outline: none;
+}
+.donation-custom-input::placeholder { color: rgba(255,255,255,0.35); }
+.donation-custom-input::-webkit-outer-spin-button,
+.donation-custom-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.donation-custom-btn {
+  background: var(--gold);
+  border: none;
+  color: var(--dark-green);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 0 18px;
+  height: 44px;
+  cursor: pointer;
+  transition: background .2s;
+}
+.donation-custom-btn:hover { background: var(--gold-dark); color: #fff; }
+
+/* Total Display */
+.donation-total {
+  font-family: var(--font-serif);
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.donation-currency { font-size: 28px; vertical-align: top; margin-top: 10px; display: inline-block; }
+.donation-selected-label { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
+
+/* ── Impact Cards ── */
+.impact-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+  transition: transform .2s;
+}
+.impact-card:hover { transform: translateY(-3px); }
+.impact-icon {
+  width: 52px;
+  height: 52px;
+  background: #fde8e8;
+  color: #e53e3e;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin: 0 auto 14px;
+}
+.impact-num {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark-green);
+}
+.impact-label {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+/* ── Modal ── */
+.donation-modal-content {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.donation-modal-header {
+  background: var(--dark-green);
+  color: #fff;
+  padding: 20px 28px;
+  border-bottom: none;
+}
+.donation-modal-header .modal-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.modal-subtitle { font-size: 13px; color: rgba(255,255,255,0.6); }
+.modal-subtitle strong { color: var(--gold); }
+
+/* Step Bar */
+.step-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 28px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  gap: 0;
+}
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e2e8e4;
+  color: var(--text-light);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .3s, color .3s;
+}
+.step-item.active .step-circle { background: var(--dark-green); color: #fff; }
+.step-item.done .step-circle { background: var(--gold); color: var(--dark-green); }
+.step-label { font-size: 11px; color: var(--text-light); font-weight: 500; }
+.step-item.active .step-label { color: var(--dark-green); font-weight: 700; }
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  margin: 0 8px;
+  margin-bottom: 20px;
+  min-width: 40px;
+  max-width: 80px;
+  transition: background .3s;
+}
+.step-line.done { background: var(--gold); }
+
+/* Step Panel */
+.step-panel { background: #fff; }
+.step-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--dark-green);
+}
+
+/* Form Elements */
+.fh-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+  display: block;
+}
+.fh-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text-dark);
+  background: #fff;
+  transition: border-color .2s;
+  outline: none;
+}
+.fh-input:focus { border-color: var(--dark-green); }
+.fh-input.is-invalid { border-color: #e53e3e; }
+.fh-select {
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text-dark);
+  background: #fff;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
+.fh-select:focus { border-color: var(--dark-green); }
+.donate-check {
+  font-size: 13px;
+  color: var(--text-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Payment Method Cards */
+.payment-method-card {
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .2s, background .2s, transform .15s;
+  background: #fff;
+}
+.payment-method-card:hover { border-color: var(--dark-green); background: var(--cream); transform: translateY(-2px); }
+.payment-method-card.selected { border-color: var(--dark-green); background: var(--light-green); }
+.pm-icon { height: 52px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
+.pm-label { font-size: 12px; font-weight: 700; color: var(--text-dark); }
+
+/* Payment Details */
+.payment-details { margin-top: 4px; }
+.payment-info-box {
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+}
+.payment-info-header {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark-green);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.payment-steps-list {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+.payment-steps-list li {
+  font-size: 13.5px;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+.copy-value {
+  cursor: pointer;
+  color: var(--dark-green);
+  background: rgba(26,60,52,0.07);
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 13px;
+  transition: background .15s;
+}
+.copy-value:hover { background: rgba(26,60,52,0.15); }
+.copy-value i { font-size: 11px; }
+
+/* Bank Details Grid */
+.bank-details-grid { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.bank-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+}
+.bank-row:last-child { border-bottom: none; }
+.bank-row span { color: var(--text-light); flex-shrink: 0; }
+.bank-row strong { text-align: right; }
+
+/* Shelter List */
+.shelter-list { display: flex; flex-direction: column; gap: 10px; }
+.shelter-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 13.5px;
+}
+.cash-note {
+  background: var(--gold-light);
+  color: var(--gold-dark);
+  font-size: 13px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* Confirm Summary */
+.confirm-summary {
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.confirm-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--border);
+}
+.confirm-row:last-child { border-bottom: none; }
+.confirm-row span { color: var(--text-light); }
+.confirm-row strong { color: var(--text-dark); }
+.confirm-row.total-row { background: var(--dark-green); }
+.confirm-row.total-row span { color: rgba(255,255,255,0.7); font-size: 14px; }
+.confirm-row.total-row strong { color: var(--gold); font-size: 20px; font-family: var(--font-serif); }
+.confirm-note {
+  font-size: 12.5px;
+  color: var(--text-light);
+  padding: 12px 16px;
+  background: var(--light-green);
+  border-radius: 10px;
+}
+
+/* Success */
+.success-icon {
+  font-size: 64px;
+  color: #38a169;
+  margin-bottom: 16px;
+  animation: popIn .4s ease;
+}
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  80% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.success-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--dark-green);
+  margin-bottom: 8px;
+}
+.success-sub { font-size: 15px; color: var(--text-light); }
+.success-ref {
+  display: inline-block;
+  background: var(--light-green);
+  color: var(--dark-green);
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 13px;
+}
+  </style>
+</head>
+<body>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="donate-hero">
+  <div class="container py-5 text-center">
+    <div class="section-tag mb-3">SUPPORT THE CAUSE</div>
+    <h1 class="donate-hero-title">Help Animals Find Their Home</h1>
+    <p class="donate-hero-sub">Every peso goes directly toward feeding, vaccinating, and<br/>sheltering animals across Marinduque Province.</p>
+  </div>
+</section>
+
+<!-- ===== DONATION CARD ===== -->
+<section class="donate-section">
+  <div class="container">
+    <div class="donation-card">
+      <div class="row align-items-center g-4">
+
+        <!-- Pet Image -->
+        <div class="col-lg-2 text-center">
+          <img src="https://images.unsplash.com/photo-1601979031925-424e53b6caaa?w=200&q=80" alt="Pet" class="donation-pet-img"/>
+        </div>
+
+        <!-- Amounts -->
+        <div class="col-lg-6">
+          <h3 class="donation-title">Help Us Save More Lives in Marinduque</h3>
+          <p class="donation-desc">Your donation helps us feed, vaccinate, and shelter animals across all six municipalities while we find them their forever homes.</p>
+
+          <div class="donation-amounts d-flex gap-2 flex-wrap mt-3">
+            <button class="btn btn-amount" onclick="selectAmount(this,100)">₱100</button>
+            <button class="btn btn-amount active-amt" onclick="selectAmount(this,300)">₱300</button>
+            <button class="btn btn-amount" onclick="selectAmount(this,500)">₱500</button>
+            <button class="btn btn-amount" onclick="selectAmount(this,1000)">₱1,000</button>
+          </div>
+
+          <div class="donation-custom-wrap mt-2">
+            <span class="donation-custom-prefix">₱</span>
+            <input type="number" class="donation-custom-input" id="customAmt" placeholder="Enter custom amount..." min="1" oninput="applyCustomAmount(this.value)"/>
+            <button class="donation-custom-btn" onclick="confirmCustomAmount()">Set Amount</button>
+          </div>
+        </div>
+
+        <!-- Total + CTA -->
+        <div class="col-lg-4 text-center">
+          <div class="donation-total mb-1">
+            <span class="donation-currency">₱</span><span class="donation-value" id="donationAmt">300</span>
+          </div>
+          <p class="donation-selected-label">Selected amount</p>
+          <button class="btn btn-gold w-100 py-2 fw-700" onclick="openPaymentModal()">
+            Donate Now <i class="bi bi-heart-fill ms-1"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Impact Stats -->
+    <div class="row g-3 mt-4">
+      <div class="col-md-4">
+        <div class="impact-card">
+          <div class="impact-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+          <div class="impact-num">₱100</div>
+          <div class="impact-label">Feeds a pet for 2 weeks</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="impact-card">
+          <div class="impact-icon" style="background:#e8f5e9;color:#38a169"><i class="bi bi-shield-fill-check"></i></div>
+          <div class="impact-num">₱300</div>
+          <div class="impact-label">Covers one vaccination</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="impact-card">
+          <div class="impact-icon" style="background:#e8eaf6;color:#3949ab"><i class="bi bi-house-heart-fill"></i></div>
+          <div class="impact-num">₱1,000</div>
+          <div class="impact-label">Shelters a pet for a month</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAYMENT MODAL ===== -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content donation-modal-content">
+
+      <!-- Header -->
+      <div class="modal-header donation-modal-header">
+        <div>
+          <h5 class="modal-title" id="paymentModalLabel">Complete Your Donation</h5>
+          <p class="modal-subtitle mb-0">Donating <strong id="modalAmtDisplay">₱300</strong> to Furever Home</p>
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body p-0">
+
+        <!-- Step Indicator -->
+        <div class="step-bar">
+          <div class="step-item active" id="step-ind-1">
+            <div class="step-circle">1</div>
+            <div class="step-label">Your Info</div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-item" id="step-ind-2">
+            <div class="step-circle">2</div>
+            <div class="step-label">Payment</div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-item" id="step-ind-3">
+            <div class="step-circle">3</div>
+            <div class="step-label">Confirm</div>
+          </div>
+        </div>
+
+        <!-- STEP 1: Donor Info -->
+        <div id="step1" class="step-panel p-4">
+          <h6 class="step-title mb-4">Donor Information</h6>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="fh-label">First Name <span class="text-danger">*</span></label>
+              <input type="text" class="fh-input" id="donorFirst" placeholder="Maria"/>
+            </div>
+            <div class="col-md-6">
+              <label class="fh-label">Last Name <span class="text-danger">*</span></label>
+              <input type="text" class="fh-input" id="donorLast" placeholder="Reyes"/>
+            </div>
+            <div class="col-md-6">
+              <label class="fh-label">Email Address <span class="text-danger">*</span></label>
+              <input type="email" class="fh-input" id="donorEmail" placeholder="maria@email.com"/>
+            </div>
+            <div class="col-md-6">
+              <label class="fh-label">Phone Number</label>
+              <input type="tel" class="fh-input" id="donorPhone" placeholder="09XX XXX XXXX"/>
+            </div>
+            <div class="col-12">
+              <label class="fh-label">Municipality</label>
+              <select class="fh-select w-100" id="donorMunicipality">
+                <option value="">Select municipality...</option>
+                <option>Boac</option>
+                <option>Gasan</option>
+                <option>Mogpog</option>
+                <option>Santa Cruz</option>
+                <option>Buenavista</option>
+                <option>Torrijos</option>
+                <option>Outside Marinduque</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="fh-label">Leave a Message <span class="text-muted" style="font-size:12px">(optional)</span></label>
+              <textarea class="fh-input" id="donorMessage" rows="2" placeholder="A kind word for the animals..."></textarea>
+            </div>
+            <div class="col-12">
+              <label class="donate-check">
+                <input type="checkbox" id="anonymous" style="accent-color:var(--gold)"/>
+                Donate anonymously
+              </label>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end mt-4">
+            <button class="btn btn-gold px-5" onclick="goStep(2)">Continue <i class="bi bi-arrow-right ms-1"></i></button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Payment Method -->
+        <div id="step2" class="step-panel p-4" style="display:none">
+          <h6 class="step-title mb-4">Choose Payment Method</h6>
+
+          <div class="row g-3 mb-4">
+            <div class="col-6 col-md-3">
+              <div class="payment-method-card" onclick="selectMethod('gcash',this)" id="method-gcash">
+                <div class="pm-icon"><img src="data:image/jpeg;base64,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/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD73XTPD/8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APnrEAAABAH7z/8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD+6ggAAAAAAAAC2P8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/tEAAR23sz2okIABX/8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD+kQABT/wjQ5WvzShNP/8A+/8A5/8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A6gABXhqMfPPFXSfzP/8A/wDX+r3/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD9CAEenR8888888i//AKnC0i/vmP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AGwAkRhfOm6NINPvf/1fvlQ9fvv/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A+pAZ/e8+K/8A/wD/AP8AP/8A/wD2+7/++q//AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8AkABx0Hz/AP8A/wD/AP8A/wD/AP8A/wBr7rdX6nb/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APsAA8y84Z//APxss84sHE5/vgf/AL43/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wDvAA9/8op//wD2vPPPPPFlvvgvfvtv/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wCsAB2bzzn/AP8A0stDd/PGCvvnTvvnf/8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP6AANV7vD//AP8A/wD/AOfvyvzz6j0b6r3/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8AyADf2PLBP/8A/wDFQ88Nye+4/d+p/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8AbAA1Si8sLUwIVc8IAF++Hod+l/8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AMDAX9cE8888888cn/8A0MvwPvtf/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A6gABPYL4/PPHsOPOf/8A/wD3+u//AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/APyQAEsP34MVXusYwNf/AP8AT2o//wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD7oAAAMdtv/M8wABPf/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AISAAAACAAAAHN//AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/ADTQgAAL3bPv/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/nTDPv8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A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" alt="GCash" style="width:48px;height:48px;object-fit:contain"/></div>
+                <div class="pm-label">GCash</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="payment-method-card" onclick="selectMethod('paymaya',this)" id="method-paymaya">
+                <div class="pm-icon"><img src="data:image/jpeg;base64,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omkpHJ5k5R9IQLhZf0KGwE2Il+DcszyTnBV+TBhIELFAzCrAJHNY+sh9HhBaidOWZ5fkwHKA2gEuQEKFpwDOWeTmqeZgC8C4cAjk3AlDgMPzVfQ/S0z6iAxAAmScEN5pd635smKO7QOIuEBosIUDIz5L9rQ2f7fnXOac/wDMx//aAAwDAQACAAMAAAAQ888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888881084088880888888888818888888884fPNd+/z8+9vwlfp8o02kdvJVf888888i4UWZWVqM5Xu3/wDavKF1t9DvfPPPPPPPMrfL7Ha/HefPGv8AWryxca1zy3zzzzzzzwLzz7/2vwOr3hT/AOu9+9A9b8s88888888C88509r8VUuc837afd8GUsN918888888MO8888sc8t8YMf8se/X+s6/t9/wDPPPPPPPPPPPPPPPPPPPPPKTrtPPPPPPPPPPPPPPPPPPPPPPPPPPPPDLLvPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP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" alt="PayMaya" style="width:48px;height:48px;object-fit:contain"/></div>
+                <div class="pm-label">PayMaya</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="payment-method-card" onclick="selectMethod('bank',this)" id="method-bank">
+                <div class="pm-icon"><i class="bi bi-bank2" style="font-size:32px;color:var(--dark-green)"></i></div>
+                <div class="pm-label">Bank Transfer</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="payment-method-card" onclick="selectMethod('cash',this)" id="method-cash">
+                <div class="pm-icon"><i class="bi bi-cash-stack" style="font-size:32px;color:var(--dark-green)"></i></div>
+                <div class="pm-label">Cash</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- GCash Instructions -->
+          <div id="details-gcash" class="payment-details" style="display:none">
+            <div class="payment-info-box">
+              <div class="payment-info-header"><i class="bi bi-phone-fill me-2"></i>GCash Payment Instructions</div>
+              <ol class="payment-steps-list">
+                <li>Open your GCash app and tap <strong>Send Money</strong>.</li>
+                <li>Enter the number: <strong class="copy-value" onclick="copyText('09171234567')">09171234567 <i class="bi bi-copy"></i></strong></li>
+                <li>Enter the amount: <strong id="gcash-amt" class="text-gold">₱300</strong></li>
+                <li>In the notes/message, type: <strong class="copy-value" onclick="copyText('FH-DONATION')">FH-DONATION <i class="bi bi-copy"></i></strong></li>
+                <li>Take a screenshot of your receipt.</li>
+              </ol>
+              <label class="fh-label mt-3">Upload GCash Receipt <span class="text-danger">*</span></label>
+              <input type="file" class="fh-input" id="gcash-receipt" accept="image/*,.pdf"/>
+              <label class="fh-label mt-2">GCash Reference Number <span class="text-danger">*</span></label>
+              <input type="text" class="fh-input" id="gcash-ref" placeholder="e.g. 1234567890"/>
+            </div>
+          </div>
+
+          <!-- PayMaya Instructions -->
+          <div id="details-paymaya" class="payment-details" style="display:none">
+            <div class="payment-info-box">
+              <div class="payment-info-header"><i class="bi bi-credit-card-fill me-2"></i>PayMaya Payment Instructions</div>
+              <ol class="payment-steps-list">
+                <li>Open the Maya app and tap <strong>Send Money</strong>.</li>
+                <li>Enter the number: <strong class="copy-value" onclick="copyText('09281234567')">09281234567 <i class="bi bi-copy"></i></strong></li>
+                <li>Enter the amount: <strong id="paymaya-amt" class="text-gold">₱300</strong></li>
+                <li>Add note: <strong class="copy-value" onclick="copyText('FH-DONATION')">FH-DONATION <i class="bi bi-copy"></i></strong></li>
+                <li>Screenshot your confirmation screen.</li>
+              </ol>
+              <label class="fh-label mt-3">Upload PayMaya Receipt <span class="text-danger">*</span></label>
+              <input type="file" class="fh-input" id="paymaya-receipt" accept="image/*,.pdf"/>
+              <label class="fh-label mt-2">Maya Reference Number <span class="text-danger">*</span></label>
+              <input type="text" class="fh-input" id="paymaya-ref" placeholder="e.g. MYA-1234567890"/>
+            </div>
+          </div>
+
+          <!-- Bank Transfer Instructions -->
+          <div id="details-bank" class="payment-details" style="display:none">
+            <div class="payment-info-box">
+              <div class="payment-info-header"><i class="bi bi-bank2 me-2"></i>Bank Transfer Details</div>
+              <div class="bank-details-grid">
+                <div class="bank-row"><span>Bank</span><strong>BDO Unibank</strong></div>
+                <div class="bank-row"><span>Account Name</span><strong class="copy-value" onclick="copyText('Furever Home Marinduque')">Furever Home Marinduque <i class="bi bi-copy"></i></strong></div>
+                <div class="bank-row"><span>Account Number</span><strong class="copy-value" onclick="copyText('1234567890123')">1234-5678-9012-3 <i class="bi bi-copy"></i></strong></div>
+                <div class="bank-row"><span>Amount</span><strong id="bank-amt" class="text-gold">₱300</strong></div>
+                <div class="bank-row"><span>Reference</span><strong class="copy-value" onclick="copyText('FH-DONATION')">FH-DONATION <i class="bi bi-copy"></i></strong></div>
+              </div>
+              <label class="fh-label mt-3">Upload Transfer Receipt <span class="text-danger">*</span></label>
+              <input type="file" class="fh-input" id="bank-receipt" accept="image/*,.pdf"/>
+              <label class="fh-label mt-2">Bank Reference / Transaction Number <span class="text-danger">*</span></label>
+              <input type="text" class="fh-input" id="bank-ref" placeholder="e.g. BDO-20260329-XXXXXXX"/>
+            </div>
+          </div>
+
+          <!-- Cash Instructions -->
+          <div id="details-cash" class="payment-details" style="display:none">
+            <div class="payment-info-box">
+              <div class="payment-info-header"><i class="bi bi-cash-coin me-2"></i>Cash Drop-off Information</div>
+              <p style="font-size:14px;color:var(--text-light);margin-bottom:12px">You can drop off your cash donation at any of our partner shelters. Please mention "Furever Home Donation" upon arrival.</p>
+              <div class="shelter-list">
+                <div class="shelter-row"><i class="bi bi-geo-alt-fill text-gold"></i><div><strong>Boac Animal Shelter</strong><div style="font-size:12px;color:var(--text-light)">Boac, Marinduque · Mon–Sat 8AM–5PM</div></div></div>
+                <div class="shelter-row"><i class="bi bi-geo-alt-fill text-gold"></i><div><strong>Gasan PAWS Center</strong><div style="font-size:12px;color:var(--text-light)">Gasan, Marinduque · Mon–Fri 9AM–4PM</div></div></div>
+                <div class="shelter-row"><i class="bi bi-geo-alt-fill text-gold"></i><div><strong>Santa Cruz Rescue Hub</strong><div style="font-size:12px;color:var(--text-light)">Santa Cruz, Marinduque · Weekends 8AM–12PM</div></div></div>
+              </div>
+              <div class="cash-note mt-3"><i class="bi bi-info-circle-fill me-2"></i>After dropping off, please fill in the date and shelter name below so we can verify your donation.</div>
+              <div class="row g-2 mt-2">
+                <div class="col-md-6">
+                  <label class="fh-label">Drop-off Date <span class="text-danger">*</span></label>
+                  <input type="date" class="fh-input" id="cash-date"/>
+                </div>
+                <div class="col-md-6">
+                  <label class="fh-label">Shelter <span class="text-danger">*</span></label>
+                  <select class="fh-select w-100" id="cash-shelter">
+                    <option value="">Select shelter...</option>
+                    <option>Boac Animal Shelter</option>
+                    <option>Gasan PAWS Center</option>
+                    <option>Santa Cruz Rescue Hub</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between mt-4">
+            <button class="btn btn-outline-dark px-4" onclick="goStep(1)"><i class="bi bi-arrow-left me-1"></i> Back</button>
+            <button class="btn btn-gold px-5" onclick="goStep(3)">Review Donation <i class="bi bi-arrow-right ms-1"></i></button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Confirm -->
+        <div id="step3" class="step-panel p-4" style="display:none">
+          <h6 class="step-title mb-4">Review &amp; Confirm</h6>
+          <div class="confirm-summary" id="confirmSummary"></div>
+          <div class="confirm-note mt-3"><i class="bi bi-shield-check me-2 text-gold"></i>Your donation is safe and will be verified within 24 hours. A confirmation email will be sent to you.</div>
+          <div class="d-flex justify-content-between mt-4">
+            <button class="btn btn-outline-dark px-4" onclick="goStep(2)"><i class="bi bi-arrow-left me-1"></i> Back</button>
+            <button class="btn btn-gold px-5" id="submitBtn" onclick="submitDonation()">
+              <i class="bi bi-heart-fill me-1"></i> Confirm Donation
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 4: Success -->
+        <div id="step4" class="step-panel p-4 text-center" style="display:none">
+          <div class="success-icon"><i class="bi bi-check-circle-fill"></i></div>
+          <h4 class="success-title">Thank You for Your Donation!</h4>
+          <p class="success-sub">Your <strong id="successAmt">₱300</strong> donation has been submitted and is pending verification.</p>
+          <div class="success-ref mt-2 mb-4">Reference: <strong id="successRef">FH-2026-XXXXX</strong></div>
+          <p style="font-size:13px;color:var(--text-light)">A confirmation will be sent to your email once we verify your payment. Thank you for helping animals in Marinduque! 🐾</p>
+          <button class="btn btn-gold px-5 mt-2" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="fhToast" style="position:fixed;bottom:28px;right:28px;background:var(--dark-green);color:white;padding:13px 22px;border-radius:12px;font-size:14px;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,0.18);z-index:9999;display:none;align-items:center;gap:10px;max-width:320px">
+  <i class="bi bi-check-circle-fill" style="color:var(--gold);font-size:16px"></i>
+  <span id="fhToastMsg"></span>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ═══════════════════════════════════════
+   donate.js — Furever Home Donation Page
+   ═══════════════════════════════════════ */
+
+var selectedAmount  = 300;
+var selectedMethod  = null;
+var currentStep     = 1;
+var paymentModalInst = null;
+
+function selectAmount(btn, amount) {
+  document.querySelectorAll('.btn-amount').forEach(function(b) { b.classList.remove('active-amt'); });
+  btn.classList.add('active-amt');
+  selectedAmount = amount;
+  document.getElementById('donationAmt').textContent = amount.toLocaleString();
+  document.getElementById('customAmt').value = '';
+}
+
+function applyCustomAmount(val) {
+  var n = parseInt(val);
+  if (n > 0) {
+    document.querySelectorAll('.btn-amount').forEach(function(b) { b.classList.remove('active-amt'); });
+    selectedAmount = n;
+    document.getElementById('donationAmt').textContent = n.toLocaleString();
+  }
+}
+
+function confirmCustomAmount() {
+  var val = parseInt(document.getElementById('customAmt').value);
+  if (!val || val < 1) { showToast('Please enter a valid amount.'); return; }
+  selectedAmount = val;
+  document.getElementById('donationAmt').textContent = val.toLocaleString();
+  document.querySelectorAll('.btn-amount').forEach(function(b) { b.classList.remove('active-amt'); });
+  showToast('₱' + val.toLocaleString() + ' set as donation amount.');
+}
+
+function openPaymentModal() {
+  if (selectedAmount < 1) { showToast('Please select or enter a donation amount first.'); return; }
+  currentStep = 1;
+  selectedMethod = null;
+  goStepUI(1);
+  updateAmountDisplays();
+  document.querySelectorAll('.payment-method-card').forEach(function(c) { c.classList.remove('selected'); });
+  document.querySelectorAll('.payment-details').forEach(function(d) { d.style.display = 'none'; });
+  paymentModalInst = new bootstrap.Modal(document.getElementById('paymentModal'));
+  paymentModalInst.show();
+}
+
+function updateAmountDisplays() {
+  var fmt = '₱' + selectedAmount.toLocaleString();
+  document.getElementById('modalAmtDisplay').textContent = fmt;
+  var gcashAmt   = document.getElementById('gcash-amt');
+  var paymayaAmt = document.getElementById('paymaya-amt');
+  var bankAmt    = document.getElementById('bank-amt');
+  if (gcashAmt)   gcashAmt.textContent   = fmt;
+  if (paymayaAmt) paymayaAmt.textContent = fmt;
+  if (bankAmt)    bankAmt.textContent    = fmt;
+}
+
+function goStep(n) {
+  if (n === 2 && !validateStep1()) return;
+  if (n === 3 && !validateStep2()) return;
+  if (n === 3) buildConfirmSummary();
+  currentStep = n;
+  goStepUI(n);
+}
+
+function goStepUI(n) {
+  for (var i = 1; i <= 4; i++) {
+    var panel = document.getElementById('step' + i);
+    if (panel) panel.style.display = (i === n) ? 'block' : 'none';
+  }
+  updateStepIndicators(n);
+}
+
+function updateStepIndicators(n) {
+  for (var i = 1; i <= 3; i++) {
+    var ind = document.getElementById('step-ind-' + i);
+    if (!ind) continue;
+    ind.classList.remove('active', 'done');
+    if (i < n)  ind.classList.add('done');
+    if (i === n) ind.classList.add('active');
+  }
+  var lines = document.querySelectorAll('.step-line');
+  lines.forEach(function(l, idx) { l.classList.toggle('done', n > idx + 1); });
+}
+
+function validateStep1() {
+  var first = document.getElementById('donorFirst').value.trim();
+  var last  = document.getElementById('donorLast').value.trim();
+  var email = document.getElementById('donorEmail').value.trim();
+  clearErrors();
+  var ok = true;
+  if (!first) { setError('donorFirst', 'First name is required.'); ok = false; }
+  if (!last)  { setError('donorLast',  'Last name is required.'); ok = false; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError('donorEmail', 'A valid email is required.'); ok = false; }
+  if (!ok) showToast('Please fill in the required fields.');
+  return ok;
+}
+
+function validateStep2() {
+  clearErrors();
+  if (!selectedMethod) { showToast('Please choose a payment method.'); return false; }
+  if (selectedMethod === 'gcash') {
+    var ref = document.getElementById('gcash-ref').value.trim();
+    var receipt = document.getElementById('gcash-receipt').files.length;
+    if (!ref)     { setError('gcash-ref', 'Reference number is required.'); showToast('Please enter your GCash reference number.'); return false; }
+    if (!receipt) { showToast('Please upload your GCash receipt.'); return false; }
+  }
+  if (selectedMethod === 'paymaya') {
+    var ref2    = document.getElementById('paymaya-ref').value.trim();
+    var receipt2 = document.getElementById('paymaya-receipt').files.length;
+    if (!ref2)     { setError('paymaya-ref', 'Reference number is required.'); showToast('Please enter your Maya reference number.'); return false; }
+    if (!receipt2) { showToast('Please upload your PayMaya receipt.'); return false; }
+  }
+  if (selectedMethod === 'bank') {
+    var ref3    = document.getElementById('bank-ref').value.trim();
+    var receipt3 = document.getElementById('bank-receipt').files.length;
+    if (!ref3)     { setError('bank-ref', 'Transaction number is required.'); showToast('Please enter the bank transaction number.'); return false; }
+    if (!receipt3) { showToast('Please upload your bank transfer receipt.'); return false; }
+  }
+  if (selectedMethod === 'cash') {
+    var date    = document.getElementById('cash-date').value;
+    var shelter = document.getElementById('cash-shelter').value;
+    if (!date)    { setError('cash-date',    'Drop-off date is required.'); showToast('Please enter the drop-off date.'); return false; }
+    if (!shelter) { setError('cash-shelter', 'Please select a shelter.'); showToast('Please select the shelter.'); return false; }
+  }
+  return true;
+}
+
+function setError(id, msg) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.classList.add('is-invalid');
+  var err = document.createElement('div');
+  err.className = 'invalid-feedback d-block';
+  err.style.fontSize = '12px';
+  err.textContent = msg;
+  el.parentNode.appendChild(err);
+}
+
+function clearErrors() {
+  document.querySelectorAll('.is-invalid').forEach(function(el) { el.classList.remove('is-invalid'); });
+  document.querySelectorAll('.invalid-feedback').forEach(function(el) { el.remove(); });
+}
+
+function selectMethod(method, card) {
+  selectedMethod = method;
+  document.querySelectorAll('.payment-method-card').forEach(function(c) { c.classList.remove('selected'); });
+  card.classList.add('selected');
+  document.querySelectorAll('.payment-details').forEach(function(d) { d.style.display = 'none'; });
+  var det = document.getElementById('details-' + method);
+  if (det) { det.style.display = 'block'; }
+  updateAmountDisplays();
+}
+
+function buildConfirmSummary() {
+  var anon     = document.getElementById('anonymous').checked;
+  var first    = document.getElementById('donorFirst').value.trim();
+  var last     = document.getElementById('donorLast').value.trim();
+  var email    = document.getElementById('donorEmail').value.trim();
+  var phone    = document.getElementById('donorPhone').value.trim() || '—';
+  var muni     = document.getElementById('donorMunicipality').value || '—';
+  var message  = document.getElementById('donorMessage').value.trim() || '—';
+  var name     = anon ? 'Anonymous' : (first + ' ' + last);
+  var methodLabels = { gcash: 'GCash', paymaya: 'PayMaya', bank: 'Bank Transfer', cash: 'Cash Drop-off' };
+  var methodLabel  = methodLabels[selectedMethod] || selectedMethod;
+  var ref = '—';
+  if (selectedMethod === 'gcash')    ref = document.getElementById('gcash-ref').value.trim();
+  if (selectedMethod === 'paymaya')  ref = document.getElementById('paymaya-ref').value.trim();
+  if (selectedMethod === 'bank')     ref = document.getElementById('bank-ref').value.trim();
+  if (selectedMethod === 'cash') {
+    ref = document.getElementById('cash-shelter').value + ' · ' + document.getElementById('cash-date').value;
+  }
+  var rows = [
+    ['Donor Name', name], ['Email', email], ['Phone', phone],
+    ['Municipality', muni], ['Payment Method', methodLabel],
+    ['Reference / Info', ref], ['Message', message],
+  ];
+  var html = rows.map(function(r) {
+    return '<div class="confirm-row"><span>' + r[0] + '</span><strong>' + r[1] + '</strong></div>';
+  }).join('');
+  html += '<div class="confirm-row total-row"><span>Total Donation</span><strong>₱' + selectedAmount.toLocaleString() + '</strong></div>';
+  document.getElementById('confirmSummary').innerHTML = html;
+  document.getElementById('successAmt').textContent = '₱' + selectedAmount.toLocaleString();
+}
+
+function submitDonation() {
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span> Processing...';
+  var formData = new FormData();
+  formData.append('donor_first',    document.getElementById('donorFirst').value.trim());
+  formData.append('donor_last',     document.getElementById('donorLast').value.trim());
+  formData.append('donor_email',    document.getElementById('donorEmail').value.trim());
+  formData.append('donor_phone',    document.getElementById('donorPhone').value.trim());
+  formData.append('donor_muni',     document.getElementById('donorMunicipality').value);
+  formData.append('message',        document.getElementById('donorMessage').value.trim());
+  formData.append('anonymous',      document.getElementById('anonymous').checked ? '1' : '0');
+  formData.append('amount',         selectedAmount);
+  formData.append('method',         selectedMethod);
+  if (selectedMethod === 'gcash') {
+    formData.append('reference',    document.getElementById('gcash-ref').value.trim());
+    var gcashFile = document.getElementById('gcash-receipt').files[0];
+    if (gcashFile) formData.append('receipt', gcashFile);
+  } else if (selectedMethod === 'paymaya') {
+    formData.append('reference',    document.getElementById('paymaya-ref').value.trim());
+    var pmFile = document.getElementById('paymaya-receipt').files[0];
+    if (pmFile) formData.append('receipt', pmFile);
+  } else if (selectedMethod === 'bank') {
+    formData.append('reference',    document.getElementById('bank-ref').value.trim());
+    var bankFile = document.getElementById('bank-receipt').files[0];
+    if (bankFile) formData.append('receipt', bankFile);
+  } else if (selectedMethod === 'cash') {
+    formData.append('cash_date',    document.getElementById('cash-date').value);
+    formData.append('cash_shelter', document.getElementById('cash-shelter').value);
+  }
+  fetch('donate_submit.php', { method: 'POST', body: formData })
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    if (data.success) {
+      document.getElementById('successRef').textContent = data.reference || 'FH-' + Date.now();
+      goStepUI(4);
+    } else {
+      showToast('Error: ' + (data.message || 'Submission failed. Please try again.'));
+      btn.disabled = false;
+      btn.innerHTML = '<i class="bi bi-heart-fill me-1"></i> Confirm Donation';
+    }
+  })
+  .catch(function() {
+    var ref = 'FH-' + new Date().getFullYear() + '-' + Math.floor(10000 + Math.random() * 90000);
+    document.getElementById('successRef').textContent = ref;
+    goStepUI(4);
+  });
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(function() {
+    showToast('Copied: ' + text);
+  }).catch(function() { showToast('Copied!'); });
+}
+
+function showToast(msg) {
+  var toast = document.getElementById('fhToast');
+  var toastMsg = document.getElementById('fhToastMsg');
+  if (!toast || !toastMsg) return;
+  toastMsg.textContent = msg;
+  toast.style.display = 'flex';
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(function() { toast.style.display = 'none'; }, 3200);
+}
+</script>
+</body>
+</html>

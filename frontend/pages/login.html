@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign In — Furever Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/styles.css"/>
+  <link rel="stylesheet" href="../css/login.css"/>
+</head>
+<body class="auth-body">
+
+<div class="auth-bg-pattern"></div>
+<a href="../index.html" class="auth-back-link"><i class="bi bi-arrow-left"></i> Back to Home</a>
+
+<div class="auth-center-wrap">
+  <div class="auth-card">
+
+    <div class="auth-logo">
+      <div class="brand-icon"><i class="bi bi-heart-fill"></i></div>
+      <span class="brand-text">Furever<span class="brand-accent">Home</span></span>
+    </div>
+
+    <div class="auth-pet-row">
+      <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=100&q=80" class="auth-pet-av" alt="Cat"/>
+      <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=100&q=80" class="auth-pet-av main" alt="Dog"/>
+      <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=100&q=80" class="auth-pet-av" alt="Cat"/>
+    </div>
+
+    <h2 class="auth-title">Welcome Back</h2>
+    <p class="auth-subtitle">Sign in to continue your adoption journey</p>
+
+    <!-- DB: Server response messages go here -->
+    <div id="authAlert" class="auth-alert" style="display:none"></div>
+
+    <div class="social-auth-row">
+      <button type="button" class="social-btn-item" onclick="handleSocialLogin('google')">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.79-.07-1.54-.19-2.27h-11.3v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" d="M12.255 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96h-3.98v3.09C3.515 21.3 7.615 24 12.255 24z"/><path fill="#FBBC05" d="M5.525 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62h-3.98a11.86 11.86 0 0 0 0 10.76l3.98-3.09z"/><path fill="#EA4335" d="M12.255 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C18.205 1.19 15.495 0 12.255 0c-4.64 0-8.74 2.7-10.71 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
+        Google
+      </button>
+      <button type="button" class="social-btn-item" onclick="handleSocialLogin('facebook')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </button>
+    </div>
+
+    <div class="auth-or"><span>or continue with email</span></div>
+
+    <!--
+      ═══════════════════════════════════════════
+      DB INTEGRATION — POST /api/auth/login
+      Body:    { email, password, rememberMe }
+      200 OK:  { token, user: {id, name, role} }
+               → store token, redirect by role
+      401:     { message: "Invalid credentials" }
+      422:     { errors: { field: message } }
+      ═══════════════════════════════════════════
+    -->
+    <form id="loginForm" onsubmit="handleLogin(event)" novalidate>
+
+      <div class="fauth-field">
+        <label class="fauth-label" for="loginEmail">Email Address</label>
+        <div class="fauth-input-wrap">
+          <i class="bi bi-envelope fauth-icon"></i>
+          <input type="email" id="loginEmail" name="email" class="fauth-input"
+            placeholder="you@email.com" required autocomplete="email"/>
+        </div>
+        <span class="fauth-error" id="emailError"></span>
+      </div>
+
+      <div class="fauth-field">
+        <label class="fauth-label" for="loginPw">Password</label>
+        <div class="fauth-input-wrap">
+          <i class="bi bi-lock fauth-icon"></i>
+          <input type="password" id="loginPw" name="password" class="fauth-input"
+            placeholder="Your password" required autocomplete="current-password"/>
+          <button type="button" class="fauth-eye" onclick="togglePw('loginPw','pwIcon1')">
+            <i class="bi bi-eye" id="pwIcon1"></i>
+          </button>
+        </div>
+        <span class="fauth-error" id="pwError"></span>
+      </div>
+
+      <div class="fauth-row">
+        <label class="fauth-remember">
+          <input type="checkbox" id="rememberMe" name="rememberMe"/>
+          <span>Remember me</span>
+        </label>
+        <a href="#" class="fauth-forgot" onclick="handleForgotPassword(event)">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="fauth-submit" id="loginBtn">
+        <span id="loginBtnText"><i class="bi bi-box-arrow-in-right me-2"></i>Sign In to Furever Home</span>
+        <span id="loginBtnLoader" style="display:none"><span class="fauth-spinner"></span> Signing in...</span>
+      </button>
+
+    </form>
+
+    <div class="fauth-admin-link">
+      Are you an admin? <a href="admin-dashboard.html">Access Admin Panel →</a>
+    </div>
+
+    <div class="fauth-switch">
+      Don't have an account? <a href="register.html">Create one free</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="fh-toast" id="toast"><i class="bi bi-check-circle-fill"></i> <span id="toastMsg"></span></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/login.js"></script>
+</body>
+</html>

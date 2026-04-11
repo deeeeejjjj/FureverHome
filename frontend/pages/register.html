@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Account — Furever Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/styles.css"/>
+  <link rel="stylesheet" href="../css/login.css"/>
+</head>
+<body class="auth-body">
+
+<div class="auth-bg-pattern"></div>
+<a href="../index.html" class="auth-back-link"><i class="bi bi-arrow-left"></i> Back to Home</a>
+
+<div class="auth-center-wrap auth-center-wide">
+  <div class="auth-card reg-card-wrap">
+
+    <!-- Logo -->
+    <div class="auth-logo">
+      <div class="brand-icon"><i class="bi bi-heart-fill"></i></div>
+      <span class="brand-text">Furever<span class="brand-accent">Home</span></span>
+    </div>
+
+    <h2 class="auth-title">Create Your Account</h2>
+    <p class="auth-subtitle">Already a member? <a href="login.html" class="fauth-link">Sign in →</a></p>
+
+    <!-- DB: Server response messages -->
+    <div id="regAlert" class="auth-alert" style="display:none"></div>
+
+    <!-- Step indicators -->
+    <div class="reg-steps">
+      <div class="reg-step-item active" id="si1">
+        <div class="rs-circle">1</div>
+        <div class="rs-label">Personal</div>
+      </div>
+      <div class="rs-line" id="rl1"></div>
+      <div class="reg-step-item" id="si2">
+        <div class="rs-circle">2</div>
+        <div class="rs-label">Account</div>
+      </div>
+      <div class="rs-line" id="rl2"></div>
+      <div class="reg-step-item" id="si3">
+        <div class="rs-circle">3</div>
+        <div class="rs-label">Done</div>
+      </div>
+    </div>
+
+    <!-- ══ STEP 1 — Personal Info ══ -->
+    <!--
+      DB FIELDS: firstName, lastName, phone, age, municipality
+      Table: users (first_name, last_name, phone, age, municipality)
+    -->
+    <div id="regStep1">
+      <div class="reg-section-title">Personal Information</div>
+      <div class="reg-section-sub">Tell us a bit about yourself</div>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="fauth-field">
+            <label class="fauth-label" for="firstName">First Name *</label>
+            <div class="fauth-input-wrap">
+              <i class="bi bi-person fauth-icon"></i>
+              <input type="text" id="firstName" name="firstName" class="fauth-input"
+                placeholder="Juan" required autocomplete="given-name"/>
+            </div>
+            <span class="fauth-error" id="firstNameErr"></span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="fauth-field">
+            <label class="fauth-label" for="lastName">Last Name *</label>
+            <div class="fauth-input-wrap">
+              <i class="bi bi-person fauth-icon"></i>
+              <input type="text" id="lastName" name="lastName" class="fauth-input"
+                placeholder="dela Cruz" required autocomplete="family-name"/>
+            </div>
+            <span class="fauth-error" id="lastNameErr"></span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="fauth-field">
+            <label class="fauth-label" for="phone">Phone Number *</label>
+            <div class="fauth-input-wrap">
+              <i class="bi bi-telephone fauth-icon"></i>
+              <input type="tel" id="phone" name="phone" class="fauth-input"
+                placeholder="+63 9XX XXX XXXX" required autocomplete="tel"/>
+            </div>
+            <span class="fauth-error" id="phoneErr"></span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="fauth-field">
+            <label class="fauth-label" for="age">Age *</label>
+            <div class="fauth-input-wrap">
+              <i class="bi bi-calendar3 fauth-icon"></i>
+              <input type="number" id="age" name="age" class="fauth-input"
+                placeholder="18" min="18" max="90" required/>
+            </div>
+            <span class="fauth-error" id="ageErr"></span>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="fauth-field">
+            <label class="fauth-label" for="municipality">Municipality *</label>
+            <div class="fauth-input-wrap">
+              <i class="bi bi-geo-alt fauth-icon"></i>
+              <select id="municipality" name="municipality" class="fauth-input fauth-select" required>
+                <option value="">Select your municipality...</option>
+                <option value="Boac">Boac</option>
+                <option value="Gasan">Gasan</option>
+                <option value="Mogpog">Mogpog</option>
+                <option value="Santa Cruz">Santa Cruz</option>
+                <option value="Buenavista">Buenavista</option>
+                <option value="Torrijos">Torrijos</option>
+              </select>
+            </div>
+            <span class="fauth-error" id="muniErr"></span>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="fauth-submit mt-2" onclick="goStep2()">
+        Continue <i class="bi bi-arrow-right ms-1"></i>
+      </button>
+    </div>
+
+    <!-- ══ STEP 2 — Account Setup ══ -->
+    <!--
+      DB FIELDS: email, password (hashed), role
+      Table: users (email, password_hash, role='user', created_at)
+      POST /api/auth/register
+      Body: { firstName, lastName, phone, age, municipality, email, password }
+      200: { token, user: {id, name, role} }
+      409: { message: "Email already registered" }
+      422: { errors: { field: message } }
+    -->
+    <div id="regStep2" style="display:none">
+      <div class="reg-section-title">Account Setup</div>
+      <div class="reg-section-sub">Create your login credentials</div>
+
+      <div class="social-auth-row mt-3">
+        <button type="button" class="social-btn-item" onclick="handleSocialLogin('google')">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.79-.07-1.54-.19-2.27h-11.3v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" d="M12.255 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96h-3.98v3.09C3.515 21.3 7.615 24 12.255 24z"/><path fill="#FBBC05" d="M5.525 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62h-3.98a11.86 11.86 0 0 0 0 10.76l3.98-3.09z"/><path fill="#EA4335" d="M12.255 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C18.205 1.19 15.495 0 12.255 0c-4.64 0-8.74 2.7-10.71 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
+          Sign up with Google
+        </button>
+        <button type="button" class="social-btn-item" onclick="handleSocialLogin('facebook')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </button>
+      </div>
+
+      <div class="auth-or"><span>or use email</span></div>
+
+      <div class="fauth-field">
+        <label class="fauth-label" for="regEmail">Email Address *</label>
+        <div class="fauth-input-wrap">
+          <i class="bi bi-envelope fauth-icon"></i>
+          <input type="email" id="regEmail" name="email" class="fauth-input"
+            placeholder="you@email.com" required autocomplete="email"/>
+        </div>
+        <span class="fauth-error" id="regEmailErr"></span>
+      </div>
+
+      <div class="fauth-field">
+        <label class="fauth-label" for="regPw">Password *</label>
+        <div class="fauth-input-wrap">
+          <i class="bi bi-lock fauth-icon"></i>
+          <input type="password" id="regPw" name="password" class="fauth-input"
+            placeholder="Min. 8 characters" required oninput="checkStrength(this.value)"/>
+          <button type="button" class="fauth-eye" onclick="togglePw('regPw','pwIcon2')">
+            <i class="bi bi-eye" id="pwIcon2"></i>
+          </button>
+        </div>
+        <!-- Password strength -->
+        <div class="pw-strength mt-2">
+          <div class="pw-bar"><div class="pw-fill" id="strengthFill"></div></div>
+          <span class="pw-label" id="strengthLabel">Enter a password</span>
+        </div>
+        <span class="fauth-error" id="regPwErr"></span>
+      </div>
+
+      <div class="fauth-field">
+        <label class="fauth-label" for="regPwConfirm">Confirm Password *</label>
+        <div class="fauth-input-wrap">
+          <i class="bi bi-lock-fill fauth-icon"></i>
+          <input type="password" id="regPwConfirm" name="passwordConfirm" class="fauth-input"
+            placeholder="Re-enter password" required/>
+          <button type="button" class="fauth-eye" onclick="togglePw('regPwConfirm','pwIcon3')">
+            <i class="bi bi-eye" id="pwIcon3"></i>
+          </button>
+        </div>
+        <span class="fauth-error" id="regPwConfirmErr"></span>
+      </div>
+
+      <label class="fauth-terms">
+        <input type="checkbox" id="termsCheck" required/>
+        <span>I agree to the <a href="#" class="fauth-link">Terms of Service</a> and <a href="#" class="fauth-link">Privacy Policy</a></span>
+      </label>
+
+      <div class="d-flex gap-3 mt-3">
+        <button type="button" class="fauth-back" onclick="goStep1()">
+          <i class="bi bi-arrow-left me-1"></i> Back
+        </button>
+        <button type="button" class="fauth-submit" id="regBtn" onclick="handleRegister()">
+          <span id="regBtnText"><i class="bi bi-person-check-fill me-2"></i>Create My Account</span>
+          <span id="regBtnLoader" style="display:none"><span class="fauth-spinner"></span> Creating...</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ══ STEP 3 — Success ══ -->
+    <div id="regStep3" style="display:none">
+      <div class="reg-success">
+        <div class="reg-success-icon">🎉</div>
+        <h3 class="reg-success-title">Welcome to Furever Home!</h3>
+        <p class="reg-success-sub">Your account has been created. Start browsing pets available in Marinduque!</p>
+        <a href="user-dashboard.html" class="fauth-submit" style="display:inline-flex;max-width:300px;margin:0 auto;justify-content:center">
+          <i class="bi bi-grid-fill me-2"></i> Go to My Dashboard
+        </a>
+      </div>
+    </div>
+
+    <div class="fauth-switch">
+      Already have an account? <a href="login.html" class="fauth-link">Sign in</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="fh-toast" id="toast"><i class="bi bi-check-circle-fill"></i> <span id="toastMsg"></span></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/register.js"></script>
+</body>
+</html>

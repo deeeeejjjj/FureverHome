@@ -1,0 +1,98 @@
+.contact-hero {
+      background: linear-gradient(135deg, var(--dark-green) 0%, var(--mid-green) 100%);
+      padding: 72px 0 60px; position: relative; overflow: hidden;
+    }
+    .contact-hero::before {
+      content: '🐾'; position: absolute; right: 0; top: -20px;
+      font-size: 220px; opacity: 0.05; transform: rotate(10deg); pointer-events: none;
+    }
+
+    /* Info cards */
+    .contact-info-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px 24px;
+      display: flex; align-items: flex-start; gap: 16px;
+      transition: all 0.3s; height: 100%;
+    }
+    .contact-info-card:hover { border-color: var(--gold); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .contact-info-icon {
+      width: 50px; height: 50px; flex-shrink: 0;
+      background: var(--gold-light); border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: var(--gold-dark);
+    }
+    .contact-info-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-light); margin-bottom: 4px; }
+    .contact-info-value { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
+    .contact-info-sub { font-size: 12px; color: var(--text-light); }
+
+    /* Form card */
+    .contact-form-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--radius-xl); padding: 40px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Floating label inputs */
+    .form-floating-custom { position: relative; margin-bottom: 16px; }
+    .form-floating-custom label {
+      position: absolute; top: 50%; left: 14px; transform: translateY(-50%);
+      font-size: 14px; color: var(--text-light); font-weight: 500;
+      transition: all 0.2s; pointer-events: none; z-index: 1;
+    }
+    .form-floating-custom.textarea-wrap label { top: 18px; transform: none; }
+    .form-floating-custom input:focus ~ label,
+    .form-floating-custom input:not(:placeholder-shown) ~ label {
+      top: 10px; transform: none; font-size: 11px; color: var(--gold-dark); font-weight: 700;
+    }
+    .form-floating-custom textarea:focus ~ label,
+    .form-floating-custom textarea:not(:placeholder-shown) ~ label {
+      top: 8px; font-size: 11px; color: var(--gold-dark); font-weight: 700;
+    }
+    .fh-input-lg {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 12px;
+      padding: 20px 14px 8px; font-size: 15px; font-weight: 500;
+      color: var(--text-dark); background: var(--cream); transition: all 0.2s; outline: none;
+    }
+    .fh-input-lg:focus { border-color: var(--gold); background: var(--white); box-shadow: 0 0 0 3px rgba(201,168,76,0.12); }
+    .fh-textarea { height: 130px; resize: vertical; padding-top: 26px; }
+
+    .btn-send {
+      width: 100%; padding: 14px; background: var(--dark-green);
+      border: none; border-radius: 12px; color: var(--white);
+      font-size: 16px; font-weight: 700; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: all 0.25s;
+    }
+    .btn-send:hover { background: var(--mid-green); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(26,60,52,0.3); }
+
+    /* Topic select */
+    .topic-select {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 12px;
+      padding: 13px 14px; font-size: 15px; font-weight: 500;
+      color: var(--text-dark); background: var(--cream); outline: none;
+      transition: all 0.2s; appearance: none;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+      background-repeat: no-repeat; background-position: right 14px center; background-size: 16px;
+    }
+    .topic-select:focus { border-color: var(--gold); background-color: var(--white); box-shadow: 0 0 0 3px rgba(201,168,76,0.12); }
+
+    /* Map */
+    .map-card { border-radius: var(--radius-xl); overflow: hidden; border: 1.5px solid var(--border); height: 300px; }
+    .map-card iframe { width: 100%; height: 100%; border: 0; }
+
+    /* Shelter hours */
+    .hours-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { color: var(--text-mid); font-weight: 600; }
+    .hours-time { color: var(--text-dark); font-weight: 700; }
+    .hours-time.closed { color: var(--text-light); font-weight: 400; }
+
+    /* Success state */
+    .form-success {
+      display: none; text-align: center; padding: 40px 20px;
+    }
+    .form-success.show { display: block; }
+
+    @media (max-width: 767px) {
+      .contact-form-card { padding: 24px 20px; }
+    }

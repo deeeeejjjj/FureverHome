@@ -1,0 +1,24 @@
+# ═══════════════════════════════════════════════════════
+#  .htaccess — Furever Home PHP Backend
+#  Place this file in the backend-php/ directory.
+#  Requires mod_rewrite enabled in Apache.
+# ═══════════════════════════════════════════════════════
+
+Options -Indexes
+RewriteEngine On
+
+# ── CORS pre-flight ──────────────────────────────────
+# (already handled in api.php, but double-safe here)
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+
+# ── Route everything to api.php (optional clean URLs) ─
+# With this enabled you CAN call /backend-php/api/pets
+# and it will be rewritten to api.php?route=pets
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/([^/]+)(/([^/]+))?(/([^/]+))?/?$ api.php?route=$1&id=$3&action=$5 [QSA,L]
+
+# ── Block direct access to config/helpers ────────────
+RewriteRule ^(config|helpers)/.*$ - [F,L]
