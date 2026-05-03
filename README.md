@@ -102,42 +102,6 @@ furever-home/
 │                            donations · analytics
 └── README.md
 ```
-
----
-
-## ⚙️ Setup & Installation
-
-### Requirements
-- PHP 8.0+
-- MySQL 5.7+ / MariaDB 10.4+
-- Apache + mod_rewrite (XAMPP / WAMP / Laragon all work)
-
-### Steps
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/your-group/furever-home.git
-
-# 2. Import the database
-mysql -u root -p < backend-php/database.sql
-
-# 3. Edit database credentials
-#    Open backend-php/config/db.php and set DB_USER / DB_PASS
-
-# 4. Hash demo passwords (run once, then delete seed.php)
-#    Visit: http://localhost/furever-home/backend-php/seed.php
-
-# 5. Open the app
-#    http://localhost/furever-home/frontend/index.html
-```
-
-### Demo Accounts (after seed.php)
-
-| Email | Password | Role |
-|-------|----------|------|
-| admin@fureverhome.ph | Admin@123 | Admin |
-| maria@fureverhome.ph | User@123  | User  |
-
 ---
 
 ## 🔌 API Endpoints (JSON)
